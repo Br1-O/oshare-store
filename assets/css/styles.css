@@ -264,9 +264,9 @@ body{
     border-color: var(--border-color);
     border-radius: 50%;
     
-    animation-name: coinAnimation;
+    /* animation-name: coinAnimation;
     animation-duration: 2s;
-    animation-iteration-count: 1;
+    animation-iteration-count: 1; */
 
     transition: all .4s ease;
 }
