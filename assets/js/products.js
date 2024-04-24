@@ -139,7 +139,7 @@ const displayProductList = (productList, container) => {
                             <p class="product-price"> ${product.price} </p>
                         </div>
                     </div>`;
-                    
+
         //clean tags variable for new iteration
         tagsTemplate = "";
     });
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const containerTrendingProducts = document.getElementById("container-trending-products");
 
     try {
-        const response = await fetch("/assets/js/json/products-list.json",{ 
+        const response = await fetch("assets/js/json/products-list.json",{ 
             method:'GET',
             headers: {
                 'content-type': 'application/json'    
