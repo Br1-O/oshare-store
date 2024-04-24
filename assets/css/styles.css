@@ -442,8 +442,9 @@ body{
 
 .ad-btn:hover i{
     animation-name: TranslateX;
-    animation-duration: 0.75s;
-    animation-iteration-count: 1;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    
 }
 
 .ad-btn:hover{
@@ -473,7 +474,7 @@ body{
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
 }
 
 .down-arrow a i:hover{
@@ -481,9 +482,11 @@ body{
     background-color: var(--border-color);
 
     animation-name: TranslateY;
-    animation-duration: 0.75s;
-    animation-iteration-count: 1;
+    animation-duration: 1.45s;
+    animation-iteration-count: infinite;
 }
+
+/* Trending products section */
 
 
 
