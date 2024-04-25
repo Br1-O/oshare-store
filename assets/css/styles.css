@@ -293,6 +293,10 @@ body{
     padding: 20px 10%;
 }
 
+.compact-view{
+    max-height: 4rem;
+}
+
 .logo{
     max-width: 150px;
     height: auto;
