@@ -19,7 +19,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bxs-star'></i>
                 <i class='bx bxs-star'></i>
                 <i class='bx bxs-star' ></i>`
-            break;
+                break;
             
             case 4.5:
                 ratingTemplate = 
@@ -28,7 +28,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bxs-star'></i>
                 <i class='bx bxs-star'></i>
                 <i class='bx bxs-star-half' ></i>`
-            break;        
+                break;        
             
             case 4:
                 ratingTemplate = 
@@ -37,7 +37,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bxs-star'></i>
                 <i class='bx bxs-star'></i>
                 <i class='bx bx-star'></i>`
-            break;       
+                break;       
             
             case 3.5:
                 ratingTemplate = 
@@ -46,7 +46,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bxs-star-half'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>`
-            break;        
+                break;        
             
             case 3:
                 ratingTemplate = 
@@ -55,7 +55,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>`
-            break;
+                break;
 
             case 2.5:
                 ratingTemplate = 
@@ -64,7 +64,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bxs-star-half'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>`
-            break;
+                break;
 
             case 2:
                 ratingTemplate = 
@@ -73,7 +73,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>`
-            break;
+                break;
 
             case 1.5:
                 ratingTemplate = 
@@ -82,7 +82,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>`
-            break;
+                break;
 
             case 1:
                 ratingTemplate = 
@@ -91,7 +91,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star-half'></i>`
-            break;
+                break;
 
             case 0.5:
                 ratingTemplate = 
@@ -100,7 +100,7 @@ const displayProductList = (productList, container) => {
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>`
-            break;
+                break;
 
             default:
                 ratingTemplate = 
@@ -109,32 +109,56 @@ const displayProductList = (productList, container) => {
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star-half'></i>`
-            break;
+                break;
         }
+
+        let tagColor = "";
 
         //set tags template
         (product.tags).forEach(tag => {
-            tagsTemplate += `<h5 class="product-tag"> ${tag} </h5>`;
+
+            //set proper bg color of tag
+            switch (tag) {
+                case "Nuevo":
+                    tagColor="--tag-color-new";
+                    break;
+                case "Oferta":
+                    tagColor="--tag-color-discount";
+                    break;
+                case "Oferta especial":
+                    tagColor="--tag-color-special";
+                    break;
+                default:
+                    tagColor="white";
+                    break;
+            }
+
+            tagsTemplate += `<span class="product-tag" style="background-color:var(${tagColor})"><h5> ${tag} </h5></span>`;
         });
 
         //add filled product's template into variable
         template += `<div class="product-card">
-                        <img src= ${product.image} alt="">
-
-                        <div class="product-tags">
-                            <h5 class="product-tag"> ${tagsTemplate} </h5>
-                        </div>
-
-                        <div class="product-favorite">
-                            ${product.favorite ? "<i class='bx bxs-heart'></i>" :  "<i class='bx bx-heart'></i>" }
-                        </div>
-                        
-                        <div class="product-rating">
-                            ${ratingTemplate}
-                        </div>
+                        <a href="${product.link}">
+                            <img class="product-image" src= ${product.image} alt="">
+                        </a>
 
                         <div class="product-info">
-                            <h4 class="product-name"> ${product.name} </h4>
+                    
+                            <div class="product-tags">
+                                ${tagsTemplate}
+                            </div>
+
+                            <div class="product-favorite">
+                                <span> Añadir a favoritos </span> ${product.favorite ? "<i class='bx bxs-heart'></i>" :  "<i class='bx bx-heart'></i>" }
+                            </div>
+                            
+                            <div class="product-rating">
+                                <span> Valoración: </span> ${ratingTemplate}
+                            </div>
+
+                            <a href="${product.link}">
+                                <h4 class="product-name"> ${product.name} </h4>
+                            </a>
                             <p class="product-description-cover"> ${product["description-cover"]} </p>
                             <p class="product-price"> ${product.price} </p>
                         </div>

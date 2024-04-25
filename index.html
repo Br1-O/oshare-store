@@ -30,6 +30,7 @@
   <meta name="twitter:description" content="Oshare Designs ¡Tus prendas favoritas a un click de distancia!" />
   <meta name="twitter:card" content="website" />
   <!-- <meta name="twitter:url" content=""/> -->
+
 </head>
 
 <body>
@@ -92,24 +93,34 @@
             Encuentra el look perfecto para mantenerte cálido y con estilo esta temporada. 
             ¡No te pierdas nuestros nuevos lanzamientos y prepárate para lucir impecable este invierno!
           </p>
-          <a href="" class="ad-btn"> ¡Ir al catalogo! <i class='bx bx-right-arrow-alt'></i> </a>
+          <a href="#" class="ad-btn"> ¡Ir al catalogo! <i class='bx bx-right-arrow-alt'></i> </a>
 
         </div>
 
         <div class="down-arrow">
-          <a href="">
+          <a href="#trending-now">
             <i class='bx bx-down-arrow-alt' title="¡Último en Tendencia!"></i>
           </a>
         </div>
 
+
       </article>
     </section>
 
-    <!-- Popular Products -->
+    <!-- Wavy separator -->
+    <svg  id="trending-now" style="filter: blur(0px);" width="100%" height="100%" id="svg" viewBox="0 180 1440 150" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
+      <!-- Modify last value of viewBox to modify its margin on the Y axis -->
+      <path d="M 0,390 L 0,150 C 84.74132600480931,175.79732050841636 169.48265200961862,201.5946410168327 232,188 C 294.5173479903814,174.4053589831673 334.81071796633466,121.41875644108555 401,95 C 467.18928203366534,68.58124355891445 559.2744761250428,68.73033321882514 641,93 C 722.7255238749572,117.26966678117486 794.0913775334938,165.6599106836139 861,164 C 927.9086224665062,162.3400893163861 990.3600137409824,110.63002404671936 1055,105 C 1119.6399862590176,99.36997595328064 1186.4685675025764,139.81999312950876 1251,155 C 1315.5314324974236,170.18000687049124 1377.7657162487117,160.09000343524562 1440,150 L 1440,390 Z" 
+      stroke="#9b58da" stroke-width="1px" stroke-opacity="0.5" fill="#9b58da" fill-opacity="0.2" 
+      class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 200)"></path>
+    </svg>    
+    
+    <!-- Trending Products -->
     <section class="trending-products">
 
       <h2 class="subtitle"> ¡Nuestros productos en <span>tendencia</span>!</h2>
 
+      <!-- List of trending products -->
       <div class="container-products" id="container-trending-products">
       </div>
 

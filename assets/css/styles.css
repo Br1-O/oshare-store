@@ -7,6 +7,7 @@ blockquote,q { quotes: none;}
 blockquote:before,blockquote:after,q:before,q:after { content: ''; content: none;}
 table { border-collapse: collapse; border-spacing: 0;}
 
+
 /* all element */
 *{
     margin: 0;
@@ -15,17 +16,26 @@ table { border-collapse: collapse; border-spacing: 0;}
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* ■■■■­■■­■■­■■­■■ root variables  ■■■■­■■­■■­■■­■■ */
 
 :root{
     --main-bg-color: rgb(224, 187, 228);
-    --border-color: rgba(155, 88, 218, 0.907);
+    --border-color: rgba(155, 88, 218, 0.906);
     --border-hover-color: rgb(237, 236, 238);
     --font-color: rgb(81, 80, 80);
     --font-hover-color: rgb(237, 236, 238);
     --shadow-color: rgb(130, 21, 158);
     
     --font-main: 'Jost';
+
+    /* variables for product's tags colors*/
+    --tag-color-new:rgba(61, 250, 74, 0.7);
+    --tag-color-discount:rgba(251, 37, 37, 0.7);
+    --tag-color-special:rgb(248, 255, 36, 0.7);
 }
 
 /* ■■■■­■■­■■­■■­■■ animations  ■■■■­■■­■■­■■­■■ */
@@ -218,7 +228,35 @@ table { border-collapse: collapse; border-spacing: 0;}
     }
 }
 
+/* ■■■■­■■­■■­■■­■■ tooltip to mimic title attribute of tags ■■■■­■■­■■­■■­■■ */
 
+/* USAGE: <span class="custom-title-tooltip" data-tooltip="Custom Tooltip Text"></span> */
+
+.custom-title-tooltip {
+    position: relative;
+  }
+  
+  .custom-title-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffffff63;
+    color: var(--font-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .custom-title-tooltip:hover::after {
+    opacity: 1;
+  }
 
 /* ■■■■­■■­■■­■■­■■ Elements ■■■■­■■­■■­■■­■■ */
 
@@ -268,7 +306,7 @@ body{
     animation-duration: 2s;
     animation-iteration-count: 1;
 
-    transition: all .4s ease;
+    transition: all .8s ease;
 }
 
 .logo:hover{
@@ -486,8 +524,213 @@ body{
     animation-iteration-count: infinite;
 }
 
-/* Trending products section */
+/*  ■■■■­■■­■■­■■­■■ Trending products section ■■■■­■■­■■­■■­■■ */
 
+.trending-products{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.subtitle span{
+    color:var(--font-hover-color)
+}
 
+.subtitle{
+    color: var(--font-color);
+    font-family: var(--font-main, "sans-serif");
+    font-size: 5rem;
+    font-weight: 500;
+}
 
+/* products container */
+
+.container-products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem 1rem ;
+
+    padding: 2%;
+}
+
+/* ■■■■­■■­■■­■■­■■ PRODUCTS ■■■■­■■­■■­■■­■■ */
+
+/* product card */
+
+.product-card{    
+    border: solid 2px var(--border-color);
+    border-radius: 15px;
+
+    /* glass like effect */
+    background: rgba(255, 255, 255, 0.678);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* image */
+
+.product-image{
+    max-width: 100%;
+    height: auto;
+
+    border-radius: 15px 15px 0px 0px;
+    
+    transition: all .5s ease;
+}
+
+.product-card:hover .product-image{    
+    transform: scale(0.95);
+    filter: brightness(110%);
+    border-radius: 15px;
+}
+  
+/* info container */
+
+.product-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    gap: 10px;
+
+    padding: 5%;
+
+    font-family: var(--font-main);
+}
+
+/* tags */
+
+.product-tag{
+    display: inline-block;
+    margin-right: 0.25rem;
+
+    border-radius: 5px;
+    padding: 5px 10px;
+    
+    color: var(--font-color);
+
+    cursor: pointer;
+
+    transition: all .4s ease;
+}
+
+.product-tag:hover{
+    color:black;
+    text-shadow: 0px 0px 5px var(--font-hover-color);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* favorite & rating*/
+
+.product-favorite{
+    display: inline-block;
+    font-family: var(--font-main, "sans-serif");
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
+.product-rating{
+    display: inline-block;
+    font-family: var(--font-main, "sans-serif");
+    font-weight: 400;
+}
+
+/* icons */
+
+.product-card .bx-heart {
+    font-size: 1.5rem;
+
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.product-card .bxs-heart {
+    font-size: 1.5rem;
+    color: rgba(255, 0, 0, 0.717);
+
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.product-card .bxs-heart:hover, .product-card .bx-heart:hover {
+    color: rgba(255, 0, 0, 0.717);
+    transform: scale(1.25);
+}
+
+.product-card .bxs-star,.bx-star,.bxs-star-half {
+    font-size: 1.25rem;
+    color: rgb(205, 209, 4);
+
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.product-card .bxs-star:hover,.bx-star:hover,.bxs-star-half:hover {
+    transform: scale(1.5);
+}
+
+/* info content */
+
+.product-name{
+    color: var(--font-color);
+    font-family: var(--font-main, "sans-serif");
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    margin: 1rem 0rem 0.2rem 0rem;
+
+    transition: all .4s ease;
+}
+
+.product-card:hover .product-name{
+    color: white;
+    text-shadow: 2px 2px 5px rgb(54, 54, 54);
+}
+
+.product-description-cover{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    height: 4rem;
+    overflow: hidden;
+
+    background-color: rgb(224, 187, 228);
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    color: var(--font-color);
+    font-family: var(--font-main, "sans-serif");
+    font-size: 1rem;
+    font-weight: 400;
+
+    margin: 0.2rem 0rem;
+
+    transition: all .4s ease;
+
+    box-shadow: -2px -2px 10px rgb(182, 181, 181);
+}
+
+.product-card:hover .product-description-cover{
+    box-shadow: 2px 2px 10px rgb(182, 181, 181);
+}
+
+.product-price{
+    color: var(--font-color);
+    font-family: var(--font-main, "sans-serif");
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    align-self: flex-end;
+
+    transition: all .4s ease;
+}
+
+.product-card:hover .product-price{
+    color: white;
+    text-shadow: 2px 2px 5px rgb(54, 54, 54);
+}
 
