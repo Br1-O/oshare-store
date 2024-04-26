@@ -139,7 +139,7 @@ const displayProductList = (productList, container) => {
         //add filled product's template into variable
         template += `<div class="product-card">
                         <a href="${product.link}">
-                            <img class="product-image" src= ${product.image} alt="">
+                            <img class="product-image" src= ${product.image} data-src=${product.image} loading="lazy" alt="${product.name}">
                         </a>
 
                         <div class="product-info">
@@ -148,12 +148,14 @@ const displayProductList = (productList, container) => {
                                 ${tagsTemplate}
                             </div>
 
-                            <div class="product-favorite">
-                                <span> Añadir a favoritos </span> ${product.favorite ? "<i class='bx bxs-heart'></i>" :  "<i class='bx bx-heart'></i>" }
-                            </div>
-                            
-                            <div class="product-rating">
-                                <span> Valoración: </span> ${ratingTemplate}
+                            <div class="product-container-favs-rating">
+                                <div class="product-favorite">
+                                    <span> Añadir a favoritos </span> ${product.favorite ? "<i class='bx bxs-heart'></i>" :  "<i class='bx bx-heart'></i>" }
+                                </div>
+                                
+                                <div class="product-rating">
+                                    <span> Valoración: </span> ${ratingTemplate}
+                                </div>
                             </div>
 
                             <a href="${product.link}">
