@@ -20,22 +20,40 @@
   <meta name="keywords" content="ropa, elegante, vestido, pollera, falda, minifalda, blusa, camisa, remera, traje, pantalones, sombrero, bufanda, medias, zapatos, tienda, compra, clothes, clothing, fashion, fashionable, elegant, casual, dress, skirt, blouse, shirt, suit, pants, hat, scarf, socks, shoes, store, online, ecommerce">
   <!-- open graph --> 
   <meta property="og:image" content="assets/resources/img/Logo_Oshare.jpg">
-  <meta property="og:description" content="Oshare Designs! Tu ropa favorita a un click de distancia!">
+  <meta property="og:description" content="¡Tus prendas favoritas a un click de distancia">
   <meta property="og:title" content="Oshare Designs">
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://br1-o.github.io/oshare-store/"/>
   <!-- Twitter card -->
   <meta name="twitter:image" content="assets/resources/img/Logo_Oshare.jpg" />
   <meta name="twitter:title" content="Oshare Designs" />
-  <meta name="twitter:description" content="Oshare Designs ¡Tus prendas favoritas a un click de distancia!" />
+  <meta name="twitter:description" content="¡Tus prendas favoritas a un click de distancia!" />
   <meta name="twitter:card" content="website" />
   <meta name="twitter:url" content="https://br1-o.github.io/oshare-store/"/>
 
 </head>
 
 <body>
-  <!-- Navbar -->
-  <header>
+
+  <!-- loading animation -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-logo"></div>
+  </div>
+
+  <!-- Page Container-->
+  <div id="page-container" class="page-container">
+
+    <!-- Modal Window -->
+    <dialog>
+      <i class='bx bx-x' id="btn-modal-close"></i>
+
+      <div class="modal-content" id="modal-content">
+      </div>
+
+    </dialog>
+
+    <!-- Navbar -->
+    <header>
     <nav class="nav">
 
       <a href="#" title="¡Tus prendas favoritas a un click de distancia!">
@@ -44,33 +62,33 @@
 
       <ul class="nav-menu" id="nav-menu">
         <li>
-          <a href="" title="Oshare Designs Store"> Inicio </a>
+          <a href="#" title="Oshare Designs Store"> Inicio </a>
         </li>
         <li>
-          <a href="" title="¡Compra tus prendas favoritas!"> Shop </a>
+          <a href="#trending-now" title="¡Compra tus prendas favoritas!"> Shop </a>
         </li>
         <li>
-          <a href="" title="¡Mira nuestros productos!"> Productos </a>
+          <a href="#trending-now" title="¡Mira nuestros productos!"> Productos </a>
         </li>
         <li>
-          <a href="" title="¡Visitanos!"> Contacto </a>
+          <a href="#contacto" title="¡Visitanos!"> Contacto </a>
         </li>
       </ul>
 
       <ul class="nav-icons">
         <li>        
           <a href="#">
-            <i class='bx bx-search nav-icon'  alt="Search" title="¡Busca la prenda que deseas!"></i>
+            <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class='bx bx-cart nav-icon'  alt="Shop" title="Chequea tus compras"></i>
+            <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class='bx bx-user nav-icon'  alt="Login" title="¡Accede a tu cuenta!"></i>
+            <i class='bx bx-user nav-icon' id="account-icon" alt="Login" title="¡Accede a tu cuenta!"></i>
           </a>
         </li>
         <li>
@@ -78,181 +96,188 @@
         </li>
       </ul>
     </nav>
-  </header>
+    </header>
 
-  <!-- Main section -->
-  <main class="main">
-    
-    <!-- Billboard -->
-    <section id="billboard">
-      <article class="billboard-ad">
-        <div class="ad-content">
+    <!-- Page Content -->
+    <div id="page-content">
 
-          <h5 class="ad-tag"> ¡Nuevo catalogo agregado!</h5>
-          <h1 class="ad-title"> Colección de Invierno 2024 </h1>
-          <p class="ad-description"> 
-            ¡Descubre nuestra colección de invierno recién llegada! 
-            Explora las últimas tendencias en moda invernal, desde abrigos elegantes hasta suéteres acogedores. 
-            Encuentra el look perfecto para mantenerte cálido y con estilo esta temporada. 
-            ¡No te pierdas nuestros nuevos lanzamientos y prepárate para lucir impecable este invierno!
-          </p>
-          <a href="#" class="ad-btn"> ¡Ir al catalogo! <i class='bx bx-right-arrow-alt'></i> </a>
+      <!-- Main section -->
+      <main class="main">
+        
+        <!-- Billboard -->
+        <section id="billboard">
+          <article class="billboard-ad">
+            <div class="ad-content">
 
-        </div>
+              <h5 class="ad-tag"> ¡Nuevo catalogo agregado!</h5>
+              <h1 class="ad-title"> Colección de Invierno 2024 </h1>
+              <p class="ad-description"> 
+                ¡Descubre nuestra colección de invierno recién llegada! 
+                Explora las últimas tendencias en moda invernal, desde abrigos elegantes hasta suéteres acogedores. 
+                Encuentra el look perfecto para mantenerte cálido y con estilo esta temporada. 
+                ¡No te pierdas nuestros nuevos lanzamientos y prepárate para lucir impecable este invierno!
+              </p>
+              <a href="#" class="ad-btn"> ¡Ir al catalogo!<i class='bx bx-right-arrow-alt'></i> </a>
 
-        <div class="down-arrow">
-          <a href="#trending-now">
-            <i class='bx bx-down-arrow-alt' title="¡Último en Tendencia!"></i>
-          </a>
-        </div>
+            </div>
+
+            <div class="down-arrow">
+              <a href="#trending-now">
+                <i class='bx bx-down-arrow-alt' title="¡Último en Tendencia!"></i>
+              </a>
+            </div>
 
 
-      </article>
-    </section>
+          </article>
+        </section>
 
-    <!-- Wavy separator -->
-    <svg  id="trending-now" width="100%" height="100%" id="svg" viewBox="0 180 1440 150" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
-      <!-- Modify last value of viewBox to modify its margin on the Y axis -->
-      <path d="M 0,390 L 0,150 C 84.74132600480931,175.79732050841636 169.48265200961862,201.5946410168327 232,188 C 294.5173479903814,174.4053589831673 334.81071796633466,121.41875644108555 401,95 C 467.18928203366534,68.58124355891445 559.2744761250428,68.73033321882514 641,93 C 722.7255238749572,117.26966678117486 794.0913775334938,165.6599106836139 861,164 C 927.9086224665062,162.3400893163861 990.3600137409824,110.63002404671936 1055,105 C 1119.6399862590176,99.36997595328064 1186.4685675025764,139.81999312950876 1251,155 C 1315.5314324974236,170.18000687049124 1377.7657162487117,160.09000343524562 1440,150 L 1440,390 Z" 
-      stroke="#9b58da" stroke-width="1px" stroke-opacity="0.5" fill="#9b58da" fill-opacity="0.2" 
-      class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 200)"></path>
-    </svg>    
-    
-    <!-- Trending Products -->
-    <section class="trending-products">
+        <!-- Wavy separator -->
+        <svg  id="trending-now" width="100%" height="100%" id="svg" viewBox="0 180 1440 150" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
+          <!-- Modify last value of viewBox to modify its margin on the Y axis -->
+          <path d="M 0,390 L 0,150 C 84.74132600480931,175.79732050841636 169.48265200961862,201.5946410168327 232,188 C 294.5173479903814,174.4053589831673 334.81071796633466,121.41875644108555 401,95 C 467.18928203366534,68.58124355891445 559.2744761250428,68.73033321882514 641,93 C 722.7255238749572,117.26966678117486 794.0913775334938,165.6599106836139 861,164 C 927.9086224665062,162.3400893163861 990.3600137409824,110.63002404671936 1055,105 C 1119.6399862590176,99.36997595328064 1186.4685675025764,139.81999312950876 1251,155 C 1315.5314324974236,170.18000687049124 1377.7657162487117,160.09000343524562 1440,150 L 1440,390 Z" 
+          stroke="#9b58da" stroke-width="1px" stroke-opacity="0.5" fill="#9b58da" fill-opacity="0.2" 
+          class="transition-all duration-300 ease-in-out delay-150 path-0" transform="rotate(-180 720 200)"></path>
+        </svg>    
+        
+        <!-- Trending Products -->
+        <section class="trending-products">
 
-      <h2 class="subtitle"> ¡Nuestros productos en <span>tendencia</span>!</h2>
+          <h2 class="subtitle"> ¡Nuestros productos en <span>tendencia</span>!</h2>
 
-      <!-- List of trending products -->
-      <div class="container-products .row" id="container-trending-products">
-      </div>
+          <!-- List of trending products -->
+          <div class="container-products .row" id="container-trending-products">
+          </div>
 
-    </section>
+        </section>
 
-    <section class="latest-reviews">
-    </section>
+        <section class="latest-reviews">
+        </section>
 
-  </main>
+      </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <img id="footer-logo" src="./assets/resources/img/Logo_Oshare.jpg" alt="Oshare Designs logo">
+      <!-- Footer -->
+      <footer id="contacto">
+        <div class="footer-container">
+          <img id="footer-logo" src="./assets/resources/img/Logo_Oshare.jpg" alt="Oshare Designs logo">
 
-      <div class="footer-container-info" id="contact-info">
-        <a href="">
-          Almte. Brown 3466 
-        </a>
-        <a href="">
-          Mar del Plata, Provincia de Buenos Aires B7600
-        </a>
-        <a href="">
-          +5492235012345
-        </a>
-        <a href="">
-          bruno.ortuno2@gmail.com
-        </a>
+          <div class="footer-container-info" id="contact-info">
+            <a href="">
+              Almte. Brown 3466 
+            </a>
+            <a href="">
+              Mar del Plata, Provincia de Buenos Aires B7600
+            </a>
+            <a href="">
+              +5492235012345
+            </a>
+            <a href="">
+              bruno.ortuno2@gmail.com
+            </a>
 
-        <div class="footer-container-social-media">
-          <a href="">
-            <i class='bx bxl-facebook'></i>
-          </a>
-          <a href="">
-            <i class='bx bxl-twitter'></i>
-          </a>
-          <a href="">
-            <i class='bx bxl-instagram' ></i>
-          </a>
-          <a href="">
-            <i class='bx bxl-youtube' ></i>
-          </a>
-          <a href="">
-            <i class='bx bxl-linkedin' ></i>
-          </a>
-        </div>
+            <div class="footer-container-social-media">
+              <a href="">
+                <i class='bx bxl-facebook'></i>
+              </a>
+              <a href="">
+                <i class='bx bxl-twitter'></i>
+              </a>
+              <a href="">
+                <i class='bx bxl-instagram' ></i>
+              </a>
+              <a href="">
+                <i class='bx bxl-youtube' ></i>
+              </a>
+              <a href="">
+                <i class='bx bxl-linkedin' ></i>
+              </a>
+            </div>
 
-      </div>
+          </div>
 
-      <div class="footer-container-info">
+          <div class="footer-container-info">
 
-        <h4> Atención al cliente </h4>
+            <h4> Atención al cliente </h4>
 
-        <a href="" class="footer-social-media">
-          Contactanos
-        </a>
-        <a href="" class="footer-social-media">
-          Sobre nosotros
-        </a>
-        <a href="" class="footer-social-media">
-          Reclamos y Devoluciones
-        </a>
-        <a href="" class="footer-social-media">
-          Privacidad
-        </a>
-        <a href="" class="footer-social-media">
-          Guía de talles
-        </a>
+            <a href="" class="footer-social-media">
+              Contactanos
+            </a>
+            <a href="" class="footer-social-media">
+              Sobre nosotros
+            </a>
+            <a href="" class="footer-social-media">
+              Reclamos y Devoluciones
+            </a>
+            <a href="" class="footer-social-media">
+              Privacidad
+            </a>
+            <a href="" class="footer-social-media">
+              Guía de talles
+            </a>
 
-      </div>
+          </div>
 
+          
+          <div class="footer-container-info">
+
+            <h4> Productos </h4>
+
+            <a href="" class="footer-social-media">
+              Indumentaria femenina
+            </a>
+            <a href="" class="footer-social-media">
+              Indumentaria masculina
+            </a>
+            <a href="" class="footer-social-media">
+              Indumentaria infantil
+            </a>
+            <a href="" class="footer-social-media">
+              Indumentaria para Mascotas
+            </a>
+            <a href="" class="footer-social-media">
+              Accesorios
+            </a>
+
+          </div>
+
+          <div class="footer-container-info">
+
+            <h4> Nuestras ideas </h4>
+
+            <a href="" class="footer-social-media">
+              Blog
+            </a>
+            <a href="" class="footer-social-media">
+              Newsletter
+            </a>
+            <a href="" class="footer-social-media">
+              Afiliados
+            </a>
+            <a href="" class="footer-social-media">
+              Campañas
+            </a>
       
-      <div class="footer-container-info">
+          </div>
 
-        <h4> Productos </h4>
+          <div class="footer-container-info"  id="newsletter">
 
-        <a href="" class="footer-social-media">
-          Indumentaria femenina
-        </a>
-        <a href="" class="footer-social-media">
-          Indumentaria masculina
-        </a>
-        <a href="" class="footer-social-media">
-          Indumentaria infantil
-        </a>
-        <a href="" class="footer-social-media">
-          Indumentaria para Mascotas
-        </a>
-        <a href="" class="footer-social-media">
-          Accesorios
-        </a>
+            <p> ¡Adherite a nuestro boletín semanal!  </p>
+            <a href="" class="footer-social-media">
+              Newsletter
+            </a>
+            <p>¡Recibí nuestras ofertas, descuentos y novedades!</p>
+      
+          </div>
+        </div>
 
-      </div>
+        <div class="footer-copyright">
+          <p> Oshare Designs © 2024 · All rights reserved · Designed by <a href="https://www.linkedin.com/in/bortuno"> Bruno O. Ortuño </a></p>
+        </div>
 
-      <div class="footer-container-info">
+      </footer>
 
-        <h4> Nuestras ideas </h4>
-
-        <a href="" class="footer-social-media">
-          Blog
-        </a>
-        <a href="" class="footer-social-media">
-          Newsletter
-        </a>
-        <a href="" class="footer-social-media">
-          Afiliados
-        </a>
-        <a href="" class="footer-social-media">
-          Campañas
-        </a>
-   
-      </div>
-
-      <div class="footer-container-info"  id="newsletter">
-
-        <p> ¡Adherite a nuestro boletín semanal!  </p>
-        <a href="" class="footer-social-media">
-          Newsletter
-        </a>
-        <p>¡Recibí nuestras ofertas, descuentos y novedades!</p>
-   
-      </div>
     </div>
-
-    <div class="footer-copyright">
-      <p> Oshare Designs · Copyright © 2024 · All rights reserved · Designed by <a href="https://www.linkedin.com/in/bortuno"> Bruno O. Ortuño </a></p>
-    </div>
-
-  </footer>
+  
+  </div>
 
 </body>
 
@@ -262,5 +287,7 @@
 <script type="module" src="assets/js/products.js"></script>
 <!-- scroll effect for nav bar -->
 <script type="module" src="assets/js/navBar.js"></script>
+<!-- modal window-->
+<script type="module" src="assets/js/modal.js"></script>
 
 </html>

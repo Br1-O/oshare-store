@@ -7,7 +7,10 @@
         "name": "Set deportivo mediano",
         "description-cover": "Set deportivo de: pantalón, remera, musculosa, medias y muñequeras.",
         "price": "$55000",
-        "image": "assets/resources/img/examples/products/1.jpg",
+        "image": [
+          "assets/resources/img/examples/products/7-1.jpg",
+          "assets/resources/img/examples/products/7-2.jpg"
+        ],
         "link": "#",
         "tags": ["Nuevo", "Oferta"],
         "rating": 4.5,
@@ -17,7 +20,10 @@
         "name": "Conjunto de jogging",
         "description-cover": "Conjunto de jogging de algodón. Ideal para actividades deportivas.",
         "price": "$45000",
-        "image": "assets/resources/img/examples/products/2.jpg",
+        "image": [
+          "assets/resources/img/examples/products/8-1.jpg",
+          "assets/resources/img/examples/products/8-2.jpg"
+        ],
         "link": "#",
         "tags": ["Nuevo"],
         "rating": 2,
@@ -27,7 +33,10 @@
         "name": "Camisa formal",
         "description-cover": "Camisa formal de algodón. Perfecta para ocasiones especiales.",
         "price": "$65000",
-        "image": "assets/resources/img/examples/products/3.jpg",
+        "image": [
+          "assets/resources/img/examples/products/9-1.jpg",
+          "assets/resources/img/examples/products/9-2.jpg"
+        ],
         "link": "#",
         "tags": ["Nuevo"],
         "rating": 3.5,
@@ -37,7 +46,10 @@
         "name": "Vestido de verano",
         "description-cover": "Vestido de verano ligero y cómodo. Ideal para días soleados.",
         "price": "$35000",
-        "image": "assets/resources/img/examples/products/4.jpg",
+        "image": [
+          "assets/resources/img/examples/products/10-1.jpg",
+          "assets/resources/img/examples/products/10-2.jpg"
+        ],
         "link": "#",
         "tags": ["Nuevo", "Oferta"],
         "rating": 3,
@@ -47,7 +59,10 @@
         "name": "Zapatillas deportivas",
         "description-cover": "Zapatillas deportivas para correr. Diseño moderno y confortable.",
         "price": "$75000",
-        "image": "assets/resources/img/examples/products/5.jpg",
+        "image": [
+          "assets/resources/img/examples/products/11-1.jpg",
+          "assets/resources/img/examples/products/11-2.jpg"
+        ],
         "link": "#",
         "tags": ["Oferta"],
         "rating": 5,
@@ -57,7 +72,10 @@
         "name": "Pantalón vaquero",
         "description-cover": "Pantalón vaquero clásico. Combina estilo y comodidad.",
         "price": "$50000",
-        "image": "assets/resources/img/examples/products/6.jpg",
+        "image": [
+          "assets/resources/img/examples/products/12-1.jpg",
+          "assets/resources/img/examples/products/12-2.jpg"
+        ],
         "link": "#",
         "tags": ["Oferta especial"],
         "rating": 4,
@@ -67,7 +85,10 @@
         "name": "Bolso de cuero",
         "description-cover": "Bolso de cuero elegante y funcional. Perfecto para llevar tus pertenencias.",
         "price": "$85000",
-        "image": "assets/resources/img/examples/products/7.jpg",
+        "image": [
+          "assets/resources/img/examples/products/13-1.jpg",
+          "assets/resources/img/examples/products/13-2.jpg"
+        ],
         "link": "#",
         "tags": ["Oferta"],
         "rating": 4,
@@ -77,7 +98,10 @@
         "name": "Reloj de pulsera",
         "description-cover": "Reloj de pulsera con diseño moderno. Añade un toque de estilo a tu look.",
         "price": "$95000",
-        "image": "assets/resources/img/examples/products/8.jpg",
+        "image": [
+          "assets/resources/img/examples/products/14-1.jpg",
+          "assets/resources/img/examples/products/14-2.jpg"
+        ],
         "link": "#",
         "tags": ["Oferta"],
         "rating": 4.5,

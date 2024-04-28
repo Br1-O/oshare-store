@@ -229,7 +229,10 @@ html {
     }
 }
 
-/* ■■■■­■■­■■­■■­■■ tooltip to mimic title attribute of tags ■■■■­■■­■■­■■­■■ */
+/* ■■■■­■■­■■­■■­■■ custom classes ■■■■­■■­■■­■■­■■ */
+
+/* tooltip to mimic title attribute of tags */
+
 
 /* USAGE: <span class="custom-title-tooltip" data-tooltip="Custom Tooltip Text"></span> */
 
@@ -259,10 +262,42 @@ html {
     opacity: 1;
   }
 
-  /* custom classes */
-
   .flex{
     display:flex !important;
+  }
+
+  .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .w-100{
+    width: 100%;
+  }
+
+  .w-50{
+    width: 50%;
+  }
+
+  .w-30{
+    width: 30%;
+  }
+
+  .h-auto{
+    height: auto;
   }
 
   .block{
@@ -277,7 +312,66 @@ html {
     right: 0 !important;
   }
 
+/* ■■■■­■■­■■­■■­■■ Scrollbar ■■■■­■■­■■­■■­■■ */
+
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: var(--main-bg-color); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: var(--font-color); 
+    transition: all 4s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(101, 101, 101);
+}
+
+/* ■■■■­■■­■■­■■­■■ Loading Screen ■■■■­■■­■■­■■­■■ */
+
+.loading-overlay{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+
+    /* background-color: rgba(81, 80, 80); */
+    background-color: var(--main-bg-color);
+    filter: brightness(50%);
+
+    justify-content: center;
+    align-items: center;   
+}
+
+.loading-logo{
+    background-color: var(--main-bg-color);
+    background-image: url("../resources/img/Logo_Oshare_Loading.jpg");
+    background-size: cover ;
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+
+    width: 30vh;
+    height: 15vh;
+
+    animation: spin 2s infinite ease;
+}
+
 /* ■■■■­■■­■■­■■­■■ Elements ■■■■­■■­■■­■■­■■ */
+
 
 body{
     width: 100%;
@@ -908,10 +1002,254 @@ footer{
     color: white;
 }
 
+/* ■■■■■■■■■■■■■■■■■■■■■■■ MODALS WINDOWS ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+
+
+    /*overlay for page content on modal open event */
+    .overlay{
+    background-color: var(--font-color);
+    filter: brightness(70%);
+
+    /* disable user interaction*/
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+    }
+
+    /* modal window*/
+    dialog{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 100;
+        /* moves the element 50% back its own size, centering the element on the window*/
+        transform: translate(-50%, -50%);
+
+        width: 35%;
+        height: auto;
+
+        padding: 3rem;
+
+        /* glass like effect */
+        background: rgba(67, 75, 82, 0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        border: none;
+        border-radius: 15px;
+
+        font-family: var(--font-main);
+
+        transition: all .5s ease
+    }
+    
+    /* Modal close button */
+    dialog .bx-x {
+        color: var(--font-color);
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-right: 1.5rem;
+    
+        transition: all .4s ease;
+        cursor: pointer;
+    }
+
+    dialog .bx-x {
+        font-size: 2rem;
+        color: var(--font-hover-color);
+    }
+    
+    dialog .bx-x:hover{
+        text-shadow: 2px 2px 10px var(--shadow-color);
+    
+        transform: scale(1.25);
+    }
+
+    dialog h4{
+        color: var(--font-hover-color);
+        font-size: 2.5rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+    }
+
+    .modal-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 5px;
+    }
+
+    #modal-container-form{
+        width: 80%;
+
+        color: var(--font-hover-color);
+        font-size: 2rem;
+        font-weight: 200;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 3rem 0rem 3rem 0rem;
+        border-radius: 15px;
+
+        /* glass like effect */
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+    #modal-container-form .col .row{
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    #modal-container-form label{
+        font-size: 1.8rem;
+        width: 35%;
+
+        background-color:  rgba(155, 88, 218, 0.635);
+        padding: 0.2rem 0.5rem 0.2rem 1.2rem;
+        border-radius: 15px 0px 0px 15px;
+
+    }
+
+    #modal-container-form input{
+        color: var(--font-color);
+        padding: 0.2rem 0.5rem 0.2rem 1.2rem;
+        align-self: flex-start;
+        min-width: 58%;
+        height: 2rem;
+
+        outline: none;
+        border: none;
+        border-radius: 0px 15px 15px 0px;
+    }
+
+    #modal-container-form input:focus{
+        background-color: var(--border-color);
+        color: white;
+        border: solid 1px var(--border-color);
+    }
+
+    #modal-container-form input:focus::placeholder{
+        color: white;
+    }
+
+    #modal-container-form p{
+        font-size: 1.2rem;
+        margin-left: 2rem;
+        cursor: pointer;
+    }
+
+    #modal-container-form p:hover{
+        color: white ;
+        text-decoration: underline 2px var(--border-color);
+    }
+
+    #modal-container-form a{
+        color: var(--font-hover-color);
+    }
+
+    .form-btn{
+        font-family: var(--font-main, "sans-serif");
+        font-weight: 400;
+        font-size: 1.2rem;
+        color: var(--font-hover-color);
+    
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1.5rem;
+        margin-top: 1rem;
+        margin-left: 2rem;
+    
+        /* glass like effect */
+        background: rgba(67, 75, 82, 0.5);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+
+        cursor: pointer;
+    
+        transition: all .2s ease;
+    }
+
+    .form-btn:hover{
+        color: var(--font-hover-color);
+        background-color: var(--border-color);
+    }
+
+    .modal-connectvia{
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:flex-start;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding:  0.8rem 0.5rem 0rem 0rem;
+
+        border-top: solid 4px rgba(67, 75, 82, 0.5);
+    }
+
+    .modal-connectvia p:hover{
+        color: white ;
+        text-decoration: none !important;
+    }
+
+    .modal-connectvia a{
+        color: var(--font-hover-color);
+        font-weight: 400;
+    }
+
+    .modal-connectvia a:hover{
+        color: white ;
+        text-decoration: underline 2px var(--border-color);
+    }
+    
+    .connectvia-btn{
+        font-family: var(--font-main, "sans-serif");
+        font-weight: 400;
+        font-size: 1.2rem;
+        color: var(--font-hover-color);
+    
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+    
+        /* glass like effect */
+        background: rgba(67, 75, 82, 0.5);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+
+        cursor: pointer;
+    
+        transition: all .2s ease;
+    }
+
+    .connectvia-btn i{
+        background: var(--font-color);
+        border-radius: 50%;
+        font-size: 1.2rem;
+        font-weight: 400;
+        padding: 0.4rem 0.3rem 0.3rem 0.4rem;
+        vertical-align: middle;
+    }
+
+    .connectvia-btn:hover i{
+        color: white;
+        background-color: var(--logo-bg-color);
+    }
+        
+
+
+
+
 /* ■■■■■■■■■■■■■■■■■■■■■■■ MEDIA QUERIES ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 
 
-/* Small screens */
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Small screens ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 @media screen and (max-width: 576px){
 
     /* ■■■■■■■■■■■ NavBar ■■■■■■■■■■ */
@@ -931,6 +1269,7 @@ footer{
         max-width: 80px;
         height: auto;
         border-width: 1px;
+
     }    
     
     #menu-icon{
@@ -964,6 +1303,54 @@ footer{
         transition: all .4s ease;
     }    
 
+    /*■■■■■■■■■■■ Billboard ■■■■■■■■■■*/
+
+    .ad-content{
+        max-width: 58%;
+        max-height: 95%;
+
+        border-radius: 0px 10px 10px 0px;
+
+        padding: 1% 2% 1% 10%;
+    }
+    
+    .ad-title{
+        font-weight: 500;
+        font-size: 1.9rem;
+    
+        margin: 0.5rem 0rem;
+    }
+    
+    .ad-tag{
+        font-weight: 300;
+        font-size: 0.8rem;
+    
+        margin: 0rem 0.3rem;
+    }
+    
+    .ad-description{
+        font-family: var(--font-main, "sans-serif");
+        font-weight: 300;
+        font-size: 0.9rem;
+        color: var(--font-color);
+    
+        margin-bottom: 0.75rem;
+    }
+    
+    .ad-btn{
+        font-weight: 500;
+        font-size: 1rem;
+        padding: 0.3rem 0.8rem;
+        border-width: 0.9px;
+    }
+
+    .down-arrow a i{
+        font-size: 1.5rem;    
+        border-width: 1px;
+        padding: 0.5rem;
+    }
+
+
     /*■■■■■■■■■■■ Products Container ■■■■■■■■■■*/
     .container-products{
         grid-template-columns: repeat(1, 1fr);
@@ -973,45 +1360,9 @@ footer{
         font-size: 2rem;
     }
 
-    .ad-title{
-        font-weight: 500;
-        font-size: 2rem;
-    
-        margin: 0.5rem 0rem;
-    }
-    
-    .ad-tag{
-        font-weight: 300;
-        font-size: 1rem;
-    
-        margin: 0rem 0.3rem;
-    }
-    
-    .ad-description{
-        font-family: var(--font-main, "sans-serif");
-        font-weight: 300;
-        font-size: 1rem;
-        color: var(--font-color);
-    
-        margin-bottom: 0.75rem;
-    }
-    
-    .ad-btn{
-        font-weight: 500;
-        font-size: 1rem;
-        padding: 0.3rem;
-        border-width: 1px;
-    }
-
-    .down-arrow a i{
-        font-size: 1.5rem;    
-        border-width: 1px;
-        padding: 0.5rem;
-    }
-
 }
 
-/* Medium screens */
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Medium screens ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 @media screen and (min-width: 577px) and (max-width: 768px){
 
     /* ■■■■■■■■■■■ NavBar ■■■■■■■■■■ */
@@ -1106,7 +1457,7 @@ footer{
 
 }
 
-/* Large screens */
+/* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Large screens ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 @media screen and (min-width: 769px) and (max-width: 992px){
 
         /* ■■■■■■■■■■■ NavBar ■■■■■■■■■■ */

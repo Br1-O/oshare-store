@@ -7,7 +7,7 @@ const displayProductList = (productList, container) => {
     let ratingTemplate = "";
 
     //add each product's info into literal template
-    productList.forEach(product => {
+    productList.forEach((product, index) => {
 
         //set rating template
         switch (parseFloat(product.rating)) {
@@ -137,9 +137,9 @@ const displayProductList = (productList, container) => {
         });
 
         //add filled product's template into variable
-        template += `<div class="product-card">
+        template += `<div class="product-card" id="product-${index}">
                         <a href="${product.link}">
-                            <img class="product-image" src= ${product.image} data-src=${product.image} loading="lazy" alt="${product.name}">
+                            <img class="product-image" id="product-img-${index}" src= ${product.image[0]} src2= ${product.image[1] ? product.image[1] : "none"} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
                         </a>
 
                         <div class="product-info">
@@ -172,6 +172,37 @@ const displayProductList = (productList, container) => {
 
     //set container's content as template
     container.innerHTML = template;
+
+    //get all imgs of products
+    const productImgs = document.getElementsByClassName("product-image");
+
+    // Convert HTMLCollection to array
+    const productImgsArray = Array.from(productImgs);
+
+    //event on hover of image to change source from image1 to image2
+    productImgsArray.forEach((image) => {
+        
+        let source1 = image.getAttribute('src');
+        let source2 = image.getAttribute('src2');
+
+        if (image.getAttribute('src2') != "none") {
+
+            image.addEventListener("mouseover", () => { 
+                setTimeout(() => {
+                    image.setAttribute('src', source2);
+                    image.setAttribute('src2', source1);
+                }, 100);
+            });
+
+            image.addEventListener("mouseleave", () => {
+                    setTimeout(() => {
+                        image.setAttribute('src', source1);
+                        image.setAttribute('src2', source2);
+                    }, 100);
+            });
+        } 
+    });
+
 }
 
 //load trending products into page when loaded
