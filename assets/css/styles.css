@@ -523,7 +523,7 @@ body{
 
     padding: 5px 0px;
 
-    background-image: url("../resources/img/winter.jpg");
+    background-image: url("../resources/img/examples/billboard/winter.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1141,7 +1141,7 @@ footer{
     }
 
     #modal-container-form p{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-left: 2rem;
         cursor: pointer;
     }
@@ -1157,8 +1157,8 @@ footer{
 
     .form-btn{
         font-family: var(--font-main, "sans-serif");
-        font-weight: 400;
-        font-size: 1.2rem;
+        font-weight: 300;
+        font-size: 1.1rem;
         color: var(--font-hover-color);
     
         border: none;
@@ -1211,8 +1211,8 @@ footer{
     
     .connectvia-btn{
         font-family: var(--font-main, "sans-serif");
-        font-weight: 400;
-        font-size: 1.2rem;
+        font-weight: 300;
+        font-size: 1rem;
         color: var(--font-hover-color);
     
         border: none;
@@ -1232,7 +1232,7 @@ footer{
     .connectvia-btn i{
         background: var(--font-color);
         border-radius: 50%;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 400;
         padding: 0.4rem 0.3rem 0.3rem 0.4rem;
         vertical-align: middle;
@@ -1243,6 +1243,83 @@ footer{
         background-color: var(--logo-bg-color);
     }
         
+/* ■■■■■■■■■■■■■■■■■■■■■■■ REVIEWS SECTION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+
+.reviews-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5vmax 1vmax 2vmax 1vmax;
+
+    width: 100%;
+    height: auto;
+}
+
+.reviews-container h2{
+    margin-bottom: 3vmax;
+}
+
+.review-card{
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: max(2vmax, 1rem) max(3vmax, 2rem);
+
+    /* glass like effect */
+    background: rgba(255, 255, 255, 0.678);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    border: solid 1px var(--border-color);
+    border-radius: 15px;
+
+    font-family: var(--font-main);
+
+    filter:brightness(95%);
+    transition: all .4s ease;
+}
+
+.review-card:hover{
+    filter:brightness(100%);
+}
+
+.review-card-img{
+    border-radius: 50%;
+    width:max(9vmax, 5.8rem);
+    height: max(9vmax, 5.8rem);
+
+    background-image: url("../resources/img/examples/clients/client-5.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.review-card-rating{
+    padding: max(1.5vmax, 0.8rem);
+    font-size: max(2vmax, 1rem);
+
+    color: rgb(192, 208, 55);
+}
+
+.review-card p{
+    font-size: max(1.1vmax, 1rem);
+    margin-bottom: 0.8vmax;
+}
+
+.review-card h4{
+    font-size: max(1.2vmax, 1.1rem);
+    margin: max(1vmax, 1rem) 0vmax max(0.5vmax, 0.5rem) 0vmax;
+}
+
+.review-card h6{
+    font-size: max(0.8vmax, 1rem);
+}
 
 
 
