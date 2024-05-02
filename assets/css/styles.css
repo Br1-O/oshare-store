@@ -1321,8 +1321,101 @@ footer{
     font-size: max(0.8vmax, 1rem);
 }
 
+/* ■■■■■■■■■■■■■■■■■■■■■■■ BLOG SECTION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 
+.blog-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5vmax 1vmax 2vmax 1vmax;
 
+    width: 100%;
+    height: auto;
+}
+
+.blog-container-articles{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5vmax max(1vmax,0.5rem) 2vmax max(1vmax,0.5rem);
+
+    margin-top: max(1vmax, 1rem);
+
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.blog-card{
+    height: max(40vmax, 30rem) ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: max(1.5vmax, 1rem) max(2.5vmax, 2rem);
+
+    /* glass like effect */
+    background: rgba(255, 255, 255, 0.678);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    
+    border: solid 1px var(--border-color);
+    border-radius: 15px;
+
+    font-family: var(--font-main);
+
+    filter:brightness(95%);
+    transition: all .4s ease;
+}
+
+.blog-card:hover{
+    filter:brightness(100%);
+}
+
+.blog-card-img{
+    border-radius: 15px;
+    width:100%;
+
+    transition: all .4s ease;
+}
+
+.blog-card:hover .blog-card-img{
+    transform: scale(1.01);
+}
+
+.blog-card-date{
+    font-size: max(0.9vmax, 0.8rem);
+    color: var(--font-color);
+    align-self:flex-start;
+    margin: 0.5rem;
+}
+
+.blog-card h4{
+    font-size: max(1.2vmax, 1.1rem);
+    font-weight: 500;
+    margin: max(1vmax, 1rem) 0vmax max(0.5vmax, 0.5rem) 0vmax;
+}
+
+.blog-card p{
+    font-size: max(1.1vmax, 1rem);
+    color: var(--font-color);
+    margin-bottom: 0.8vmax;
+    overflow: hidden;
+}
+
+.blog-card-continue{
+    font-size: max(0.9vmax, 0.8rem);
+    align-self: flex-start;
+    color:rgb(102, 102, 240);
+    cursor: pointer;
+ }
+ 
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■ MEDIA QUERIES ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 
@@ -1662,6 +1755,27 @@ footer{
         color: white;
         background-color: var(--logo-bg-color);
     }
+    /* ■■■■■■■■■■■■■■■■■■■■■■■ REVIEWS SECTION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+    .review-card{
+        width: 90%;
+    }
+
+    /* ■■■■■■■■■■■■■■■■■■■■■■■ BLOG SECTION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+
+    .blog-container-articles{
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5vmax 1vmax 2vmax 1vmax;
+
+        cursor: pointer;
+        transition: all .4s ease;
+    }
+
 
 }
 
@@ -1996,6 +2110,12 @@ footer{
         color: white;
         background-color: var(--logo-bg-color);
     }
+
+    /* ■■■■■■■■■■■■■■■■■■■■■■■ REVIEWS SECTION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+       .review-card{
+        width: 90%;
+    }
+    
 }
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Large screens ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
@@ -2297,6 +2417,11 @@ footer{
     .connectvia-btn:hover i{
         color: white;
         background-color: var(--logo-bg-color);
+    }
+
+    /* ■■■■■■■■■■■■■■■■■■■■■■■ REVIEWS SECTION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
+       .review-card{
+        width: 70%;
     }
 
 }
