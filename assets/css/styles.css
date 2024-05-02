@@ -18,6 +18,7 @@ table { border-collapse: collapse; border-spacing: 0;}
 
 html {
     scroll-behavior: smooth;
+    background-color: var(--logo-bg-color);
 }
 
 /* ■■■■­■■­■■­■■­■■ root variables  ■■■■­■■­■■­■■­■■ */
@@ -652,7 +653,7 @@ body{
     justify-content: center;
     align-items: center;
 
-    border-bottom: solid 2px var(--border-color);
+    position: relative;
 }
 .subtitle span{
     color:var(--font-hover-color)
@@ -878,6 +879,13 @@ body{
 .product-card:hover .product-price{
     color: white;
     text-shadow: 2px 2px 5px rgb(54, 54, 54);
+}
+
+/* Downwards arrow to next section */
+
+.down-arrow-products{
+    position:absolute;
+    top:0;
 }
 
 /* ■■■■­■■­■■­■■­■■ REVIEWS SECTION ■■■■­■■­■■­■■­■■ */
@@ -1255,9 +1263,12 @@ footer{
 
     width: 100%;
     height: auto;
+
+    background-color: rgb(67, 75, 82);
 }
 
 .reviews-container h2{
+    color: var(--main-bg-color);
     margin-bottom: 3vmax;
 }
 
@@ -1304,7 +1315,7 @@ footer{
     padding: max(1.5vmax, 0.8rem);
     font-size: max(2vmax, 1rem);
 
-    color: rgb(192, 208, 55);
+    color: rgb(215, 229, 93);
 }
 
 .review-card p{
@@ -1333,6 +1344,7 @@ footer{
 
     width: 100%;
     height: auto;
+    
 }
 
 .blog-container-articles{
