@@ -1,3 +1,5 @@
+import { fetchAndDisplay } from "./utility/fetch.js";
+
 //display content of products json into container
 const displayProductList = (productList, container) => {
 
@@ -205,30 +207,8 @@ const displayProductList = (productList, container) => {
 
 }
 
+//container
+const containerTrendingProducts = document.getElementById("container-trending-products");
+
 //load trending products into page when loaded
-document.addEventListener('DOMContentLoaded', async () => {
-
-    //DOM elements
-    const containerTrendingProducts = document.getElementById("container-trending-products");
-
-    try {
-        const response = await fetch("assets/js/json/products-list.json",{ 
-            method:'GET',
-            headers: {
-                'content-type': 'application/json'    
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error("Couldn't retrieve list of products");
-        }
-    
-        const res = await response.json();
-
-        displayProductList(res.data.products, containerTrendingProducts);
-
-    } catch (error) {
-        console.log("An error happened fetching the trending products list: ", error);
-    }
-
-});
+fetchAndDisplay("assets/js/json/products-list.json", displayProductList, containerTrendingProducts, "products");

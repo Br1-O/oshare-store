@@ -1,0 +1,48 @@
+{
+    "success": true,
+    "message": "Listado de anuncios en billboard recibido correctamente.",
+    "data": {
+      "billboard":[
+      {
+        "id": 1,
+        "image": "assets/resources/img/examples/billboard/2.jpg",
+        "tag": "¡Nuevo catalogo agregado!",
+        "title": "Colección de Invierno 2024",
+        "description": "¡Descubre nuestra colección de invierno recién llegada! Explora las últimas tendencias en moda invernal, desde abrigos elegantes hasta suéteres acogedores. Encuentra el look perfecto para mantenerte cálido y con estilo esta temporada. ¡No te pierdas nuestros nuevos lanzamientos y prepárate para lucir impecable este invierno!",
+        "link": "#"
+      },
+      {
+        "id": 2,
+        "image": "assets/resources/img/examples/billboard/8.jpeg",
+        "tag": "¡Nueva colección disponible!",
+        "title": "Colección de Verano 2024",
+        "description": "Descubre la nueva colección de verano para este año. Encuentra prendas ligeras y coloridas para disfrutar del sol y la playa. Desde trajes de baño hasta vestidos frescos, tenemos todo lo que necesitas para lucir radiante esta temporada.",
+        "link": "#"
+      },
+      {
+        "id": 3,
+        "image": "assets/resources/img/examples/billboard/3.jpg",
+        "tag": "¡Descubre las novedades!",
+        "title": "Accesorios de Invierno 2024",
+        "description": "Explora nuestra selección de accesorios de invierno para complementar tu look. Desde bufandas hasta guantes, encuentra los detalles perfectos para mantenerte abrigado y con estilo en los días más fríos.",
+        "link": "#"
+      },
+      {
+        "id": 4,
+        "image": "assets/resources/img/examples/billboard/18.jpg",
+        "tag": "¡Nuevos estilos llegaron!",
+        "title": "Calzado de Otoño 2024",
+        "description": "Descubre nuestra nueva línea de calzado para el otoño. Desde botas elegantes hasta zapatillas deportivas, encuentra el calzado perfecto para cada ocasión esta temporada.",
+        "link": "#"
+      },
+      {
+        "id": 5,
+        "image": "assets/resources/img/examples/billboard/19.jpg",
+        "tag": "¡Nueva colección deportiva!",
+        "title": "Ropa Deportiva 2024",
+        "description": "Prepárate para entrenar con nuestra nueva colección de ropa deportiva. Desde camisetas técnicas hasta pantalones deportivos, encuentra la ropa cómoda y funcional que necesitas para alcanzar tus objetivos fitness.",
+        "link": "#"
+      }]
+    }
+  }
+  
