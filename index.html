@@ -112,7 +112,7 @@
             <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">&#8678</button>
             <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">&#8680</button>
             
-            <ul id="billboard-ad-container"aria-label="carrousel de promociones" data-slides>
+            <ul id="billboard-ad-container" aria-label="carrousel de promociones" data-slides>
             </ul>
 
             <div class="down-arrow">
@@ -160,33 +160,18 @@
           </svg> 
 
           <!-- Reviews section -->
-          <section class="reviews-container">
+          <section class="reviews">
 
             <h2 class="subtitle"> ¡Nuestros clientes son <span>prioridad</span>!</h2>
 
-            <article id="review" class="review-card">
+            <article class="reviews-articles-container" id="review carousel" data-carousel>
 
-              <div class="review-card-img">
+              <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">&#8678</button>
+              <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">&#8680</button>
 
-              </div>
+              <ul id="reviews-container" aria-label="carrousel de reviews" data-slides>
 
-              <div class="review-card-rating">
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star'></i>
-                <i class='bx bxs-star' ></i>
-              </div>
-          
-              <p>
-                ¡Recientemente compré la "Camisa a Rayas Urban Chic" y estoy absolutamente encantada con ella! La tela se siente tan suave contra mi piel, y el ajuste es simplemente perfecto. 
-                Es lo suficientemente versátil como para usarla casualmente durante el día o para arreglarme para una noche fuera.
-                Me encanta el patrón de rayas único; le añade un toque de moda a mi guardarropa. Además, la calidad es excelente; incluso después de varios lavados, todavía parece nueva.
-                En general, recomiendo encarecidamente esta camisa a cualquiera que busque una adición elegante y cómoda a su armario. ¡No puedo esperar para explorar más de esta marca!
-              </p>
-
-              <h4> Amanda Notabot</h4>
-              <h6> Buenos Aires, Argentina</h6>
+              </ul>
 
             </article>
 
@@ -395,6 +380,8 @@
 <script type="module" src="assets/js/products.js"></script>
 <!-- fetch and load billboard list -->
 <script type="module" src="assets/js/billboard.js"></script>
+<!-- fetch and load reviews list -->
+<script type="module" src="assets/js/reviews.js"></script>
 <!-- scroll effect for nav bar -->
 <script type="module" src="assets/js/navBar.js"></script>
 <!-- modal window-->

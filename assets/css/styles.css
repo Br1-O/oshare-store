@@ -400,10 +400,6 @@ body{
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 
-    border-style: solid;
-    border-bottom-width: 2px;
-    border-color: var(--border-color);
-
     padding: 20px 10%;
 }
 
@@ -416,7 +412,7 @@ body{
     height: auto;
 
     border-style: solid;
-    border-width: 2px;
+    border-width: 1px;
     border-color: var(--border-color);
     border-radius: 50px;
     
@@ -731,7 +727,7 @@ body{
 .subtitle{
     color: var(--font-color);
     font-family: var(--font-main, "sans-serif");
-    font-size: 5rem;
+    font-size: max(4vmax,3rem);
     font-weight: 500;
     text-align: center;
 }
@@ -1322,48 +1318,71 @@ footer{
         
 /* ■■■■■■■■■■■■■■■■■■■■■■■ REVIEWS SECTION ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 
-.reviews-container{
+
+.reviews{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 0.5rem;
     padding: 0.5vmax 1vmax 2vmax 1vmax;
 
     width: 100%;
-    height: auto;
-
-    background-color: rgb(67, 75, 82);
+    height: max(40vmax, 40rem);
+    position: relative;
 }
 
-.reviews-container h2{
+.reviews h2{
     color: var(--main-bg-color);
-    margin-bottom: 3vmax;
+    font-size: max(4vmax,2rem);
+    font-weight: 500;
+    text-align: center;
+
+    margin-bottom: max(1vmax, 1rem);
+}
+
+#reviews-articles-container{
+    width: 100%;
+    height: auto;
+    padding: max(1vmax, 0.5rem);
+
+}
+
+#reviews-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .review-card{
-    width: 70%;
-    height: auto;
+    width: max(55vmax, 28rem);
+    height: max(35vmax, 32rem);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    padding: max(2vmax, 1rem) max(3vmax, 2rem);
-
-    /* glass like effect */
-    background: rgba(255, 255, 255, 0.678);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    
     border: solid 1px var(--border-color);
     border-radius: 15px;
 
     font-family: var(--font-main);
 
+    padding: max(1vmax, 0.5rem) max(3vmax, 2rem);
     filter:brightness(95%);
     transition: all .4s ease;
+
+    /* glass like effect */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    position: absolute;
+    top:10%;
+    z-index: 1;
+    margin: max(2vmax,1rem) auto;
 }
+
 
 .review-card:hover{
     filter:brightness(100%);
@@ -1374,7 +1393,6 @@ footer{
     width:max(9vmax, 5.8rem);
     height: max(9vmax, 5.8rem);
 
-    background-image: url("../resources/img/examples/clients/client-5.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1382,14 +1400,19 @@ footer{
 
 .review-card-rating{
     padding: max(1.5vmax, 0.8rem);
-    font-size: max(2vmax, 1rem);
+}
 
+.review-card-rating i{
+    font-size: max(2vmax, 1rem);
     color: rgb(215, 229, 93);
+    pointer-events: none;
 }
 
 .review-card p{
     font-size: max(1.1vmax, 1rem);
     margin-bottom: 0.8vmax;
+    min-height: max(10vmax, 10rem);
+    overflow: hidden;
 }
 
 .review-card h4{

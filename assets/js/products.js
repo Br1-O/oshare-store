@@ -54,7 +54,7 @@ const displayProductList = (productList, container) => {
                 ratingTemplate = 
                 `<i class='bx bxs-star'></i>
                 <i class='bx bxs-star'></i>
-                <i class='bx bx-star'></i>
+                <i class='bx bxs-star'></i>
                 <i class='bx bx-star'></i>
                 <i class='bx bx-star'></i>`
                 break;
