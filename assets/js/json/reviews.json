@@ -5,9 +5,9 @@
       "reviews": [
         {
             "id": 1,
-            "image": "assets/resources/img/examples/clients/client-1.jpg",
+            "image": "assets/resources/img/examples/clients/client-5.jpg",
             "rating": 5,
-            "text": "¡Recientemente compré la 'Camisa a Rayas Urban Chic' y estoy absolutamente encantada con ella! La tela se siente tan suave contra mi piel, y el ajuste es simplemente perfecto. Es lo suficientemente versátil como para usarla casualmente durante el día o para arreglarme para una noche fuera. Me encanta el patrón de rayas único; le añade un toque de moda a mi guardarropa. Además, la calidad es excelente; incluso después de varios lavados, todavía parece nueva. En general, recomiendo encarecidamente esta camisa a cualquiera que busque una adición elegante y cómoda a su armario. ¡No puedo esperar para explorar más de esta marca!",
+            "text": "¡Recientemente compré la 'Camisa a Rayas Urban Chic' y estoy absolutamente encantada con ella! La tela se siente tan suave contra mi piel, y el ajuste es simplemente perfecto. Me encanta el patrón de rayas único; le añade un toque de moda a mi guardarropa. Además, la calidad es excelente; incluso después de varios lavados, todavía parece nueva. En general, recomiendo encarecidamente esta camisa a cualquiera que busque una adición elegante y cómoda a su armario. ¡No puedo esperar para explorar más de esta marca!",
             "name": "Amanda Notabot",
             "location": "Buenos Aires, Argentina"
         },

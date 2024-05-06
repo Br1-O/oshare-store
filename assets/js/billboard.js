@@ -1,15 +1,15 @@
 import { fetchAndDisplay } from "./utility/fetch.js";
 
-//display content of products json into container
+//display content of billboard json into container
 const displayBillboard = (adList, container) => {
 
     //final template storage
     let template = "";
 
-    //add each product's info into literal template
+    //add each ad's info into literal template
     adList.forEach((ad, index) => {
 
-        //add filled product's template into variable
+        //add filled ad's template into variable
         template += `<li id=${"ad-"+ ad.id} class="slide" ${index === 0 ? "data-active" : ""}>
     
                         <img src=${ad.image} alt=${"image of ad: " + ad.title}>

@@ -1450,8 +1450,6 @@ footer{
     padding: 0.5vmax max(1vmax,0.5rem) 2vmax max(1vmax,0.5rem);
 
     margin-top: max(1vmax, 1rem);
-
-    cursor: pointer;
     transition: all .4s ease;
 }
 
@@ -1487,6 +1485,7 @@ footer{
     width:100%;
 
     transition: all .4s ease;
+    cursor: pointer;
 }
 
 .blog-card:hover .blog-card-img{
@@ -1519,6 +1518,10 @@ footer{
     color:rgb(102, 102, 240);
     cursor: pointer;
  }
+
+.blog-card-continue:hover{
+    color:rgb(52, 52, 234);
+}
  
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■ MEDIA QUERIES ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
