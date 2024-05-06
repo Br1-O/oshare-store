@@ -10,7 +10,7 @@ export const displayBlogArticles = (articlesList, container) => {
         if (parseInt(article.id) > articlesList.length -3) {
             //add filled article's template into variable
             template += 
-            `<article id="blog-card ${"article-"+ article.id}" class="blog-card scrollAnimationOpacity" aria-label= "${"articulo sobre: "+ article.title}">
+            `<article id="blog-card ${"article-"+ article.id}" class="blog-card" aria-label= "${"articulo sobre: "+ article.title}">
                 <a href=${article.link}>
                     <img class="blog-card-img" src=${article.image} alt="${"imagen de: "+ article.title}">
                 </a>

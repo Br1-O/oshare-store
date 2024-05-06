@@ -137,7 +137,7 @@ export const displayProductList = (productList, container) => {
         });
 
         //add filled product's template into variable
-        template += `<div class="product-card scrollAnimationOpacity" id="product-${index}">
+        template += `<div class="product-card" id="product-${index}">
                         <a href="${product.link}">
                             <img class="product-image" id="product-img-${index}" src= ${product.image[0]} src2= ${product.image[1] ? product.image[1] : "none"} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
                         </a>
