@@ -29,10 +29,12 @@ export const homeContent = `
     <!-- Trending Products -->
     <section class="trending-products">
 
-    <h2 class="subtitle"> ¡Nuestros productos en <span>tendencia</span>!</h2>
+    <h2 class="subtitle scrollAnimationScale"> ¡Nuestros productos en <span>tendencia</span>!</h2>
 
     <!-- List of trending products -->
     <div class="container-products .row" id="container-trending-products">
+
+    
     </div>
 
     <!-- Arrow downwards to reviews -->
@@ -55,11 +57,11 @@ export const homeContent = `
     </svg> 
 
     <!-- Reviews section -->
-    <section class="reviews">
+    <section class="reviews scrollAnimationScale">
 
         <h2 class="subtitle"> ¡Nuestros clientes son <span>prioridad</span>!</h2>
 
-        <article class="reviews-articles-container" id="review carousel" data-carousel>
+        <article class="reviews-articles-container " id="review carousel" data-carousel>
 
         <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">&#8678</button>
         <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">&#8680</button>
@@ -84,7 +86,7 @@ export const homeContent = `
     <!-- Blog articles section -->
     <section class="blog-container">
 
-    <h2 class="subtitle"> ¡Lee nuestros últimos <span>artículos</span>!</h2>
+    <h2 class="subtitle scrollAnimationScale"> ¡Lee nuestros últimos <span>artículos</span>!</h2>
 
     <div class="blog-container-articles" id="blog-container-articles">
     </div>

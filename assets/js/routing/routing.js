@@ -1,6 +1,6 @@
 //utils import
 import { fetchData } from "../utils/fetch.js";
-import { carouselFunctionality } from "../carousel.js";
+import { carouselFunctionality } from "../utils/carousel.js";
 //home page content
 import { homeContent } from "../pages/home/MAIN.js";
 import { displayProductList } from "../pages/home/products.js";
@@ -11,6 +11,9 @@ import { displayBlogArticles } from "../pages/home/blog.js";
 import { shopContent } from "../pages/shop/MAIN.js";
 //page not found content
 import { notFoundMessage } from "../pages/notFound404.js";
+//carousel EXPERIMENTAL
+import { carousel } from "../pages/carousel-experimental.js";
+
 
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
@@ -94,8 +97,8 @@ const updateContent = () => {
 
                 shopFetchUtils();
             break;
-            case 'contact':
-                content.innerHTML = '<h2>Contact Us</h2><p>Feel free to reach out to us.</p>';
+            case 'carousel':
+                content.innerHTML = carousel;
             break;
             //not found page
             default:
