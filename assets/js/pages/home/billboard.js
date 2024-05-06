@@ -1,7 +1,5 @@
-import { fetchAndDisplay } from "./utility/fetch.js";
-
 //display content of billboard json into container
-const displayBillboard = (adList, container) => {
+export const displayBillboard = (adList, container) => {
 
     //final template storage
     let template = "";
@@ -30,8 +28,3 @@ const displayBillboard = (adList, container) => {
     container.innerHTML = template;
 }
 
-//container
-const containerBillboard = document.getElementById("billboard-ad-container");
-
-//load billboard ad into page when loaded
-fetchAndDisplay("assets/js/json/billboard.json", displayBillboard, containerBillboard, "billboard");

@@ -1,7 +1,5 @@
-import { fetchAndDisplay } from "./utility/fetch.js";
-
 //display content of products json into container
-const displayReviews = (reviewsList, container) => {
+export const displayReviews = (reviewsList, container) => {
 
     //final template storage
     let template = "";
@@ -136,8 +134,3 @@ const displayReviews = (reviewsList, container) => {
     container.innerHTML = template;
 }
 
-//container
-const containerReviews = document.getElementById("reviews-container");
-
-//load billboard ad into page when loaded
-fetchAndDisplay("assets/js/json/reviews.json", displayReviews, containerReviews, "reviews");

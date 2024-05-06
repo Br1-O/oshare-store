@@ -1,7 +1,5 @@
-import { fetchAndDisplay } from "./utility/fetch.js";
-
 //display content of articles json into container
-const displayBlogArticles = (articlesList, container) => {
+export const displayBlogArticles = (articlesList, container) => {
 
     //final template storage
     let template = "";
@@ -32,9 +30,3 @@ const displayBlogArticles = (articlesList, container) => {
     //set container's content as template
     container.innerHTML = template;
 }
-
-//container
-const containerBlogArticles = document.getElementById("blog-container-articles");
-
-//load articles into page when loaded
-fetchAndDisplay("assets/js/json/blog.json", displayBlogArticles, containerBlogArticles, "articles");

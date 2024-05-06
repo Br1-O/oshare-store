@@ -1,9 +1,5 @@
-//fetch and display a list into container when DOMloaded
-export const fetchAndDisplay = (route, callbackForDisplay, container, elementsName) => {
-    //load list into container when loaded
-    document.addEventListener('DOMContentLoaded', async () => {
-
-        try {
+export const fetchData = async (route, elementsName) => {
+     try {
             const response = await fetch(route, { 
                 method:'GET',
                 headers: {
@@ -19,13 +15,10 @@ export const fetchAndDisplay = (route, callbackForDisplay, container, elementsNa
 
             const dataList = res.data[elementsName]; 
 
-            callbackForDisplay(dataList, container);
+            return dataList;
 
         } catch (error) {
             console.log("An error happened fetching the list of " + elementsName, error);
         }
-
-    });
 }
-
 

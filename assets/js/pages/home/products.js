@@ -1,7 +1,5 @@
-import { fetchAndDisplay } from "./utility/fetch.js";
-
 //display content of products json into container
-const displayProductList = (productList, container) => {
+export const displayProductList = (productList, container) => {
 
     //final template storage
     let template = "";
@@ -206,9 +204,3 @@ const displayProductList = (productList, container) => {
     });
 
 }
-
-//container
-const containerTrendingProducts = document.getElementById("container-trending-products");
-
-//load trending products into page when loaded
-fetchAndDisplay("assets/js/json/products-list.json", displayProductList, containerTrendingProducts, "products");
