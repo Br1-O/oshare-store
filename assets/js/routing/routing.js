@@ -1,5 +1,6 @@
-//fetch util import
+//utils import
 import { fetchData } from "../utils/fetch.js";
+import { carouselFunctionality } from "../carousel.js";
 //home page content
 import { homeContent } from "../pages/home/MAIN.js";
 import { displayProductList } from "../pages/home/products.js";
@@ -76,7 +77,7 @@ const updateContent = () => {
                 }
 
                 homeFetchUtils();
-            
+
             break;
             //store page
             case 'shop':
@@ -103,6 +104,12 @@ const updateContent = () => {
         }
         // Scroll to the top of the page once content is changed
         window.scrollTo({ top: 0});
+        //carousel functionality
+        const buttons = document.querySelectorAll("[data-carousel-button]");
+        if (buttons) {
+            carouselFunctionality(buttons);
+        }   
+        
     }
 }
 
