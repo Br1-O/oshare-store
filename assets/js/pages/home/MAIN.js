@@ -4,8 +4,13 @@ export const homeContent = `
 
     <article class="billboard-ad carousel" data-carousel>
 
-        <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">&#8678</button>
-        <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">&#8680</button>
+        <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">
+            <i class='bx bx-chevron-left'></i>
+        </button>
+        <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">
+            <i class='bx bx-chevron-right'></i>
+        </button>
+
         
         <ul id="billboard-ad-container" aria-label="carrousel de promociones" data-slides>
         </ul>
@@ -63,8 +68,12 @@ export const homeContent = `
 
         <article class="reviews-articles-container" id="review carousel" data-carousel>
 
-        <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">&#8678</button>
-        <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">&#8680</button>
+        <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">
+            <i class='bx bx-chevron-left'></i>
+        </button>
+        <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">
+            <i class='bx bx-chevron-right'></i>
+        </button>
 
         <ul id="reviews-container" aria-label="carrousel de reviews" data-slides>
 

@@ -1,40 +1,29 @@
 export const carousel = `
 <div class=".row .w-100" style="padding:10vmax 30vmax;">
+
     <div class="container-carousel">
-    <input type="radio" name="slider" id="s1" class="carousel-radio" checked>
-    <input type="radio" name="slider" id="s2" class="carousel-radio">
-    <input type="radio" name="slider" id="s3" class="carousel-radio">
-    <input type="radio" name="slider" id="s4" class="carousel-radio">
-    <input type="radio" name="slider" id="s5" class="carousel-radio">
+
+        <input type="radio" name="slider" id="s1" class="carousel-radio" checked>
+        <input type="radio" name="slider" id="s2" class="carousel-radio">
+        <input type="radio" name="slider" id="s3" class="carousel-radio">
+        <input type="radio" name="slider" id="s4" class="carousel-radio">
+        <input type="radio" name="slider" id="s5" class="carousel-radio">
 
     <div class="cards">
 
         <label for="s1" id="slide1">
+
             <div class="card">
             
-            <div class="image">
-                <img src="assets/resources/img/examples/products/7-1.jpg" alt="dress 1">
-                <div class="dots">
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="image">
+                    <img src="assets/resources/img/examples/products/7-1.jpg" alt="dress 1">
+                    <div class="dots">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="info">
-                <span class="name"> Pantalon de cuero </span>
-                <span class="description"> Lorem sadasddsdddasddas a dsds d dsad 
-                asdasddadsadsasdadsad d as sa  sasd a asaddsads
-                </span>
-
-                <a href="#details" class="btn-details"> details</a>
-
-                <div class="actions">
-                <i class="bx bx-cart"></i>
-                <i class="bx bx-heart"></i>
-                <i class="bx bx-star"></i>
-                </div>
-            </div>
             </div>
         </label>
 
@@ -56,13 +45,6 @@ export const carousel = `
                 asdasddadsadsasdads
                 </span>
 
-                <a href="#details" class="btn-details"> details</a>
-
-                <div class="actions">
-                <i class="bx bx-cart"></i>
-                <i class="bx bx-heart"></i>
-                <i class="bx bx-star"></i>
-                </div>
             </div>
             </div>
         </label>
@@ -85,13 +67,6 @@ export const carousel = `
                 asdasddadsadsasdads
                 </span>
 
-                <a href="#details" class="btn-details"> details</a>
-
-                <div class="actions">
-                <i class="bx bx-cart"></i>
-                <i class="bx bx-heart"></i>
-                <i class="bx bx-star"></i>
-                </div>
             </div>
             </div>
         </label>
@@ -100,12 +75,7 @@ export const carousel = `
             <div class="card">
             
             <div class="image">
-                <img src="assets/resources/img/examples/products/10-1.jpg" alt="dress 4">
-                <div class="dots">
-                <div></div>
-                <div></div>
-                <div></div>
-                </div>
+                <img src="assets/resources/img/examples/products/10-1.jpg" alt="dress 4">v>
             </div>
 
             <div class="info">
@@ -114,13 +84,6 @@ export const carousel = `
                 asdasddadsadsasdads
                 </span>
 
-                <a href="#details" class="btn-details"> details</a>
-
-                <div class="actions">
-                <i class="bx bx-cart"></i>
-                <i class="bx bx-heart"></i>
-                <i class="bx bx-star"></i>
-                </div>
             </div>
             </div>
         </label>
@@ -142,14 +105,6 @@ export const carousel = `
                 <span class="description"> uiuyuiyyu sadasddsadsadsdddasddas a dsds d dsad 
                 asdasddadsadsasdads
                 </span>
-
-                <a href="#details" class="btn-details"> details</a>
-
-                <div class="actions">
-                <i class="bx bx-cart"></i>
-                <i class="bx bx-heart"></i>
-                <i class="bx bx-star"></i>
-                </div>
             </div>
             </div>
         </label>
@@ -158,3 +113,4 @@ export const carousel = `
     </div>
 </div>
 `
+
