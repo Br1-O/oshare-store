@@ -61,36 +61,48 @@ export const validationLoginRegister = () => {
       //display error message
       emailLoginErrorMessage.classList.remove("d-none");
       emailLoginErrorMessage.innerText = "*este campo es obligatorio";
+
+      emailLogin.focus();
     }
     //check if email has minimum length
     else if(!regexLength10.test(emailLogin.value)){
       //display error message
       emailLoginErrorMessage.classList.remove("d-none");
       emailLoginErrorMessage.innerText = "*el correo es demasiado corto";
+
+      emailLogin.focus();
     }
     //check if email is valid
     else if(!regexEmail.test(emailLogin.value)){
       //display error message
       emailLoginErrorMessage.classList.remove("d-none");
       emailLoginErrorMessage.innerText = "*el correo debe ser válido";
+
+      emailLogin.focus();
     }
     //check if password is empty
     else if(passwordLogin.value == "") {
       //display error message
       passwordLoginErrorMessage.classList.remove("d-none");
       passwordLoginErrorMessage.innerText = "*este campo es obligatorio";
+
+      passwordLogin.focus();
     }
     //check if password has minimum length
     else if(!regexLength8.test(passwordLogin.value)){
       //display error message
       passwordLoginErrorMessage.classList.remove("d-none");
       passwordLoginErrorMessage.innerText = "*la contraseña debe tener al menos 8 caracteres";
+
+      passwordLogin.focus();
     }
     //check if password is valid
     else if(!regexPassword.test(passwordLogin.value)){
     //display error message
     passwordLoginErrorMessage.classList.remove("d-none");
     passwordLoginErrorMessage.innerText = "*la contraseña debe contener al menos un número, una mayuscula y un simbolo (*.,¡!¿?-_+)";
+
+    passwordLogin.focus();
     }
     //submit login petition if all fields are valid
     else{
@@ -114,15 +126,23 @@ export const validationLoginRegister = () => {
           if (user.email === email) {
             validUser = true;
             if (user.password === hashedPassword) {
-              alert("¡Login exitoso, ", user.name, "!");
+              alert("¡Login exitoso, "+ user.name + "!");
             } else {
-              alert("¡Contraseña erronea!");
+              //display error message
+              emailLoginErrorMessage.classList.remove("d-none");
+              emailLoginErrorMessage.innerText = "¡Usuario o contraseña incorrectos!";
+
+              emailLogin.focus();
             }
           }
         });
 
         if (!validUser) {
-          console.log("¡Usuario invalido!");
+          //display error message
+          emailLoginErrorMessage.classList.remove("d-none");
+          emailLoginErrorMessage.innerText = "¡Usuario o contraseña incorrectos!";
+
+          emailLogin.focus();
         }
       }
 
@@ -148,51 +168,66 @@ export const validationLoginRegister = () => {
       //display error message
       EmailRegisterErrorMessage.classList.remove("d-none");
       EmailRegisterErrorMessage.innerText = "*este campo es obligatorio";
+
+      emailRegister.focus();
     }
     //check if email has minimum length
     else if(!regexLength10.test(emailRegister.value)){
       //display error message
       EmailRegisterErrorMessage.classList.remove("d-none");
       EmailRegisterErrorMessage.innerText = "*el correo es demasiado corto";
+      
+      emailRegister.focus();
     }
     //check if email is valid
     else if(!regexEmail.test(emailRegister.value)){
       //display error message
       EmailRegisterErrorMessage.classList.remove("d-none");
       EmailRegisterErrorMessage.innerText = "*el correo debe ser válido";
+      
+      emailRegister.focus();
     }
     //check if email is equal to confirm email
     else if(emailRegister.value != emailConfirmRegister.value){
       //display error message
       EmailConfirmRegisterErrorMessage.classList.remove("d-none");
       EmailConfirmRegisterErrorMessage.innerText = "*los correos deben coincidir";
+      
+      emailConfirmRegister.focus();
     }
     //check if password is empty
     else if(passwordRegister.value == "") {
       //display error message
       PasswordRegisterErrorMessage.classList.remove("d-none");
       PasswordRegisterErrorMessage.innerText = "*este campo es obligatorio";
+
+      passwordRegister.focus();
     }
     //check if password has minimum length
     else if(!regexLength8.test(passwordRegister.value)){
       //display error message
       PasswordRegisterErrorMessage.classList.remove("d-none");
       PasswordRegisterErrorMessage.innerText = "*la contraseña debe tener al menos 8 caracteres";
+
+      passwordRegister.focus();
     }
     //check if password is valid
     else if(!regexPassword.test(passwordRegister.value)){
     //display error message
     PasswordRegisterErrorMessage.classList.remove("d-none");
     PasswordRegisterErrorMessage.innerText = "*la contraseña debe contener al menos un número, una mayuscula y un simbolo (*.,¡!¿?-_+)";
+
+    passwordRegister.focus();
     }
     //check if password and password confirm are equal
     else if(passwordRegister.value != passwordConfirmRegister.value){
       PasswordConfirmRegisterErrorMessage.classList.remove("d-none");
       PasswordConfirmRegisterErrorMessage.innerText = "*las contraseñas deben coincidir";
+
+      passwordConfirmRegister.focus();
     }
     //submit register petition if all fields are valid
     else{
-
       //input data
       let email = emailRegister.value;
       let hashedPassword = CryptoJS.SHA256(passwordRegister.value).toString(CryptoJS.enc.Hex);
@@ -210,22 +245,25 @@ export const validationLoginRegister = () => {
 
         users.forEach(user => {
           //check if email is already registered
-          if (user.email === email) {
+          if (user.email == emailRegister.value) {
             validUser = false;
-            //display message
-            EmailRegisterErrorMessage.classList.remove("d-none");
-            EmailRegisterErrorMessage.value= "¡Este correo ya está registrado!";
           }
         });
 
         //if register input is valid
         if (validUser) {
           //display message
-          alert("¡Registro exitoso con el correo: ", email, " !");
+          alert("¡Registro exitoso con el correo: " + email + " !");
           //reset register fields value
           formRegister.reset();
           //switch to login modal
           accountModal(accountTemplate);
+        }else{
+          //display message
+          EmailRegisterErrorMessage.classList.remove("d-none");
+          EmailRegisterErrorMessage.innerText= "¡Este correo ya está registrado!";
+
+          emailRegister.focus();
         }
       }
 
@@ -250,29 +288,33 @@ export const validationLoginRegister = () => {
       //display error message
       emailRecoverErrorMessage.classList.remove("d-none");
       emailRecoverErrorMessage.innerText = "*debe ingresar un correo";
+
+      emailRecover.focus();
     }
     //check if email has minimum length
     else if(!regexLength10.test(emailRecover.value)){
       //display error message
       emailRecoverErrorMessage.classList.remove("d-none");
       emailRecoverErrorMessage.innerText = "*el correo es demasiado corto";
+
+      emailRecover.focus();
     }
     //check if email is valid
     else if(!regexEmail.test(emailRecover.value)){
       //display error message
       emailRecoverErrorMessage.classList.remove("d-none");
       emailRecoverErrorMessage.innerText = "*el correo debe ser válido";
+
+      emailRecover.focus();
     }else{
       //display message
-      alert("¡Código de recuperación de contraseña enviado!");
+      alert("¡Chequee su correo y siga las instrucciones!");
       //reset register fields value
       formRecover.reset();
       //switch to login modal
       accountModal(accountTemplate);
     }
-
   });
-
 }
 
 

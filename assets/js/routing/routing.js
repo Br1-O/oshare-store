@@ -105,14 +105,17 @@ const updateContent = () => {
                 content.innerHTML = notFoundMessage;
             break;
         }
+
         // Scroll to the top of the page once content is changed
         window.scrollTo({ top: 0});
+
         //carousel functionality
         const buttons = document.querySelectorAll("[data-carousel-button]");
         if (buttons) {
             carouselFunctionality(buttons);
-        }   
-        
+        }
+        //init Animation on Scroll library
+        AOS.init();
     }
 }
 

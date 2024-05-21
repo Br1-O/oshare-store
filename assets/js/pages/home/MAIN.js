@@ -1,26 +1,25 @@
 export const homeContent = `        
     <!-- Billboard -->
     <section id="billboard" aria-label="marquesina de promociones semanales">
+        <article class="billboard-ad carousel" data-carousel>
 
-    <article class="billboard-ad carousel" data-carousel>
+            <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">
+                <i class='bx bx-chevron-left'></i>
+            </button>
+            <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">
+                <i class='bx bx-chevron-right'></i>
+            </button>
 
-        <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">
-            <i class='bx bx-chevron-left'></i>
-        </button>
-        <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">
-            <i class='bx bx-chevron-right'></i>
-        </button>
+            
+            <ul id="billboard-ad-container" aria-label="carrousel de promociones" data-slides>
+            </ul>
 
-        
-        <ul id="billboard-ad-container" aria-label="carrousel de promociones" data-slides>
-        </ul>
-
-        <div class="down-arrow">
-        <a href="#trending-now">
-            <i class='bx bx-down-arrow-alt' title="¡Último en Tendencia!"></i>
-        </a>
-        </div>
-    </article>
+            <div class="down-arrow">
+            <a href="#trending-now">
+                <i class='bx bx-down-arrow-alt' title="¡Último en Tendencia!"></i>
+            </a>
+            </div>
+        </article>
     </section>
 
     <!-- Wavy separator -->
@@ -32,22 +31,21 @@ export const homeContent = `
     </svg> 
 
     <!-- Trending Products -->
-    <section class="trending-products">
+    <section class="trending-products" data-aos="zoom-in"  data-aos-offset="100" data-aos-duration="2000">
 
-    <h2 class="subtitle"> ¡Nuestros productos en <span>tendencia</span>!</h2>
+        <h2 class="subtitle"> ¡Nuestros productos en <span>tendencia</span>!</h2>
 
-    <!-- List of trending products -->
-    <div class="container-products .row" id="container-trending-products">
+        <!-- List of trending products -->
+        <div class="container-products .row" id="container-trending-products">
 
-    
-    </div>
+        </div>
 
-    <!-- Arrow downwards to reviews -->
-    <!-- <div class="down-arrow down-arrow-products">
-        <a href="#reviews">
-        <i class='bx bx-down-arrow-alt' title="¡Lo que dicen de nosotros!"></i>
-        </a>
-    </div> -->
+        <!-- Arrow downwards to reviews -->
+        <!-- <div class="down-arrow down-arrow-products">
+            <a href="#reviews">
+            <i class='bx bx-down-arrow-alt' title="¡Lo que dicen de nosotros!"></i>
+            </a>
+        </div> -->
 
     </section>
 
@@ -62,22 +60,23 @@ export const homeContent = `
     </svg> 
 
     <!-- Reviews section -->
-    <section class="reviews">
+    <section class="reviews" data-aos="fade-up" data-aos-offset="200" data-aos-duration="2000">
 
         <h2 class="subtitle"> ¡Nuestros clientes son <span>prioridad</span>!</h2>
 
         <article class="reviews-articles-container" id="review carousel" data-carousel>
 
-        <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">
-            <i class='bx bx-chevron-left'></i>
-        </button>
-        <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">
-            <i class='bx bx-chevron-right'></i>
-        </button>
+            <button class="btn-carousel prev" aria-label="anuncio anterior" data-carousel-button="prev">
+                <i class='bx bx-chevron-left'></i>
+            </button>
 
-        <ul id="reviews-container" aria-label="carrousel de reviews" data-slides>
+            <button class="btn-carousel next" aria-label="anuncio siguiente" data-carousel-button="next">
+                <i class='bx bx-chevron-right'></i>
+            </button>
 
-        </ul>
+            <ul id="reviews-container" aria-label="carrousel de reviews" data-slides>
+
+            </ul>
 
         </article>
 
@@ -93,12 +92,12 @@ export const homeContent = `
     </svg> 
 
     <!-- Blog articles section -->
-    <section class="blog-container">
+    <section class="blog-container" data-aos="fade-up" data-aos-offset="200" data-aos-delay="100" data-aos-duration="2000">
 
-    <h2 class="subtitle"> ¡Lee nuestros últimos <span>artículos</span>!</h2>
+        <h2 class="subtitle"> ¡Lee nuestros últimos <span>artículos</span>!</h2>
 
-    <div class="blog-container-articles" id="blog-container-articles">
-    </div>
+        <div class="blog-container-articles" id="blog-container-articles">
+        </div>
 
     </section>
     `;

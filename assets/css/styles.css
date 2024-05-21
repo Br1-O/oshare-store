@@ -230,6 +230,92 @@ html {
     }
 }
 
+/* zoom In element*/
+
+@keyframes zoomIn {
+    0% { transform: scale(0); }
+    2% { transform: scale(0.02); }
+    4% { transform: scale(0.04); }
+    6% { transform: scale(0.06); }
+    8% { transform: scale(0.08); }
+    10% { transform: scale(0.1); }
+    12% { transform: scale(0.12); }
+    14% { transform: scale(0.14); }
+    16% { transform: scale(0.16); }
+    18% { transform: scale(0.18); }
+    20% { transform: scale(0.2); }
+    22% { transform: scale(0.22); }
+    24% { transform: scale(0.24); }
+    26% { transform: scale(0.26); }
+    28% { transform: scale(0.28); }
+    30% { transform: scale(0.3); }
+    32% { transform: scale(0.32); }
+    34% { transform: scale(0.34); }
+    36% { transform: scale(0.36); }
+    38% { transform: scale(0.38); }
+    40% { transform: scale(0.4); }
+    42% { transform: scale(0.42); }
+    44% { transform: scale(0.44); }
+    46% { transform: scale(0.46); }
+    48% { transform: scale(0.48); }
+    50% { transform: scale(0.5); }
+    52% { transform: scale(0.52); }
+    54% { transform: scale(0.54); }
+    56% { transform: scale(0.56); }
+    58% { transform: scale(0.58); }
+    60% { transform: scale(0.6); }
+    62% { transform: scale(0.62); }
+    64% { transform: scale(0.64); }
+    66% { transform: scale(0.66); }
+    68% { transform: scale(0.68); }
+    70% { transform: scale(0.7); }
+    72% { transform: scale(0.72); }
+    74% { transform: scale(0.74); }
+    76% { transform: scale(0.76); }
+    78% { transform: scale(0.78); }
+    80% { transform: scale(0.8); }
+    82% { transform: scale(0.82); }
+    84% { transform: scale(0.84); }
+    86% { transform: scale(0.86); }
+    88% { transform: scale(0.88); }
+    90% { transform: scale(0.9); }
+    92% { transform: scale(0.92); }
+    94% { transform: scale(0.94); }
+    96% { transform: scale(0.96); }
+    98% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+/* flip element to the right */
+@keyframes flipRight {
+    0% { transform: rotateY(285deg); }
+    4% { transform: rotateY(288deg); }
+    8% { transform: rotateY(291deg); }
+    12% { transform: rotateY(294deg); }
+    16% { transform: rotateY(297deg); }
+    20% { transform: rotateY(300deg); }
+    24% { transform: rotateY(303deg); }
+    28% { transform: rotateY(306deg); }
+    32% { transform: rotateY(309deg); }
+    36% { transform: rotateY(312deg); }
+    40% { transform: rotateY(315deg); }
+    44% { transform: rotateY(318deg); }
+    48% { transform: rotateY(321deg); }
+    52% { transform: rotateY(324deg); }
+    56% { transform: rotateY(327deg); }
+    60% { transform: rotateY(330deg); }
+    64% { transform: rotateY(333deg); }
+    68% { transform: rotateY(336deg); }
+    72% { transform: rotateY(339deg); }
+    76% { transform: rotateY(342deg); }
+    80% { transform: rotateY(345deg); }
+    84% { transform: rotateY(348deg); }
+    88% { transform: rotateY(351deg); }
+    92% { transform: rotateY(354deg); }
+    96% { transform: rotateY(357deg); }
+    100% { transform: rotateY(360deg); }
+}
+
 /* Scroll Reveal animation*/
 @keyframes scrollRevealOpacity {
     from{
@@ -1174,7 +1260,9 @@ footer{
 
         font-family: var(--font-main);
 
-        transition: all .5s ease
+        transition: all .5s ease;
+
+        perspective: 1000px;
     }
 
     #modalLogin{
@@ -1182,6 +1270,11 @@ footer{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        transition: all 0.4s ease-in;
+
+        animation: flipRight 0.5s ease-in-out forwards;
+        animation-iteration-count: 1;
     }
 
     #modalRegister{
@@ -1189,6 +1282,12 @@ footer{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        transition: all 0.4s ease-in;
+
+        
+        animation: flipRight 0.5s ease-in-out forwards;
+        animation-iteration-count: 1;
     }
 
     #modalRecoverPass{
@@ -1196,6 +1295,11 @@ footer{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        transition: all 0.4s ease-in;
+
+        animation: flipRight 0.5s ease-in-out forwards;
+        animation-iteration-count: 1;
     }
     
     /* Modal close button */
