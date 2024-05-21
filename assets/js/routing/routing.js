@@ -1,6 +1,9 @@
 //utils import
 import { fetchData } from "../utils/fetch.js";
 import { carouselFunctionality } from "../utils/carousel.js";
+import { redirectToPage } from "../utils/redirectToPage.js";
+//navBar content
+import { navBar } from "../components/navBar.js";
 //home page content
 import { homeContent } from "../pages/home/MAIN.js";
 import { displayProductList } from "../pages/home/products.js";
@@ -57,6 +60,8 @@ const updateContent = () => {
             //home page
             case '':
                 content.innerHTML = homeContent;
+
+                navBar();
                 
                 //products container
                 const containerTrendingProducts = document.getElementById("container-trending-products");
@@ -103,6 +108,7 @@ const updateContent = () => {
             //not found page
             default:
                 content.innerHTML = notFoundMessage;
+                redirectToPage("", 5000);
             break;
         }
 

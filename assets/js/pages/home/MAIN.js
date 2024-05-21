@@ -60,7 +60,7 @@ export const homeContent = `
     </svg> 
 
     <!-- Reviews section -->
-    <section class="reviews" data-aos="fade-up" data-aos-offset="200" data-aos-duration="2000">
+    <section class="reviews" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" >
 
         <h2 class="subtitle"> ¡Nuestros clientes son <span>prioridad</span>!</h2>
 
@@ -92,7 +92,7 @@ export const homeContent = `
     </svg> 
 
     <!-- Blog articles section -->
-    <section class="blog-container" data-aos="fade-up" data-aos-offset="200" data-aos-delay="100" data-aos-duration="2000">
+    <section class="blog-container" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000" >
 
         <h2 class="subtitle"> ¡Lee nuestros últimos <span>artículos</span>!</h2>
 

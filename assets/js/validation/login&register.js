@@ -1,5 +1,5 @@
 import { fetchData } from "../utils/fetch.js";
-import { accountTemplate, accountModal } from "../modal.js";
+import { accountTemplate, accountModal } from "../modals/account.js";
 
 export const validationLoginRegister = () => {
 

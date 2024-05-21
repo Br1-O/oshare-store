@@ -1,40 +1,5 @@
-import { validationLoginRegister } from "./validation/login&register.js";
-
-//body
-const pageContent = document.getElementById("page-content");
-
-//modal
-const modal = document.querySelector("dialog");
-const modalContent = document.getElementById("modal-content");
-const btnCloseModal = document.getElementById("btn-modal-close");
-
-//nav icons
-const btnShop = document.getElementById("shop-icon");
-const btnAccount = document.getElementById("account-icon");
-
-//■■■■■ ChangeContent-Open-Close dialog window ■■■■■
-
-//change content modal
-const changeModal = (template) => {
-    modalContent.innerHTML = template;
-};
-
-const openModal = (template = "") => {
-    template && changeModal(template);
-    modal.setAttribute("open", "");
-    pageContent.classList.add("overlay");
-};
-
-const closeModal = () => {
-        changeModal("");
-        modal.removeAttribute("open");
-        pageContent.classList.remove("overlay");
-};
-
-//btn close modal
-btnCloseModal.addEventListener("click", () => {
-    closeModal();
-});
+import { validationLoginRegister } from "../validation/login&register.js";
+import { openModal } from "./utils.js";
 
 //■■■■■ Account modal ■■■■■
 
@@ -257,25 +222,14 @@ export function accountModal(template) {
   }
 }
 
-
-
-// Open account modal when account icon is clicked
-btnAccount.addEventListener("click", () => {
-  accountModal(accountTemplate);
-  
-  // Include validations for login and register forms
-  validationLoginRegister();
-});
-
-
-//■■■■■ Shop modal ■■■■■
-
-btnShop.addEventListener("click", () => {
-    const shopTemplate = 
-    `<h4> Pagina en construcción </h4>
-    <img src="assets/resources/img/Logo_Oshare.jpg" style="max-width:100%; max-height:100%; border: solid 1px var(--border-color); border-radius:15px;" alt="">`
-    openModal(shopTemplate);
-});
-
+export const setEventListenerModalAccount = (btnAccount) => {
+  // Open account modal when account icon is clicked
+  btnAccount.addEventListener("click", () => {
+    accountModal(accountTemplate);
+    
+    // Include validations for login and register forms
+    validationLoginRegister();
+  });
+}
 
 

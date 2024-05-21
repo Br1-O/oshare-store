@@ -55,49 +55,7 @@
     </dialog>
 
     <!-- Navbar -->
-    <header>
-    <nav class="nav">
-
-      <a href="#" title="¡Tus prendas favoritas a un click de distancia!">
-        <img class="logo" id="logo" src="assets/resources/img/Logo_Oshare.jpg" alt="Oshare Designs Logo">
-      </a>
-
-      <ul class="nav-menu" id="nav-menu">
-        <li>
-          <a href="#" title="Oshare Designs Store"> Inicio </a>
-        </li>
-        <li>
-          <a href="#shop" title="¡Compra tus prendas favoritas!"> Shop </a>
-        </li>
-        <li>
-          <a href="#trending-now" title="¡Mira nuestros productos!"> Productos </a>
-        </li>
-        <li>
-          <a href="#contacto" title="¡Visitanos!"> Contacto </a>
-        </li>
-      </ul>
-
-      <ul class="nav-icons">
-        <li>        
-          <a href="#">
-            <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-user nav-icon' id="account-icon" alt="Login" title="¡Accede a tu cuenta!"></i>
-          </a>
-        </li>
-        <li>
-            <i class='bx bx-menu nav-icon' id="menu-icon" alt="Side menu" title="¡Accede a tu cuenta!"></i>
-        </li>
-      </ul>
-    </nav>
+    <header id="navContainer">
     </header>
 
     <!-- Page Content -->
@@ -105,9 +63,6 @@
 
       <!-- Main section -->
       <main class="main" id="main">
-
-        
-
       </main>
 
       <!-- Wavy separator -->
@@ -245,15 +200,14 @@
 </body>
 
 <!-- Loading Animation -->
-<script type="module" src="assets/js/loadingAnimation.js"></script>
+<script type="module" src="assets/js/utils/loadingAnimation.js"></script>
 
 <!-- Routing System -->
 <script type="module" src="assets/js/routing/routing.js"></script>
 
-<!-- scroll effect for nav bar -->
-<script type="module" src="assets/js/navBar.js"></script>
-<!-- modal window-->
-<script type="module" src="assets/js/modal.js"></script>
+<!-- modal windows -->
+<script type="module" src="assets/js/modals/utils.js"></script>
+
 <!-- crypto library for encoding-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <!-- aos library for scroll effects -->
