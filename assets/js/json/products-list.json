@@ -4,6 +4,7 @@
   "data": {
     "products": [
       {
+        "id": 1,
         "name": "Set deportivo mediano",
         "description-cover": "Set deportivo de: pantalón, remera, musculosa, medias y muñequeras.",
         "price": "$55000",
@@ -17,6 +18,7 @@
         "favorite": false
       },
       {
+        "id": 2,
         "name": "Conjunto de jogging",
         "description-cover": "Conjunto de jogging de algodón. Ideal para actividades deportivas.",
         "price": "$45000",
@@ -30,6 +32,7 @@
         "favorite": true
       },
       {
+        "id": 3,
         "name": "Camisa formal",
         "description-cover": "Camisa formal de algodón. Perfecta para ocasiones especiales.",
         "price": "$65000",
@@ -43,6 +46,7 @@
         "favorite": false
       },
       {
+        "id": 4,
         "name": "Vestido de verano",
         "description-cover": "Vestido de verano ligero y cómodo. Ideal para días soleados.",
         "price": "$35000",
@@ -56,6 +60,7 @@
         "favorite": true
       },
       {
+        "id": 5,
         "name": "Zapatillas deportivas",
         "description-cover": "Zapatillas deportivas para correr. Diseño moderno y confortable.",
         "price": "$75000",
@@ -69,6 +74,7 @@
         "favorite": false
       },
       {
+        "id": 6,
         "name": "Pantalón vaquero",
         "description-cover": "Pantalón vaquero clásico. Combina estilo y comodidad.",
         "price": "$50000",
@@ -82,6 +88,7 @@
         "favorite": true
       },
       {
+        "id": 7,
         "name": "Bolso de cuero",
         "description-cover": "Bolso de cuero elegante y funcional. Perfecto para llevar tus pertenencias.",
         "price": "$85000",
@@ -95,6 +102,7 @@
         "favorite": false
       },
       {
+        "id": 8,
         "name": "Reloj de pulsera",
         "description-cover": "Reloj de pulsera con diseño moderno. Añade un toque de estilo a tu look.",
         "price": "$95000",

@@ -1,5 +1,9 @@
 import { setEventListenerModalAccount } from "../modals/account.js";
 import { setEventListenerModalShop } from "../modals/shop.js";
+import { updateContent } from "../routing/routing.js";
+import { redirectToPage } from "../utils/redirectToPage.js";
+import { freeSessionData } from "../utils/sessionStorage.js";
+import { userData } from "../models/user.js";
 
 //default navBar
 const defaultNavBar = `
@@ -41,7 +45,7 @@ const defaultNavBar = `
             </a>
         </li>
         <li>
-            <i class='bx bx-menu nav-icon' id="menu-icon" alt="Side menu" title="¡Accede a tu cuenta!"></i>
+            <i class='bx bx-menu nav-icon' id="menu-icon" alt="Side menu"></i>
         </li>
     </ul>
 </nav>
@@ -83,11 +87,16 @@ const sessionNavBar = `
         </li>
         <li>
             <a href="#">
-                <i class='bx bxs-user-detail nav-icon' id="account-icon" alt="Login" title="¡Accede a tu cuenta!"></i>
+                <i class='bx bxs-user-detail nav-icon' id="profile-icon" alt="Profile options" title="Datos del perfil"></i>
             </a>
         </li>
         <li>
-            <i class='bx bx-menu nav-icon' id="menu-icon" alt="Side menu" title="¡Accede a tu cuenta!"></i>
+            <a href="#">
+                <i class='bx bx-log-in nav-icon' id="log-out-icon" alt="Logout" title="Cerrar sesión"></i>
+            </a>
+        </li>
+        <li>
+            <i class='bx bx-menu nav-icon' id="menu-icon" alt="Side menu"></i>
         </li>
     </ul>
 </nav>
@@ -96,61 +105,98 @@ const sessionNavBar = `
 //header tag
 const header = document.getElementById('navContainer');
 
-export const navBar = (isConnected = false, userData = {}) => {
+export const navBar = (isConnected = false, userInfo = {}) => {
     
     //check if user is connected
-    if (!isConnected) {
-        //change content of navBar
-        header.innerHTML = defaultNavBar;
 
-        //nav icons
-        const btnAccount = document.getElementById("account-icon");
-        const btnShop = document.getElementById("shop-icon");
+        if (!isConnected) {
+            //change content of navBar
+            header.innerHTML = defaultNavBar;
 
+            //nav icons
+            const btnAccount = document.getElementById("account-icon");
+            const btnShop = document.getElementById("shop-icon");
 
-        //event listeners
+            //event listeners
+            setEventListenerModalAccount(btnAccount);
+            setEventListenerModalShop(btnShop);
 
-        // Open account modal when account icon is clicked
-        setEventListenerModalAccount(btnAccount);
-        setEventListenerModalShop(btnShop);
+        } else {
+            //change content of navBar
+            header.innerHTML = sessionNavBar;
 
-    } else {
-        header.innerHTML = sessionNavBar;
-    }
+            //nav icons
+            const btnShop = document.getElementById("shop-icon");
+            const btnProfile = document.getElementById("profile-icon");
+            const btnLogOut = document.getElementById("log-out-icon");
+
+            //event listeners
+            setEventListenerModalShop(btnShop);
+            
+            //event listener for profile options icon
+            btnProfile.addEventListener("click", () => {
+                console.log(userData.name);
+                console.log(userData.surname);
+                console.log(userData.email);
+                console.log(userData);
+            });
+
+            //event listener for log out icon
+            btnLogOut.addEventListener("click", () => {
+                //change session state
+                userData.isSessionSet = false;
+
+                //delete user object data
+                userData.name = "";
+                userData.surname = "";
+                userData.email = "";
+                userData.picture = "";
+                userData.currentCart = [];
+
+                //delete session data
+                freeSessionData("user");
+
+                //redirect to logged page
+                redirectToPage((window.location.hash).slice(1), 0);
+                
+                //update content based on change of session state
+                updateContent();
+            });
+        }
 
     //scroll behavior
 
-    //elements
-    const navBar = document.querySelector("nav");
-    const logo = document.getElementById("logo");
+        //elements
+        const navBar = document.querySelector("nav");
+        const logo = document.getElementById("logo");
 
-    //toggle on or off compact design for navbar when scrolling
-    window.addEventListener("scroll", () => {
-        navBar.classList.toggle("compact-view", window.scrollY > 0);
-        logo.classList.toggle("compact-view", window.scrollY > 0);
-    });
+        //toggle on or off compact design for navbar when scrolling
+        window.addEventListener("scroll", () => {
+            navBar.classList.toggle("compact-view", window.scrollY > 0);
+            logo.classList.toggle("compact-view", window.scrollY > 0);
+        });
 
     //hamburguer menu
 
-    //elements
-    const menuIcon = document.getElementById("menu-icon");
-    const menu = document.getElementById("nav-menu");
+        //elements
+        const menuIcon = document.getElementById("menu-icon");
+        const menu = document.getElementById("nav-menu");
 
-    let menuOpen = false;
+        let menuOpen = false;
 
-    menuIcon.addEventListener("click", () => {
+        menuIcon.addEventListener("click", () => {
 
-        menu.classList.toggle("menu-open");
+            menu.classList.toggle("menu-open");
 
-        if (!menuOpen) {
-            menuIcon.classList.remove("bx-menu");
-            menuIcon.classList.add("bx-x");
-            menuOpen = true;
-        } else {
-            menuIcon.classList.remove("bx-x");
-            menuIcon.classList.add("bx-menu");
-            menuOpen = false;
-        };
-    });
+            if (!menuOpen) {
+                menuIcon.classList.remove("bx-menu");
+                menuIcon.classList.add("bx-x");
+                menuOpen = true;
+            } else {
+                menuIcon.classList.remove("bx-x");
+                menuIcon.classList.add("bx-menu");
+                menuOpen = false;
+            };
+        });
 
 }

@@ -16,6 +16,7 @@ import { shopContent } from "../pages/shop/MAIN.js";
 import { notFoundMessage } from "../pages/notFound404.js";
 //carousel EXPERIMENTAL
 import { carousel } from "../pages/carousel-experimental.js";
+import { userData } from "../models/user.js";
 
 
 
@@ -35,12 +36,10 @@ import { carousel } from "../pages/carousel-experimental.js";
 //     document.getElementById("page-container").innerHTML = content;
 //   }
 
-
-
 //provitional hash based routing system until finishing project, then we switch to the routing based on raw URL paths
 
 //Update content based on hash
-const updateContent = () => {
+export const updateContent = () => {
     const hash = window.location.hash.substring(1); // Remove leading "#"
     // Get the section ID from the hash
     const sectionId = window.location.hash.substring(1); // Remove the leading '#'
@@ -61,7 +60,7 @@ const updateContent = () => {
             case '':
                 content.innerHTML = homeContent;
 
-                navBar();
+                navBar(userData.isSessionSet);
                 
                 //products container
                 const containerTrendingProducts = document.getElementById("container-trending-products");

@@ -1,5 +1,10 @@
 import { fetchData } from "../utils/fetch.js";
 import { accountTemplate, accountModal } from "../modals/account.js";
+import { setSessionData } from "../utils/sessionStorage.js";
+import { redirectToPage } from "../utils/redirectToPage.js";
+import { userData } from "../models/user.js";
+import { updateContent } from "../routing/routing.js";
+import { closeModal } from "../modals/utils.js";
 
 export const validationLoginRegister = () => {
 
@@ -117,7 +122,7 @@ export const validationLoginRegister = () => {
       }
 
       //verification to dummy data (later will be switched for fetch function to backend db)
-      let getUsers = async () => {
+      let submitLogin = async () => {
         let validUser = false;
         let users = await fetchData("assets/js/json/users.json", "users");
 
@@ -126,7 +131,43 @@ export const validationLoginRegister = () => {
           if (user.email === email) {
             validUser = true;
             if (user.password === hashedPassword) {
-              alert("¡Login exitoso, "+ user.name + "!");
+
+              //set session object
+              let sessionData = {
+                "name" : user.name,
+                "surname" : user.surname,
+                "email" : user.email,
+                "picture" : user.profileImage,
+                "cart" : user.currentCart
+              }
+
+              //set user object
+              userData.name = user.name;
+              userData.surname = user.surname;
+              userData.email = user.email;
+              userData.picture = user.profileImage;
+              userData.currentCart = user.currentCart;
+
+              //change session state
+              userData.isSessionSet = true;
+
+              //set session data
+              setSessionData("user", JSON.stringify(sessionData));
+
+              //reset form fields values
+              formRegister.reset();
+              formLogin.reset();
+              formRecover.reset();
+                  
+              //close modal window
+              closeModal();
+
+              //redirect to logged page
+              redirectToPage((window.location.hash).slice(1), 0);
+
+              //update content based on change of session state
+              updateContent();
+
             } else {
               //display error message
               emailLoginErrorMessage.classList.remove("d-none");
@@ -146,8 +187,7 @@ export const validationLoginRegister = () => {
         }
       }
 
-      getUsers();
-
+      submitLogin();
     }
   });
   
@@ -240,7 +280,7 @@ export const validationLoginRegister = () => {
       let validUser = true;
 
       //verification to dummy data (later will be switched for fetch function to backend db)
-      let checkUsers = async () => {
+      let submitRegister = async () => {
         let users = await fetchData("assets/js/json/users.json", "users");
 
         users.forEach(user => {
@@ -252,12 +292,42 @@ export const validationLoginRegister = () => {
 
         //if register input is valid
         if (validUser) {
+
           //display message
           alert("¡Registro exitoso con el correo: " + email + " !");
-          //reset register fields value
+
+          //reset form fields values
           formRegister.reset();
-          //switch to login modal
-          accountModal(accountTemplate);
+          formLogin.reset();
+          formRecover.reset();
+
+          //close modal window
+          closeModal();
+
+          //set session object
+          let sessionData = {
+            "name" : "",
+            "surname" : "",
+            "email" : email,
+            "picture" : "",
+            "cart" : []
+          }
+
+          //set user object
+          userData.email = email;
+
+          //change session state
+          userData.isSessionSet = true;
+
+          //set session data
+          setSessionData("user", JSON.stringify(sessionData));
+
+          //redirect to logged page
+          redirectToPage((window.location.hash).slice(1), 0);
+
+          //update content based on change of session state
+          updateContent();
+
         }else{
           //display message
           EmailRegisterErrorMessage.classList.remove("d-none");
@@ -267,7 +337,7 @@ export const validationLoginRegister = () => {
         }
       }
 
-      checkUsers();
+      submitRegister();
     }
   });
 
