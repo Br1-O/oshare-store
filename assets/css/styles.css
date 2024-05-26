@@ -21,6 +21,10 @@ html {
     background-color: var(--logo-bg-color);
 }
 
+textarea {
+    resize: none;
+}
+
 /* ■■■■­■■­■■­■■­■■ root variables  ■■■■­■■­■■­■■­■■ */
 
 :root{
@@ -230,6 +234,320 @@ html {
     }
 }
 
+/* bring element on X axis from the right*/
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    2% {
+      transform: translateX(98%);
+    }
+    4% {
+      transform: translateX(96%);
+    }
+    6% {
+      transform: translateX(94%);
+    }
+    8% {
+      transform: translateX(92%);
+    }
+    10% {
+      transform: translateX(90%);
+    }
+    12% {
+      transform: translateX(88%);
+    }
+    14% {
+      transform: translateX(86%);
+    }
+    16% {
+      transform: translateX(84%);
+    }
+    18% {
+      transform: translateX(82%);
+    }
+    20% {
+      transform: translateX(80%);
+    }
+    22% {
+      transform: translateX(78%);
+    }
+    24% {
+      transform: translateX(76%);
+    }
+    26% {
+      transform: translateX(74%);
+    }
+    28% {
+      transform: translateX(72%);
+    }
+    30% {
+      transform: translateX(70%);
+    }
+    32% {
+      transform: translateX(68%);
+    }
+    34% {
+      transform: translateX(66%);
+    }
+    36% {
+      transform: translateX(64%);
+    }
+    38% {
+      transform: translateX(62%);
+    }
+    40% {
+      transform: translateX(60%);
+    }
+    42% {
+      transform: translateX(58%);
+    }
+    44% {
+      transform: translateX(56%);
+    }
+    46% {
+      transform: translateX(54%);
+    }
+    48% {
+      transform: translateX(52%);
+    }
+    50% {
+      transform: translateX(50%);
+    }
+    52% {
+      transform: translateX(48%);
+    }
+    54% {
+      transform: translateX(46%);
+    }
+    56% {
+      transform: translateX(44%);
+    }
+    58% {
+      transform: translateX(42%);
+    }
+    60% {
+      transform: translateX(40%);
+    }
+    62% {
+      transform: translateX(38%);
+    }
+    64% {
+      transform: translateX(36%);
+    }
+    66% {
+      transform: translateX(34%);
+    }
+    68% {
+      transform: translateX(32%);
+    }
+    70% {
+      transform: translateX(30%);
+    }
+    72% {
+      transform: translateX(28%);
+    }
+    74% {
+      transform: translateX(26%);
+    }
+    76% {
+      transform: translateX(24%);
+    }
+    78% {
+      transform: translateX(22%);
+    }
+    80% {
+      transform: translateX(20%);
+    }
+    82% {
+      transform: translateX(18%);
+    }
+    84% {
+      transform: translateX(16%);
+    }
+    86% {
+      transform: translateX(14%);
+    }
+    88% {
+      transform: translateX(12%);
+    }
+    90% {
+      transform: translateX(10%);
+    }
+    92% {
+      transform: translateX(8%);
+    }
+    94% {
+      transform: translateX(6%);
+    }
+    96% {
+      transform: translateX(4%);
+    }
+    98% {
+      transform: translateX(2%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+}
+
+/* bring element on X axis from the left*/
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    2% {
+      transform: translateX(-98%);
+    }
+    4% {
+      transform: translateX(-96%);
+    }
+    6% {
+      transform: translateX(-94%);
+    }
+    8% {
+      transform: translateX(-92%);
+    }
+    10% {
+      transform: translateX(-90%);
+    }
+    12% {
+      transform: translateX(-88%);
+    }
+    14% {
+      transform: translateX(-86%);
+    }
+    16% {
+      transform: translateX(-84%);
+    }
+    18% {
+      transform: translateX(-82%);
+    }
+    20% {
+      transform: translateX(-80%);
+    }
+    22% {
+      transform: translateX(-78%);
+    }
+    24% {
+      transform: translateX(-76%);
+    }
+    26% {
+      transform: translateX(-74%);
+    }
+    28% {
+      transform: translateX(-72%);
+    }
+    30% {
+      transform: translateX(-70%);
+    }
+    32% {
+      transform: translateX(-68%);
+    }
+    34% {
+      transform: translateX(-66%);
+    }
+    36% {
+      transform: translateX(-64%);
+    }
+    38% {
+      transform: translateX(-62%);
+    }
+    40% {
+      transform: translateX(-60%);
+    }
+    42% {
+      transform: translateX(-58%);
+    }
+    44% {
+      transform: translateX(-56%);
+    }
+    46% {
+      transform: translateX(-54%);
+    }
+    48% {
+      transform: translateX(-52%);
+    }
+    50% {
+      transform: translateX(-50%);
+    }
+    52% {
+      transform: translateX(-48%);
+    }
+    54% {
+      transform: translateX(-46%);
+    }
+    56% {
+      transform: translateX(-44%);
+    }
+    58% {
+      transform: translateX(-42%);
+    }
+    60% {
+      transform: translateX(-40%);
+    }
+    62% {
+      transform: translateX(-38%);
+    }
+    64% {
+      transform: translateX(-36%);
+    }
+    66% {
+      transform: translateX(-34%);
+    }
+    68% {
+      transform: translateX(-32%);
+    }
+    70% {
+      transform: translateX(-30%);
+    }
+    72% {
+      transform: translateX(-28%);
+    }
+    74% {
+      transform: translateX(-26%);
+    }
+    76% {
+      transform: translateX(-24%);
+    }
+    78% {
+      transform: translateX(-22%);
+    }
+    80% {
+      transform: translateX(-20%);
+    }
+    82% {
+      transform: translateX(-18%);
+    }
+    84% {
+      transform: translateX(-16%);
+    }
+    86% {
+      transform: translateX(-14%);
+    }
+    88% {
+      transform: translateX(-12%);
+    }
+    90% {
+      transform: translateX(-10%);
+    }
+    92% {
+      transform: translateX(-8%);
+    }
+    94% {
+      transform: translateX(-6%);
+    }
+    96% {
+      transform: translateX(-4%);
+    }
+    98% {
+      transform: translateX(-2%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+}
+
 /* zoom In element*/
 
 @keyframes zoomIn {
@@ -419,8 +737,21 @@ html {
     gap: 5px;
   }
 
+  .rowToCol{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+  }
+
   .w-100{
     width: 100%;
+  }
+
+  .w-75{
+    width: 75%;
   }
 
   .w-50{
@@ -445,6 +776,13 @@ html {
 
   .menu-open{
     right: 0 !important;
+  }
+
+  .bg-glass{
+    /* glass like effect */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
 /* ■■■■­■■­■■­■■­■■ Scrollbar ■■■■­■■­■■­■■­■■ */
@@ -1340,7 +1678,7 @@ footer{
         padding: 5px;
     }
 
-    #modal-container-form{
+    .container-form{
         width: 80%;
 
         color: var(--font-hover-color);
@@ -1361,13 +1699,13 @@ footer{
         -webkit-backdrop-filter: blur(5px);
     }
 
-    #modal-container-form .col .row{
+    .container-form .col .row{
         justify-content: center;
         align-items: flex-start;
     }
 
-    #modal-container-form label{
-        font-size: 1.5rem;
+    .container-form label{
+        font-size: 1.58rem;
         width: min(35%, 40vh);
 
         background-color:  rgba(155, 88, 218, 0.635);
@@ -1376,18 +1714,23 @@ footer{
 
     }
 
-    #modal-container-form input{
+    .container-form input, .container-form textarea {
+        font-family: var(--font-main);
         color: var(--font-color);
         padding: 0.2rem 0.5rem 0.2rem 1.2rem;
         align-self: flex-start;
         min-width: 58%;
-        height: 2rem;
+        height: 1.9rem;
 
         outline: none;
         border: none;
         border-radius: 0px 15px 15px 0px;
 
         position: relative;
+    }
+
+    .container-form textarea{
+        height: max(20vmax, 15rem);
     }
 
     .display-password{
@@ -1402,28 +1745,28 @@ footer{
         transform: translateY(-50%);
     }
 
-    #modal-container-form input:focus{
+    .container-form input:focus, .container-form textarea:focus{
         background-color: var(--border-color);
         color: white;
         border: solid 1px var(--border-color);
     }
 
-    #modal-container-form input:focus::placeholder{
+    .container-form input:focus::placeholder, .container-form textarea:focus::placeholder{
         color: white;
     }
 
-    #modal-container-form p{
+    .container-form p{
         font-size: 1.1rem;
         margin-left: 2rem;
         cursor: pointer;
     }
 
-    #modal-container-form p:hover{
+    .container-form p:hover{
         color: white ;
         text-decoration: underline 2px var(--border-color);
     }
 
-    #modal-container-form a{
+    .container-form a{
         color: var(--font-hover-color);
     }
 
@@ -1440,7 +1783,7 @@ footer{
         margin-left: 2rem;
     
         /* glass like effect */
-        background: rgba(67, 75, 82, 0.5);
+        background-color:  rgba(155, 88, 218);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
 
@@ -1732,7 +2075,66 @@ footer{
     color:rgb(52, 52, 234);
 }
 
-/* 3d carousel */
+/* ■■■■■■■■■■■■■■■■■■■■■■■ CONTACT PAGE ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+
+
+#contact-section-container{
+    background-color: var(--logo-bg-color);
+}
+
+#contact-section-container .rowToCol{
+    width: 100%;
+    padding: 0rem max(5vmax, 1rem);
+    background-color: var(--main-bg-color);
+}
+
+#contact-section-container .rowToCol #contact-info{
+    width: 50%;
+
+    transition: all 0.4s ease-in;
+
+    animation: slideInFromLeft 1s ease-in-out forwards;
+    animation-iteration-count: 1;
+}
+
+#contact-section-container .rowToCol #contact-info a{
+    color: var(--logo-bg-color);
+} 
+
+#subtitleFormContact{
+    margin: max(2vmax,0.5rem);
+    color: var(--font-hover-color);
+}
+
+#contact-section-container .rowToCol #contact-info img{
+    margin: max(2vmax, 2rem) 0rem;
+}
+
+#map{
+    width: 50%;
+    
+    transition: all 0.4s ease-in;
+
+    animation: slideInFromRight 1s ease-in-out forwards;
+    animation-iteration-count: 1;
+}
+
+#google-map{
+    width: 100%;
+    height: max(30vmax, 10rem);
+    border-radius: 15px;
+}
+
+#btn-contact-section{
+    color: var(--font-hover-color);
+    margin: 0.2rem auto;
+    border-radius: 8px;
+}
+
+
+
+
+/* ■■■■■■■■■■■■■■■■■■ 3d carousel ■■■■■■■■■■■■■■■■■■■■■ */
 
 .carousel-radio{
     display: none;
@@ -1899,6 +2301,17 @@ footer{
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Small screens ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 @media screen and (max-width: 576px){
+
+    /* ■■■■■■■■■■■ General ■■■■■■■■■■■ */
+
+    .rowToCol{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 5px;
+    }
 
     /* ■■■■■■■■■■■ NavBar ■■■■■■■■■■ */
 
@@ -2070,7 +2483,7 @@ footer{
         padding: 5px;
     }
 
-    #modal-container-form{
+    .container-form{
         width: 80%;
 
         color: var(--font-hover-color);
@@ -2091,14 +2504,14 @@ footer{
         -webkit-backdrop-filter: blur(5px);
     }
 
-    #modal-container-form .col .row{
+    .container-form .col .row{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    #modal-container-form label{
+    .container-form label{
         font-size: 1.2rem;
         width: 100%;
 
@@ -2108,7 +2521,7 @@ footer{
 
     }
 
-    #modal-container-form input{
+    .container-form input, .container-form textarea {
         color: var(--font-color);
         padding: 0.2rem 0.3rem 0.2rem 0.2rem;
         align-self: flex-start;
@@ -2119,29 +2532,33 @@ footer{
         border: none;
         border-radius: 0px 15px 15px 0px;
     }
+    
+    .container-form textarea{
+        height: max(20vmax, 10rem);
+    }
 
-    #modal-container-form input:focus{
+    .container-form input:focus{
         background-color: var(--border-color);
         color: white;
         border: solid 1px var(--border-color);
     }
 
-    #modal-container-form input:focus::placeholder{
+    .container-form input:focus::placeholder{
         color: white;
     }
 
-    #modal-container-form p{
+    .container-form p{
         font-size: 0.9rem;
         margin-left: 0.4rem;
         cursor: pointer;
     }
 
-    #modal-container-form p:hover{
+    .container-form p:hover{
         color: white ;
         text-decoration: underline 2px var(--border-color);
     }
 
-    #modal-container-form a{
+    .container-form a{
         color: var(--font-hover-color);
     }
 
@@ -2158,13 +2575,15 @@ footer{
         margin-left: 0.4rem;
     
         /* glass like effect */
-        background: rgba(67, 75, 82, 0.5);
+        background-color:  rgba(155, 88, 218);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
 
         cursor: pointer;
     
         transition: all .2s ease;
+
+        max-width: 80%;
     }
 
     .form-btn:hover{
@@ -2259,11 +2678,58 @@ footer{
         transition: all .4s ease;
     }
 
+    /* ■■■■■■■■■■■■■■■■■■■■■■■ CONTACT PAGE ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+
+    #map{
+        width: 100%;
+    }
+    
+    #google-map{
+        width: 100%;
+        height: max(30vmax, 10rem);
+        border-radius: 15px;
+    }
+    
+    #subtitleFormContact{
+        margin: max(2vmax,0.5rem);
+        color: var(--font-hover-color);
+    }
+    
+    #contact-section-container .rowToCol{
+        width: 100%;
+        padding: 0rem max(5vmax, 1rem);
+    }
+    
+    #contact-section-container .rowToCol #contact-info{
+        width: 100%;
+    }
+    
+    #contact-section-container .rowToCol #contact-info img{
+        margin: max(2vmax, 2rem) 0rem;
+    }
+    
+    #btn-contact-section{
+        color: var(--font-hover-color);
+        margin: 0.2rem auto;
+        border-radius: 8px;
+    }    
+
 
 }
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Medium screens ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 @media screen and (min-width: 577px) and (max-width: 768px){
+
+    /* ■■■■■■■■■■■ General ■■■■■■■■■■■ */
+
+    .rowToCol{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 5px;
+    }
 
     /* ■■■■■■■■■■■ NavBar ■■■■■■■■■■ */
 
@@ -2431,7 +2897,7 @@ footer{
         padding: 5px;
     }
 
-    #modal-container-form{
+    .container-form{
         width: 80%;
 
         color: var(--font-hover-color);
@@ -2452,14 +2918,14 @@ footer{
         -webkit-backdrop-filter: blur(5px);
     }
 
-    #modal-container-form .col .row{
+    .container-form .col .row{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    #modal-container-form label{
+    .container-form label{
         font-size: 1.2rem;
         width: 100%;
 
@@ -2469,7 +2935,7 @@ footer{
 
     }
 
-    #modal-container-form input{
+    .container-form input, .container-form textarea {
         color: var(--font-color);
         padding: 0.2rem 0.3rem 0.2rem 0.5rem;
         align-self: flex-start;
@@ -2481,28 +2947,32 @@ footer{
         border-radius: 0px 15px 15px 0px;
     }
 
-    #modal-container-form input:focus{
+    .container-form textarea{
+        height: max(20vmax, 10rem);
+    }
+
+    .container-form input:focus{
         background-color: var(--border-color);
         color: white;
         border: solid 1px var(--border-color);
     }
 
-    #modal-container-form input:focus::placeholder{
+    .container-form input:focus::placeholder{
         color: white;
     }
 
-    #modal-container-form p{
+    .container-form p{
         font-size: 0.9rem;
         margin-left: 0.2rem;
         cursor: pointer;
     }
 
-    #modal-container-form p:hover{
+    .container-form p:hover{
         color: white ;
         text-decoration: underline 2px var(--border-color);
     }
 
-    #modal-container-form a{
+    .container-form a{
         color: var(--font-hover-color);
     }
 
@@ -2519,7 +2989,7 @@ footer{
         margin-left: 0.2rem;
     
         /* glass like effect */
-        background: rgba(67, 75, 82, 0.5);
+        background-color:  rgba(155, 88, 218);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
 
@@ -2603,49 +3073,92 @@ footer{
        .review-card{
         width: 90%;
     }
+
+    /* ■■■■■■■■■■■■■■■■■■■■■■■ CONTACT PAGE ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
+
+    #map{
+        width: 100%;
+    }
+    
+    #google-map{
+        width: 100%;
+        height: max(30vmax, 10rem);
+        border-radius: 15px;
+    }
+    
+    #subtitleFormContact{
+        margin: max(2vmax,0.5rem);
+        color: var(--font-hover-color);
+    }
+    
+    #contact-section-container .rowToCol{
+        width: 100%;
+        padding: 0rem max(5vmax, 1rem);
+    }
+    
+    #contact-section-container .rowToCol #contact-info{
+        flex-direction: row;
+        width: 100%;
+    }
+
+    #contact-section-container .rowToCol #contact-info #contact-info{
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #contact-section-container .rowToCol #contact-info img{
+        width: 45%;
+        margin: max(2vmax, 2rem) 0rem;
+    }
+    
+    #btn-contact-section{
+        color: var(--font-hover-color);
+        margin: 0.2rem auto;
+        border-radius: 8px;
+    }    
     
 }
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ Large screens ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 @media screen and (min-width: 769px) and (max-width: 992px){
 
-        /* ■■■■■■■■■■■ NavBar ■■■■■■■■■■ */
+    /* ■■■■■■■■■■■ NavBar ■■■■■■■■■■ */
 
-        #menu-icon{
-            display:inline-block;
-        }
+    #menu-icon{
+        display:inline-block;
+    }
 
-        .nav{
-            justify-content: space-evenly;
-            padding: 5px 10%;
-        }
+    .nav{
+        justify-content: space-evenly;
+        padding: 5px 10%;
+    }
 
-        .nav-menu{
-            position:absolute;
-            top: 100%;
-            right: -100%;
-            z-index: 10;
+    .nav-menu{
+        position:absolute;
+        top: 100%;
+        right: -100%;
+        z-index: 10;
+
+        width: 300px;
+        height: 50vh;
     
-            width: 300px;
-            height: 50vh;
-     
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 50px;
-        
-            /* glass like effect */
-            background: rgba(238, 237, 237, 0.854);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 50px;
     
-            border: solid 2px var(--border-color);
-        
-            padding: 10px 30px;
-            transition: all .4s ease;
-        }    
+        /* glass like effect */
+        background: rgba(238, 237, 237, 0.854);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+
+        border: solid 2px var(--border-color);
     
+        padding: 10px 30px;
+        transition: all .4s ease;
+    }    
+
     /*■■■■■■■■■■■ Products Container ■■■■■■■■■■*/
     .container-products{
         grid-template-columns: repeat(3, 1fr);
@@ -2744,7 +3257,7 @@ footer{
         padding: 5px;
     }
 
-    #modal-container-form{
+    .container-form{
         width: 80%;
 
         color: var(--font-hover-color);
@@ -2765,14 +3278,14 @@ footer{
         -webkit-backdrop-filter: blur(5px);
     }
 
-    #modal-container-form .col .row{
+    .container-form .col .row{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    #modal-container-form label{
+    .container-form label{
         font-size: 1.2rem;
         width: 100%;
 
@@ -2782,7 +3295,7 @@ footer{
 
     }
 
-    #modal-container-form input{
+    .container-form input, .container-form textarea{
         color: var(--font-color);
         padding: 0.2rem 0.3rem 0.2rem 0.5rem;
         align-self: flex-start;
@@ -2794,28 +3307,32 @@ footer{
         border-radius: 0px 15px 15px 0px;
     }
 
-    #modal-container-form input:focus{
+    .container-form textarea{
+        height: max(20vmax, 10rem);
+    }
+
+    .container-form input:focus{
         background-color: var(--border-color);
         color: white;
         border: solid 1px var(--border-color);
     }
 
-    #modal-container-form input:focus::placeholder{
+    .container-form input:focus::placeholder{
         color: white;
     }
 
-    #modal-container-form p{
+    .container-form p{
         font-size: 0.9rem;
         margin-left: 0.2rem;
         cursor: pointer;
     }
 
-    #modal-container-form p:hover{
+    .container-form p:hover{
         color: white ;
         text-decoration: underline 2px var(--border-color);
     }
 
-    #modal-container-form a{
+    .container-form a{
         color: var(--font-hover-color);
     }
 
@@ -2832,7 +3349,7 @@ footer{
         margin-left: 0.2rem;
     
         /* glass like effect */
-        background: rgba(67, 75, 82, 0.5);
+        background-color:  rgba(155, 88, 218);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
 
@@ -2916,5 +3433,7 @@ footer{
        .review-card{
         width: 70%;
     }
+
+        
 
 }

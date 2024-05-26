@@ -5,6 +5,7 @@ import { redirectToPage } from "../utils/redirectToPage.js";
 import { userData } from "../models/user.js";
 import { updateContent } from "../routing/routing.js";
 import { closeModal } from "../modals/utils.js";
+import { areValuesEqual, emailValidation, passwordValidation } from "./utils.js";
 
 export const validationLoginRegister = () => {
 
@@ -42,13 +43,6 @@ export const validationLoginRegister = () => {
   //all error fields
     const errorMessages = document.getElementsByClassName('error');
 
-  //regex
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regexPassword = /^(?=.*[0-9])(?=.*[.,*_\-+?¡!¿])(?=.*[A-Z]).{8,}$/;
-    const regexLength10 = /^.{10,}$/;
-    const regexLength8 = /^.{8,}$/;
-
-
   //validation for login fields
   formLogin.addEventListener("submit", (event) => {
 
@@ -61,56 +55,15 @@ export const validationLoginRegister = () => {
       error.innerText = "";
     }
 
-    //check if email is empty
-    if (emailLogin.value == "") {
-      //display error message
-      emailLoginErrorMessage.classList.remove("d-none");
-      emailLoginErrorMessage.innerText = "*este campo es obligatorio";
+    let isEmailValid = emailValidation(emailLogin, emailLoginErrorMessage);
+    let isPasswordValid = false;
 
-      emailLogin.focus();
+    if (isEmailValid) {
+      isPasswordValid = passwordValidation(passwordLogin, passwordLoginErrorMessage);
     }
-    //check if email has minimum length
-    else if(!regexLength10.test(emailLogin.value)){
-      //display error message
-      emailLoginErrorMessage.classList.remove("d-none");
-      emailLoginErrorMessage.innerText = "*el correo es demasiado corto";
 
-      emailLogin.focus();
-    }
-    //check if email is valid
-    else if(!regexEmail.test(emailLogin.value)){
-      //display error message
-      emailLoginErrorMessage.classList.remove("d-none");
-      emailLoginErrorMessage.innerText = "*el correo debe ser válido";
-
-      emailLogin.focus();
-    }
-    //check if password is empty
-    else if(passwordLogin.value == "") {
-      //display error message
-      passwordLoginErrorMessage.classList.remove("d-none");
-      passwordLoginErrorMessage.innerText = "*este campo es obligatorio";
-
-      passwordLogin.focus();
-    }
-    //check if password has minimum length
-    else if(!regexLength8.test(passwordLogin.value)){
-      //display error message
-      passwordLoginErrorMessage.classList.remove("d-none");
-      passwordLoginErrorMessage.innerText = "*la contraseña debe tener al menos 8 caracteres";
-
-      passwordLogin.focus();
-    }
-    //check if password is valid
-    else if(!regexPassword.test(passwordLogin.value)){
-    //display error message
-    passwordLoginErrorMessage.classList.remove("d-none");
-    passwordLoginErrorMessage.innerText = "*la contraseña debe contener al menos un número, una mayuscula y un simbolo (*.,¡!¿?-_+)";
-
-    passwordLogin.focus();
-    }
     //submit login petition if all fields are valid
-    else{
+    if(isEmailValid && isPasswordValid){
 
       //input data
       let email = emailLogin.value;
@@ -146,7 +99,7 @@ export const validationLoginRegister = () => {
               userData.surname = user.surname;
               userData.email = user.email;
               userData.picture = user.profileImage;
-              userData.currentCart = user.currentCart;
+              userData.cart = user.currentCart;
 
               //change session state
               userData.isSessionSet = true;
@@ -203,71 +156,25 @@ export const validationLoginRegister = () => {
       error.innerText = "";
     }
 
-    //check if email is empty
-    if (emailRegister.value == "") {
-      //display error message
-      EmailRegisterErrorMessage.classList.remove("d-none");
-      EmailRegisterErrorMessage.innerText = "*este campo es obligatorio";
+    let isEmailValid = emailValidation(emailRegister, EmailRegisterErrorMessage);
+    let areEmailsEqual = false;
+    let isPasswordValid = false;
+    let arePasswordsEqual = false;
 
-      emailRegister.focus();
+    if (isEmailValid) {
+      areEmailsEqual = areValuesEqual(emailRegister, emailConfirmRegister, EmailConfirmRegisterErrorMessage, "*los correos deben coincidir");
     }
-    //check if email has minimum length
-    else if(!regexLength10.test(emailRegister.value)){
-      //display error message
-      EmailRegisterErrorMessage.classList.remove("d-none");
-      EmailRegisterErrorMessage.innerText = "*el correo es demasiado corto";
-      
-      emailRegister.focus();
-    }
-    //check if email is valid
-    else if(!regexEmail.test(emailRegister.value)){
-      //display error message
-      EmailRegisterErrorMessage.classList.remove("d-none");
-      EmailRegisterErrorMessage.innerText = "*el correo debe ser válido";
-      
-      emailRegister.focus();
-    }
-    //check if email is equal to confirm email
-    else if(emailRegister.value != emailConfirmRegister.value){
-      //display error message
-      EmailConfirmRegisterErrorMessage.classList.remove("d-none");
-      EmailConfirmRegisterErrorMessage.innerText = "*los correos deben coincidir";
-      
-      emailConfirmRegister.focus();
-    }
-    //check if password is empty
-    else if(passwordRegister.value == "") {
-      //display error message
-      PasswordRegisterErrorMessage.classList.remove("d-none");
-      PasswordRegisterErrorMessage.innerText = "*este campo es obligatorio";
 
-      passwordRegister.focus();
+    if (isEmailValid && areEmailsEqual) {
+      isPasswordValid = passwordValidation(passwordRegister, PasswordRegisterErrorMessage);
     }
-    //check if password has minimum length
-    else if(!regexLength8.test(passwordRegister.value)){
-      //display error message
-      PasswordRegisterErrorMessage.classList.remove("d-none");
-      PasswordRegisterErrorMessage.innerText = "*la contraseña debe tener al menos 8 caracteres";
 
-      passwordRegister.focus();
+    if (isEmailValid && areEmailsEqual && isPasswordValid) {
+      arePasswordsEqual = areValuesEqual(passwordRegister, passwordConfirmRegister, PasswordConfirmRegisterErrorMessage, "*las contraseñas deben coincidir");
     }
-    //check if password is valid
-    else if(!regexPassword.test(passwordRegister.value)){
-    //display error message
-    PasswordRegisterErrorMessage.classList.remove("d-none");
-    PasswordRegisterErrorMessage.innerText = "*la contraseña debe contener al menos un número, una mayuscula y un simbolo (*.,¡!¿?-_+)";
 
-    passwordRegister.focus();
-    }
-    //check if password and password confirm are equal
-    else if(passwordRegister.value != passwordConfirmRegister.value){
-      PasswordConfirmRegisterErrorMessage.classList.remove("d-none");
-      PasswordConfirmRegisterErrorMessage.innerText = "*las contraseñas deben coincidir";
-
-      passwordConfirmRegister.focus();
-    }
     //submit register petition if all fields are valid
-    else{
+    if(isEmailValid && areEmailsEqual && isPasswordValid && arePasswordsEqual){
       //input data
       let email = emailRegister.value;
       let hashedPassword = CryptoJS.SHA256(passwordRegister.value).toString(CryptoJS.enc.Hex);
@@ -353,37 +260,15 @@ export const validationLoginRegister = () => {
       error.innerText = "";
     }
 
-    //check if email is empty
-    if (emailRecover.value == "") {
-      //display error message
-      emailRecoverErrorMessage.classList.remove("d-none");
-      emailRecoverErrorMessage.innerText = "*debe ingresar un correo";
-
-      emailRecover.focus();
-    }
-    //check if email has minimum length
-    else if(!regexLength10.test(emailRecover.value)){
-      //display error message
-      emailRecoverErrorMessage.classList.remove("d-none");
-      emailRecoverErrorMessage.innerText = "*el correo es demasiado corto";
-
-      emailRecover.focus();
-    }
-    //check if email is valid
-    else if(!regexEmail.test(emailRecover.value)){
-      //display error message
-      emailRecoverErrorMessage.classList.remove("d-none");
-      emailRecoverErrorMessage.innerText = "*el correo debe ser válido";
-
-      emailRecover.focus();
-    }else{
-      //display message
-      alert("¡Chequee su correo y siga las instrucciones!");
-      //reset register fields value
-      formRecover.reset();
-      //switch to login modal
-      accountModal(accountTemplate);
-    }
+    //check email
+      if(emailValidation(emailRecover, emailRecoverErrorMessage)){
+        //display message
+        alert("¡Chequee su correo y siga las instrucciones!");
+        //reset register fields value
+        formRecover.reset();
+        //switch to login modal
+        accountModal(accountTemplate);
+      }
   });
 }
 

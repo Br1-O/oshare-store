@@ -151,7 +151,7 @@ export const navBar = (isConnected = false, userInfo = {}) => {
                 userData.surname = "";
                 userData.email = "";
                 userData.picture = "";
-                userData.currentCart = [];
+                userData.cart = [];
 
                 //delete session data
                 freeSessionData("user");

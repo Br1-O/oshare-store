@@ -8,7 +8,7 @@ export const accountTemplate =
 <div id="modalLogin">
   <h4> Ingresa a tu cuenta </h4>
 
-  <form action="#" method="post" id="modal-container-form">
+  <form action="#" method="post" class="container-form">
 
     <div class="col w-100">
 
@@ -56,7 +56,7 @@ export const accountTemplate =
 <div id="modalRegister" class="d-none">
   <h4> ¡Crea tu cuenta! </h4>
 
-  <form action="#" method="post" id="modal-container-form">
+  <form action="#" method="post" class="container-form">
 
     <div class="col w-100">
 
@@ -116,7 +116,7 @@ export const accountTemplate =
 <div id="modalRecoverPass" class="d-none">
   <h4> Recupera tu contraseña </h4>
 
-  <form action="#" method="post" id="modal-container-form" style="min-width:100%;">
+  <form action="#" method="post" class="container-form" style="min-width:100%;">
 
     <div class="col w-100">
 

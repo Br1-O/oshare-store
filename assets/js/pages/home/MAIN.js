@@ -1,4 +1,5 @@
-export const homeContent = `        
+export const homeContent = `
+
     <!-- Billboard -->
     <section id="billboard" aria-label="marquesina de promociones semanales">
         <article class="billboard-ad carousel" data-carousel>

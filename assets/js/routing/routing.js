@@ -12,12 +12,17 @@ import { displayReviews } from "../pages/home/reviews.js";
 import { displayBlogArticles } from "../pages/home/blog.js";
 //shop page content
 import { shopContent } from "../pages/shop/MAIN.js";
+//contact page content
+import { contactPageContent } from "../pages/contact/MAIN.js";
+import { validationContactForm } from "../validation/contactForm.js";
+import { maxLengthValidation, minLengthValidation, phoneNumberValidation, emailValidation } from "../validation/utils.js";
+
 //page not found content
 import { notFoundMessage } from "../pages/notFound404.js";
 //carousel EXPERIMENTAL
 import { carousel } from "../pages/carousel-experimental.js";
 import { userData } from "../models/user.js";
-
+import { footer } from "../components/footer.js";
 
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
@@ -58,9 +63,11 @@ export const updateContent = () => {
         switch(hash) {
             //home page
             case '':
-                content.innerHTML = homeContent;
-
+                //include proper navbar
                 navBar(userData.isSessionSet);
+
+                //update home content
+                content.innerHTML = homeContent;
                 
                 //products container
                 const containerTrendingProducts = document.getElementById("container-trending-products");
@@ -71,6 +78,7 @@ export const updateContent = () => {
                 //blog articles container
                 const containerBlogArticles = document.getElementById("blog-container-articles");
                 
+                //fetch to home data
                 const homeFetchUtils = async () => {
                     let products= await fetchData("assets/js/json/products-list.json", "products"); 
                     let billboardAds= await fetchData("assets/js/json/billboard.json", "billboard");            
@@ -83,23 +91,52 @@ export const updateContent = () => {
                     displayBlogArticles(blogArticles, containerBlogArticles);
                 }
 
+                //apply fetch to home data
                 homeFetchUtils();
+
+                //include footer
+                footer();
 
             break;
             //store page
             case 'shop':
+
+                //include proper navbar
+                navBar(userData.isSessionSet);
+
+                //update page content
                 content.innerHTML = shopContent;
 
                 //products container
                 const shopContainerTrendingProducts = document.getElementById("container-trending-products");
 
+                //fetch to shop data
                 const shopFetchUtils = async () => {
                     let products= await fetchData("assets/js/json/products-list.json", "products"); 
 
                     displayProductList(products, shopContainerTrendingProducts);
                 }
 
+                //apply fetch to shop data
                 shopFetchUtils();
+
+                //include footer
+                footer();
+                
+            break;
+            case 'contacto':
+                //include proper navbar
+                navBar(userData.isSessionSet);
+
+                //update page content
+                content.innerHTML = contactPageContent;
+
+                //include validation for contact form
+                validationContactForm(maxLengthValidation, minLengthValidation, phoneNumberValidation, emailValidation);
+
+                //don't include footer
+                footer(false);
+
             break;
             case 'carousel':
                 content.innerHTML = carousel;
