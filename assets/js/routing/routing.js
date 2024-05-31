@@ -124,6 +124,7 @@ export const updateContent = () => {
                 footer();
                 
             break;
+            //contact page
             case 'contacto':
                 //include proper navbar
                 navBar(userData.isSessionSet);
@@ -137,6 +138,10 @@ export const updateContent = () => {
                 //don't include footer
                 footer(false);
 
+            break;
+            //contact page
+            case 'productos':
+                content.innerHTML = carousel;
             break;
             case 'carousel':
                 content.innerHTML = carousel;

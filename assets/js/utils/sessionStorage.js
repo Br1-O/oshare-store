@@ -3,7 +3,7 @@ export const setSessionData = (key, value) => {
 }
 
 export const getSessionData = (key) => {
-    sessionStorage.getItem(key);
+    return sessionStorage.getItem(key);
 }
 
 export const freeSessionData = (key) => {

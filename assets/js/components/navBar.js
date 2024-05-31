@@ -1,9 +1,10 @@
 import { setEventListenerModalAccount } from "../modals/account.js";
-import { setEventListenerModalShop } from "../modals/shop.js";
+import { setEventListenerModalCart } from "../modals/cart.js";
 import { updateContent } from "../routing/routing.js";
 import { redirectToPage } from "../utils/redirectToPage.js";
 import { freeSessionData } from "../utils/sessionStorage.js";
 import { userData } from "../models/user.js";
+import { fetchData } from "../utils/fetch.js";
 
 //default navBar
 const defaultNavBar = `
@@ -21,28 +22,22 @@ const defaultNavBar = `
             <a href="#shop" title="¡Compra tus prendas favoritas!"> Shop </a>
         </li>
         <li>
-            <a href="#trending-now" title="¡Mira nuestros productos!"> Productos </a>
+            <a href="#productos" title="¡Mira nuestros productos!"> Productos </a>
         </li>
         <li>
             <a href="#contacto" title="¡Visitanos!"> Contacto </a>
         </li>
-        </ul>
+    </ul>
 
-        <ul class="nav-icons">
+    <ul class="nav-icons">
         <li>        
-            <a href="#">
-                <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
-            </a>
+            <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
-            </a>
+            <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-user nav-icon' id="account-icon" alt="Login" title="¡Accede a tu cuenta!"></i>
-            </a>
+            <i class='bx bx-user nav-icon' id="account-icon" alt="Login" title="¡Accede a tu cuenta!"></i>
         </li>
         <li>
             <i class='bx bx-menu nav-icon' id="menu-icon" alt="Side menu"></i>
@@ -67,33 +62,25 @@ const sessionNavBar = `
             <a href="#shop" title="¡Compra tus prendas favoritas!"> Shop </a>
         </li>
         <li>
-            <a href="#trending-now" title="¡Mira nuestros productos!"> Productos </a>
+            <a href="#productos" title="¡Mira nuestros productos!"> Productos </a>
         </li>
         <li>
             <a href="#contacto" title="¡Visitanos!"> Contacto </a>
         </li>
-        </ul>
+    </ul>
 
-        <ul class="nav-icons">
+    <ul class="nav-icons">
         <li>        
-            <a href="#">
-                <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
-            </a>
+            <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
-            </a>
+            <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bxs-user-detail nav-icon' id="profile-icon" alt="Profile options" title="Datos del perfil"></i>
-            </a>
+            <i class='bx bxs-user-detail nav-icon' id="profile-icon" alt="Profile options" title="Datos del perfil"></i>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-log-in nav-icon' id="log-out-icon" alt="Logout" title="Cerrar sesión"></i>
-            </a>
+            <i class='bx bx-log-in nav-icon' id="log-out-icon" alt="Logout" title="Cerrar sesión"></i>
         </li>
         <li>
             <i class='bx bx-menu nav-icon' id="menu-icon" alt="Side menu"></i>
@@ -105,7 +92,10 @@ const sessionNavBar = `
 //header tag
 const header = document.getElementById('navContainer');
 
-export const navBar = (isConnected = false, userInfo = {}) => {
+export const navBar = async(isConnected = false, userInfo = {}) => {
+
+    //fetch product data
+    let products = await fetchData("assets/js/json/products-list.json", "products");
     
     //check if user is connected
 
@@ -115,11 +105,11 @@ export const navBar = (isConnected = false, userInfo = {}) => {
 
             //nav icons
             const btnAccount = document.getElementById("account-icon");
-            const btnShop = document.getElementById("shop-icon");
+            const btnCart = document.getElementById("shop-icon");
 
             //event listeners
             setEventListenerModalAccount(btnAccount);
-            setEventListenerModalShop(btnShop);
+            setEventListenerModalCart(btnCart, userData.cart, products);
 
         } else {
             //change content of navBar
@@ -131,13 +121,14 @@ export const navBar = (isConnected = false, userInfo = {}) => {
             const btnLogOut = document.getElementById("log-out-icon");
 
             //event listeners
-            setEventListenerModalShop(btnShop);
+            setEventListenerModalCart(btnShop, userData.cart, products);
             
             //event listener for profile options icon
             btnProfile.addEventListener("click", () => {
                 console.log(userData.name);
                 console.log(userData.surname);
                 console.log(userData.email);
+                console.log(userData.cart);
                 console.log(userData);
             });
 

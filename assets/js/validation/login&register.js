@@ -6,6 +6,7 @@ import { userData } from "../models/user.js";
 import { updateContent } from "../routing/routing.js";
 import { closeModal } from "../modals/utils.js";
 import { areValuesEqual, emailValidation, passwordValidation } from "./utils.js";
+import { getLocalData, searchInLocalStorage, setLocalData } from "../utils/localStorage.js";
 
 export const validationLoginRegister = () => {
 
@@ -43,7 +44,7 @@ export const validationLoginRegister = () => {
   //all error fields
     const errorMessages = document.getElementsByClassName('error');
 
-  //validation for login fields
+  //validation for login fields and implementation for login
   formLogin.addEventListener("submit", (event) => {
 
     //prevent submit of form
@@ -69,67 +70,75 @@ export const validationLoginRegister = () => {
       let email = emailLogin.value;
       let hashedPassword = CryptoJS.SHA256(passwordLogin.value).toString(CryptoJS.enc.Hex);
 
-      let data = {
-        email: email,
-        password: hashedPassword
-      }
-
       //verification to dummy data (later will be switched for fetch function to backend db)
       let submitLogin = async () => {
         let validUser = false;
-        let users = await fetchData("assets/js/json/users.json", "users");
 
-        users.forEach(user => {
+        //check if oshare_designs object already exists in localstorage
+        let oshareLocal = searchInLocalStorage("oshare_designs");
 
-          if (user.email === email) {
-            validUser = true;
-            if (user.password === hashedPassword) {
+        //if it exist
+        if (oshareLocal) {
 
-              //set session object
-              let sessionData = {
-                "name" : user.name,
-                "surname" : user.surname,
-                "email" : user.email,
-                "picture" : user.profileImage,
-                "cart" : user.currentCart
+          //parse the JSON into a Js object
+          oshareLocal = JSON.parse(oshareLocal);
+
+          //iterate through users in the object
+          oshareLocal.users.forEach(user => {
+            //check if email exists
+            if (user.email == email) {
+
+              validUser = true;
+
+              //check if passwords match
+              if (user.key === hashedPassword) {
+  
+                //set session object
+                let sessionData = {
+                  "name" : user.name,
+                  "surname" : user.surname,
+                  "email" : user.email,
+                  "picture" : user.profileImage,
+                  "cart" : user.cart
+                }
+  
+                //set user object
+                userData.name = user.name;
+                userData.surname = user.surname;
+                userData.email = user.email;
+                userData.picture = user.profileImage;
+                userData.cart = [1, 2, 1, 1, 1, 2];
+  
+                //change session state
+                userData.isSessionSet = true;
+  
+                //set session data
+                setSessionData("user", JSON.stringify(sessionData));
+  
+                //reset form fields values
+                formRegister.reset();
+                formLogin.reset();
+                formRecover.reset();
+                    
+                //close modal window
+                closeModal();
+  
+                //redirect to logged page
+                redirectToPage((window.location.hash).slice(1), 0);
+  
+                //update content based on change of session state
+                updateContent();
+  
+              } else {
+                //display error message
+                emailLoginErrorMessage.classList.remove("d-none");
+                emailLoginErrorMessage.innerText = "¡Usuario o contraseña incorrectos!";
+  
+                emailLogin.focus();
               }
-
-              //set user object
-              userData.name = user.name;
-              userData.surname = user.surname;
-              userData.email = user.email;
-              userData.picture = user.profileImage;
-              userData.cart = user.currentCart;
-
-              //change session state
-              userData.isSessionSet = true;
-
-              //set session data
-              setSessionData("user", JSON.stringify(sessionData));
-
-              //reset form fields values
-              formRegister.reset();
-              formLogin.reset();
-              formRecover.reset();
-                  
-              //close modal window
-              closeModal();
-
-              //redirect to logged page
-              redirectToPage((window.location.hash).slice(1), 0);
-
-              //update content based on change of session state
-              updateContent();
-
-            } else {
-              //display error message
-              emailLoginErrorMessage.classList.remove("d-none");
-              emailLoginErrorMessage.innerText = "¡Usuario o contraseña incorrectos!";
-
-              emailLogin.focus();
             }
-          }
-        });
+          });
+        }
 
         if (!validUser) {
           //display error message
@@ -144,7 +153,7 @@ export const validationLoginRegister = () => {
     }
   });
   
-  //validation for register fields
+  //validation for register fields and implementation for register
   formRegister.addEventListener("submit", (event) => {
         
     //prevent submit of form
@@ -179,18 +188,35 @@ export const validationLoginRegister = () => {
       let email = emailRegister.value;
       let hashedPassword = CryptoJS.SHA256(passwordRegister.value).toString(CryptoJS.enc.Hex);
 
-      let data = {
-        email: email,
-        password: hashedPassword
-      }
-
       let validUser = true;
 
       //verification to dummy data (later will be switched for fetch function to backend db)
       let submitRegister = async () => {
-        let users = await fetchData("assets/js/json/users.json", "users");
 
-        users.forEach(user => {
+        //check if oshare_designs object is already in localstorage
+        let oshareLocal = searchInLocalStorage("oshare_designs");
+
+        //If not create empty object
+        if (!oshareLocal) {
+
+          let oshareLocalObject = 
+          {
+            users: [],
+            preferences: []
+          }
+
+          //set empty object into localstorage
+          setLocalData("oshare_designs", JSON.stringify(oshareLocalObject));
+
+          //get empty object from localstorage
+          oshareLocal = getLocalData("oshare_designs");
+        }
+
+        //parse the JSON into Js object
+        oshareLocal = JSON.parse(oshareLocal);
+
+        //iterate through users store in the object
+        oshareLocal.users.forEach(user => {
           //check if email is already registered
           if (user.email == emailRegister.value) {
             validUser = false;
@@ -211,7 +237,26 @@ export const validationLoginRegister = () => {
           //close modal window
           closeModal();
 
-          //set session object
+          //set user object for localStorage
+          let user = {
+            "name" : "",
+            "surname" : "",
+            "email" : email,
+            "key" : hashedPassword,
+            "profileImage" : "",
+            "cart" : []
+          }
+
+          //add user to oshareLocal's users
+          oshareLocal.users.push(user);
+          //set localStorage data
+          setLocalData("oshare_designs", JSON.stringify(oshareLocal));
+
+          //set data to user object
+          userData.email = email;
+
+          
+          //set session object for sessionStorage
           let sessionData = {
             "name" : "",
             "surname" : "",
@@ -220,12 +265,8 @@ export const validationLoginRegister = () => {
             "cart" : []
           }
 
-          //set user object
-          userData.email = email;
-
           //change session state
           userData.isSessionSet = true;
-
           //set session data
           setSessionData("user", JSON.stringify(sessionData));
 
@@ -248,7 +289,7 @@ export const validationLoginRegister = () => {
     }
   });
 
-  //validation for recover password field
+  //validation for recover password field and implementation for recover
   formRecover.addEventListener("submit", (event) => {
 
     //prevent submit of form
