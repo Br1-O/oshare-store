@@ -33,7 +33,7 @@ export const setModalCart = (cart, productList) => {
 
     const cartsubtotal = document.querySelector("#cart-subtotal span");
     const cartNumberOfItems = document.getElementById("cart-total-items");
-
+    const navBarNumberOfItems = document.getElementsByClassName("navbar-cart-total-items");
 
     let cartTemplate = "";
     let subtotal = 0;
@@ -125,6 +125,10 @@ export const setModalCart = (cart, productList) => {
 
     //change number of items in the shopping cart
     cartNumberOfItems.innerText = "(" + cart.length+ ")" ;
+    
+    for (const numberDisplay of navBarNumberOfItems) {
+        numberDisplay.innerText = cart.length;
+    }
 
     //change content and subtotal of the shopping cart
     cartContent.innerHTML = cartTemplate;

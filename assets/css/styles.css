@@ -967,6 +967,30 @@ body{
     display:none;
 }
 
+#nav-cart-container{
+    position: relative;
+}
+
+.navbar-cart-total-items{
+    min-width: 1.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.25rem;
+
+    position: absolute;
+    top: 40%;
+    right: 15%;
+
+    color: var(--font-hover-color);
+    background-color: var(--font-color);
+    font-size: 0.9rem;
+
+    border-radius: 50%;
+}
+
 /* ■■■■­■■­■■­■■­■■ MAIN ■■­■■­■■­■■­■■­■■­ ­*/
 
 .main{

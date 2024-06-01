@@ -33,7 +33,10 @@ const defaultNavBar = `
             <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
         </li>
         <li>
-            <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
+            <div id="nav-cart-container">
+                <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
+                <span class="navbar-cart-total-items"> 0 </span>
+            </div>
         </li>
         <li>
             <i class='bx bx-user nav-icon' id="account-icon" alt="Login" title="¡Accede a tu cuenta!"></i>
@@ -73,7 +76,10 @@ const sessionNavBar = `
             <i class='bx bx-search nav-icon' id="search-icon" alt="Search" title="¡Busca la prenda que deseas!"></i>
         </li>
         <li>
-            <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
+            <div id="nav-cart-container">
+                <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
+                <span class="navbar-cart-total-items"> 0 </span>
+            </div>
         </li>
         <li>
             <i class='bx bxs-user-detail nav-icon' id="profile-icon" alt="Profile options" title="Datos del perfil"></i>
