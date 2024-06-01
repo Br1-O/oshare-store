@@ -12,7 +12,8 @@
           "assets/resources/img/examples/products/7-1.jpg",
           "assets/resources/img/examples/products/7-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/sets/set-deportivo-mediano",
+        "categories": ["sets", "deportivo"],
         "tags": ["Nuevo", "Oferta"],
         "rating": 4.5,
         "favorite": false
@@ -26,7 +27,8 @@
           "assets/resources/img/examples/products/8-1.jpg",
           "assets/resources/img/examples/products/8-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/conjuntos/conjunto-de-jogging",
+        "categories": ["conjuntos", "deportivo"],
         "tags": ["Nuevo"],
         "rating": 2,
         "favorite": true
@@ -40,7 +42,8 @@
           "assets/resources/img/examples/products/15-1.jpg",
           "assets/resources/img/examples/products/15-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/camisas/camisa-formal",
+        "categories": ["camisas", "formal"],
         "tags": ["Nuevo"],
         "rating": 3.5,
         "favorite": false
@@ -54,7 +57,8 @@
           "assets/resources/img/examples/products/10-1.jpg",
           "assets/resources/img/examples/products/10-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/vestidos/vestido-de-verano",
+        "categories": ["vestidos", "casual", "verano"],
         "tags": ["Nuevo", "Oferta"],
         "rating": 3,
         "favorite": true
@@ -68,7 +72,8 @@
           "assets/resources/img/examples/products/11-1.jpg",
           "assets/resources/img/examples/products/11-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/zapatillas/zapatillas-deportivas",
+        "categories": ["zapatillas", "deportivo"],
         "tags": ["Oferta"],
         "rating": 5,
         "favorite": false
@@ -82,7 +87,8 @@
           "assets/resources/img/examples/products/12-1.jpg",
           "assets/resources/img/examples/products/12-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/pantalones/pantalon-vaquero",
+        "categories": ["pantalones", "casual", "jeans"],
         "tags": ["Oferta especial"],
         "rating": 4,
         "favorite": true
@@ -96,7 +102,8 @@
           "assets/resources/img/examples/products/13-1.jpg",
           "assets/resources/img/examples/products/13-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/accesorios/bolso-de-cuero",
+        "categories": ["accesorios"],
         "tags": ["Oferta"],
         "rating": 4,
         "favorite": false
@@ -110,7 +117,8 @@
           "assets/resources/img/examples/products/14-1.jpg",
           "assets/resources/img/examples/products/14-2.jpg"
         ],
-        "link": "#",
+        "link": "#tienda/producto/accesorios/reloj-de-pulsera",
+        "categories": ["accesorios"],
         "tags": ["Oferta"],
         "rating": 4.5,
         "favorite": true

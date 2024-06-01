@@ -23,7 +23,9 @@ import { notFoundMessage } from "../pages/notFound404.js";
 import { carousel } from "../pages/carousel-experimental.js";
 import { userData } from "../models/user.js";
 import { footer } from "../components/footer.js";
-
+import { displaySingleProductPage } from "../pages/product/MAIN.js";
+import { getSessionData, modifySessionCart, setUserDataFromSessionData } from "../utils/sessionStorage.js";
+import { setModalCart } from "../modals/cart.js";
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
 
@@ -44,15 +46,95 @@ import { footer } from "../components/footer.js";
 //provitional hash based routing system until finishing project, then we switch to the routing based on raw URL paths
 
 //Update content based on hash
-export const updateContent = () => {
+export const updateContent = async() => {
+    //get the url
     const hash = window.location.hash.substring(1); // Remove leading "#"
-    // Get the section ID from the hash
+
+    //get the section ID from the hash
     const sectionId = window.location.hash.substring(1); // Remove the leading '#'
 
     //container for page content
     const content = document.getElementById("main");
     //section with the corresponding ID
     const section = document.getElementById(sectionId);
+
+    //fetch product data
+    let productsList = await fetchData("assets/js/json/products-list.json", "products");
+
+    //■■■■■■■■■■■■■■■■■■■■ Shopping cart updating ■■■■■■■■■■■■■■■■■■■■//
+
+    //update shopping cart's content
+    setModalCart(userData.cart, productsList);
+
+    // Listen for itemAddedToCart event to update the cart
+    window.addEventListener('itemAddedToCart', () => {
+        setModalCart(userData.cart, productsList);
+    });
+
+    //■■■■■■■■■■■■■■■■■■■■ Product page dinamic URL rendering ■■■■■■■■■■■■■■■■■■■■//
+
+    //find product by category and name (name separated with "-" instead of blank spaces)
+    const findProductByCategoryAndName = async(category, name) => {
+
+        //fetch product data
+        let products = await fetchData("assets/js/json/products-list.json", "products");
+
+        //check if any of the categories or the name matches 
+        return products.find((product) => {
+            return product.categories.some(productCategory => productCategory === category) 
+                && product.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ /g, '-') === name;
+        });
+        //(normalize first to wipe special characters -> change to lowercase version -> replace the spaces with "-")
+    }
+
+    // Function to render a product page
+    const renderProductPage = (product) => {
+
+        //check if product exists
+        if (!product) {
+            //if not display 404 page and redirect
+            content.innerHTML = notFoundMessage;
+            redirectToPage("", 5000);
+            return;
+        }else{
+            //display page product's content
+            displaySingleProductPage(product, content, modifySessionCart, userData);
+
+            //if user is logged update user's model data from session storage data
+            if (userData.isSessionSet) {
+                setUserDataFromSessionData(userData);
+            }
+        }
+    }
+
+    // Dynamic URL matching with regular expression
+    const tiendaProductoPattern = /^tienda\/producto\/([^\/]+)\/([^\/]+)$/;
+    //URL has to be in the form: tienda/producto/category/name-of-product
+
+    if (tiendaProductoPattern.test(hash)) {
+        //check and get all the dynamic paths of the URL
+        const match = hash.match(tiendaProductoPattern);
+        const category = match[1];
+        const productName = match[2];
+
+        //find the product
+        const product = await findProductByCategoryAndName(category, productName);
+
+        //render the product 
+        renderProductPage(product);
+        
+        //scroll to the top of the new page
+        window.scrollTo({ top: 0});
+
+        //include proper navbar
+        navBar(userData.isSessionSet);
+        //include footer
+        footer();
+
+        return;
+    }
+
+    //■■■■■■■■■■■■■■■■■■■■ hash system routing ■■■■■■■■■■■■■■■■■■■■//
 
     if (section) {
         //scroll to the section with that id if it exist
@@ -63,6 +145,7 @@ export const updateContent = () => {
         switch(hash) {
             //home page
             case '':
+
                 //include proper navbar
                 navBar(userData.isSessionSet);
 
@@ -99,7 +182,7 @@ export const updateContent = () => {
 
             break;
             //store page
-            case 'shop':
+            case 'tienda':
 
                 //include proper navbar
                 navBar(userData.isSessionSet);
@@ -139,17 +222,26 @@ export const updateContent = () => {
                 footer(false);
 
             break;
-            //contact page
+            //products page
             case 'productos':
+                //include proper navbar
+                navBar(userData.isSessionSet);
+
                 content.innerHTML = carousel;
-            break;
-            case 'carousel':
-                content.innerHTML = carousel;
+
+                //include footer
+                footer();
             break;
             //not found page
             default:
+                //include proper navbar
+                navBar(userData.isSessionSet);
+
                 content.innerHTML = notFoundMessage;
                 redirectToPage("", 5000);
+
+                //include footer
+                footer();
             break;
         }
 
@@ -168,6 +260,18 @@ export const updateContent = () => {
 
 //Handle popstate event (back/forward navigation)
 window.addEventListener("popstate", updateContent);
+
 // Update content when the page loads or hash changes
-window.addEventListener('load', updateContent);
+window.addEventListener('load', () => {
+
+    //update content based on the URL
+    updateContent();
+    //recover session data if user was connected
+    if(getSessionData("oshare_designs_session")){
+        setUserDataFromSessionData(userData);
+    }
+
+});
+
+// Update content when the page loads or hash changes
 window.addEventListener('hashchange', updateContent);

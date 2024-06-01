@@ -1,9 +1,9 @@
-let isSessionSet = sessionStorage.getItem("user") ? true : false;
+let session = sessionStorage.getItem("oshare_designs_session") ? true : false;
 
 export let userData = {
 
     //state for session
-    isSessionSet : isSessionSet,
+    isSessionSet : session,
 
     //most used attributes
     name : "",

@@ -1,13 +1,11 @@
-//display content of products json into container
-export const displayProductList = (productList, container) => {
+export const displaySingleProductPage = (product, container, modifySessionCart, userData = {}) => {
 
     //final template storage
     let template = "";
     let tagsTemplate = "";
     let ratingTemplate = "";
 
-    //add each product's info into literal template
-    productList.forEach((product) => {
+    //add product's info into literal template
 
         //set rating template
         switch (parseFloat(product.rating)) {
@@ -137,7 +135,7 @@ export const displayProductList = (productList, container) => {
         });
 
         //add filled product's template into variable
-        template += `<div class="product-card" id="product-${product.id}" data-product="${product.id}" data-aos="fade-up" data-aos-offset="50" data-aos-duration="2000" >
+        template = `<div class="product-card" id="product-${product.id}" data-product="${product.id}" data-aos="fade-up" data-aos-offset="50" data-aos-duration="2000" >
                         <a href="${product.link}">
                             <img class="product-image" id="product-img-${product.id}" src= ${product.image[0]} src2= ${product.image[1] ? product.image[1] : "none"} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
                         </a>
@@ -162,45 +160,34 @@ export const displayProductList = (productList, container) => {
                                 <h4 class="product-name"> ${product.name} </h4>
                             </a>
                             <p class="product-description-cover"> ${product["description-cover"]} </p>
-                            <p class="product-price"> $${product.price} </p>
+                            
+                            <div class="flex row" style="justify-content: space-between;">
+                                <i id="btn-cart-add" class='bx bxs-cart-add' style="margin-right:20vh; font-size:2rem; cursor:pointer;"></i>
+                                <p class="product-price"> $${product.price} </p>
+                            </div>
                         </div>
                     </div>`;
 
-        //clean tags variable for new iteration
-        tagsTemplate = "";
-    });
-
-    //set container's content as template
+    //set product page template into container
     container.innerHTML = template;
 
-    //get all imgs of products
-    const productImgs = document.getElementsByClassName("product-image");
+    //set event listeners
 
-    // Convert HTMLCollection to array
-    const productImgsArray = Array.from(productImgs);
+        //add to shopping cart button
+        let btnAddToCart = document.getElementById("btn-cart-add");
 
-    //event on hover of image to change source from image1 to image2
-    productImgsArray.forEach((image) => {
-        
-        let source1 = image.getAttribute('src');
-        let source2 = image.getAttribute('src2');
+        btnAddToCart.addEventListener("click", () => {
 
-        if (image.getAttribute('src2') != "none") {
+            //add product to cart of user object
+            userData.cart.push(product.id);
 
-            image.addEventListener("mouseover", () => { 
-                setTimeout(() => {
-                    image.setAttribute('src', source2);
-                    image.setAttribute('src2', source1);
-                }, 100);
-            });
+            if (userData.isSessionSet) {
+                //update session storage cart to user object's cart
+                modifySessionCart(userData);
+            }
 
-            image.addEventListener("mouseleave", () => {
-                    setTimeout(() => {
-                        image.setAttribute('src', source1);
-                        image.setAttribute('src2', source2);
-                    }, 100);
-            });
-        } 
-    });
+            //dispatch event to update screen
+            window.dispatchEvent(new Event('itemAddedToCart'));
+        });
 
 }

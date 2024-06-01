@@ -1,10 +1,9 @@
 import { setEventListenerModalAccount } from "../modals/account.js";
-import { setEventListenerModalCart } from "../modals/cart.js";
+import { setEventListenerModalCart, setModalCart } from "../modals/cart.js";
 import { updateContent } from "../routing/routing.js";
 import { redirectToPage } from "../utils/redirectToPage.js";
-import { freeSessionData } from "../utils/sessionStorage.js";
+import { freeSessionData, setUserDataFromSessionData } from "../utils/sessionStorage.js";
 import { userData } from "../models/user.js";
-import { fetchData } from "../utils/fetch.js";
 
 //default navBar
 const defaultNavBar = `
@@ -19,7 +18,7 @@ const defaultNavBar = `
             <a href="#" title="Oshare Designs Store"> Inicio </a>
         </li>
         <li>
-            <a href="#shop" title="¡Compra tus prendas favoritas!"> Shop </a>
+            <a href="#tienda" title="¡Compra tus prendas favoritas!"> Shop </a>
         </li>
         <li>
             <a href="#productos" title="¡Mira nuestros productos!"> Productos </a>
@@ -59,7 +58,7 @@ const sessionNavBar = `
             <a href="#" title="Oshare Designs Store"> Inicio </a>
         </li>
         <li>
-            <a href="#shop" title="¡Compra tus prendas favoritas!"> Shop </a>
+            <a href="#tienda" title="¡Compra tus prendas favoritas!"> Shop </a>
         </li>
         <li>
             <a href="#productos" title="¡Mira nuestros productos!"> Productos </a>
@@ -92,11 +91,8 @@ const sessionNavBar = `
 //header tag
 const header = document.getElementById('navContainer');
 
-export const navBar = async(isConnected = false, userInfo = {}) => {
+export const navBar = (isConnected = false, userInfo = {}) => {
 
-    //fetch product data
-    let products = await fetchData("assets/js/json/products-list.json", "products");
-    
     //check if user is connected
 
         if (!isConnected) {
@@ -109,19 +105,22 @@ export const navBar = async(isConnected = false, userInfo = {}) => {
 
             //event listeners
             setEventListenerModalAccount(btnAccount);
-            setEventListenerModalCart(btnCart, userData.cart, products);
+            setEventListenerModalCart(btnCart);
 
         } else {
             //change content of navBar
             header.innerHTML = sessionNavBar;
 
             //nav icons
-            const btnShop = document.getElementById("shop-icon");
+            const btnCart = document.getElementById("shop-icon");
             const btnProfile = document.getElementById("profile-icon");
             const btnLogOut = document.getElementById("log-out-icon");
 
+            //set user object's data with session data
+            setUserDataFromSessionData(userData);
+
             //event listeners
-            setEventListenerModalCart(btnShop, userData.cart, products);
+            setEventListenerModalCart(btnCart);
             
             //event listener for profile options icon
             btnProfile.addEventListener("click", () => {
@@ -145,7 +144,7 @@ export const navBar = async(isConnected = false, userInfo = {}) => {
                 userData.cart = [];
 
                 //delete session data
-                freeSessionData("user");
+                freeSessionData("oshare_designs_session");
 
                 //redirect to logged page
                 redirectToPage((window.location.hash).slice(1), 0);
@@ -191,3 +190,4 @@ export const navBar = async(isConnected = false, userInfo = {}) => {
         });
 
 }
+

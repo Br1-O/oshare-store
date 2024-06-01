@@ -9,3 +9,42 @@ export const getSessionData = (key) => {
 export const freeSessionData = (key) => {
     sessionStorage.removeItem(key);
 }
+
+export const setUserDataFromSessionData = (userData) => {
+
+    //set user object base on sessionStorage
+    if (getSessionData("oshare_designs_session")) {
+
+        let sessionData = JSON.parse(getSessionData("oshare_designs_session"));
+
+        //set user object
+        userData.name = sessionData.name;
+        userData.surname = sessionData.surname;
+        userData.email = sessionData.email;
+        userData.picture = sessionData.picture;
+        userData.cart = sessionData.cart;
+
+        //change session state
+        userData.isSessionSet = true;
+    }
+
+    return getSessionData("oshare_designs_session");
+}
+
+export const modifySessionCart = (userData = {}) => {
+
+    //check if user is logged
+    if (userData.isSessionSet) {
+
+        //get session cart
+        let currentSession = (JSON.parse(getSessionData("oshare_designs_session")));
+
+        //set session's cart to user object's cart
+        currentSession.cart = userData.cart;
+
+        //update session's data
+        currentSession = JSON.stringify(currentSession);
+        setSessionData("oshare_designs_session", currentSession);
+    }
+}
+

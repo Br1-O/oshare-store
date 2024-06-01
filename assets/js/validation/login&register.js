@@ -1,6 +1,6 @@
 import { fetchData } from "../utils/fetch.js";
 import { accountTemplate, accountModal } from "../modals/account.js";
-import { setSessionData } from "../utils/sessionStorage.js";
+import { setSessionData, setUserDataFromSessionData } from "../utils/sessionStorage.js";
 import { redirectToPage } from "../utils/redirectToPage.js";
 import { userData } from "../models/user.js";
 import { updateContent } from "../routing/routing.js";
@@ -99,21 +99,15 @@ export const validationLoginRegister = () => {
                   "surname" : user.surname,
                   "email" : user.email,
                   "picture" : user.profileImage,
-                  "cart" : user.cart
+                  "cart" : [1, 2, 1, 1, 1, 2],
+                  "isSessionSet" : true
                 }
   
-                //set user object
-                userData.name = user.name;
-                userData.surname = user.surname;
-                userData.email = user.email;
-                userData.picture = user.profileImage;
-                userData.cart = [1, 2, 1, 1, 1, 2];
-  
-                //change session state
-                userData.isSessionSet = true;
-  
                 //set session data
-                setSessionData("user", JSON.stringify(sessionData));
+                setSessionData("oshare_designs_session", JSON.stringify(sessionData));
+
+                //set user object
+                setUserDataFromSessionData(userData);
   
                 //reset form fields values
                 formRegister.reset();
@@ -255,20 +249,21 @@ export const validationLoginRegister = () => {
           //set data to user object
           userData.email = email;
 
-          
+          //change session state
+          userData.isSessionSet = true;
+
           //set session object for sessionStorage
           let sessionData = {
             "name" : "",
             "surname" : "",
             "email" : email,
             "picture" : "",
-            "cart" : []
+            "cart" : [],
+            "isSessionSet" : true
           }
 
-          //change session state
-          userData.isSessionSet = true;
           //set session data
-          setSessionData("user", JSON.stringify(sessionData));
+          setSessionData("oshare_designs_session", JSON.stringify(sessionData));
 
           //redirect to logged page
           redirectToPage((window.location.hash).slice(1), 0);
