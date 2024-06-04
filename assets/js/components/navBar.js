@@ -4,6 +4,7 @@ import { updateContent } from "../routing/routing.js";
 import { redirectToPage } from "../utils/redirectToPage.js";
 import { freeSessionData, setUserDataFromSessionData } from "../utils/sessionStorage.js";
 import { userData } from "../models/user.js";
+import { updateAccountData } from "../utils/localStorage.js";
 
 //default navBar
 const defaultNavBar = `
@@ -35,7 +36,7 @@ const defaultNavBar = `
         <li>
             <div id="nav-cart-container">
                 <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
-                <span class="navbar-cart-total-items"> 0 </span>
+                <span class="navbar-cart-total-items"></span>
             </div>
         </li>
         <li>
@@ -78,7 +79,7 @@ const sessionNavBar = `
         <li>
             <div id="nav-cart-container">
                 <i class='bx bx-cart nav-icon' id="shop-icon" alt="Shop" title="Chequea tus compras"></i>
-                <span class="navbar-cart-total-items"> 0 </span>
+                <span class="navbar-cart-total-items"></span>
             </div>
         </li>
         <li>
@@ -97,7 +98,7 @@ const sessionNavBar = `
 //header tag
 const header = document.getElementById('navContainer');
 
-export const navBar = (isConnected = false, userInfo = {}) => {
+export const navBar = (isConnected = false) => {
 
     //check if user is connected
 
@@ -139,6 +140,10 @@ export const navBar = (isConnected = false, userInfo = {}) => {
 
             //event listener for log out icon
             btnLogOut.addEventListener("click", () => {
+
+                //update account's data before logging out
+                updateAccountData(userData);
+
                 //change session state
                 userData.isSessionSet = false;
 
@@ -158,6 +163,12 @@ export const navBar = (isConnected = false, userInfo = {}) => {
                 //update content based on change of session state
                 updateContent();
             });
+        }
+
+    //display number of items currently in the shopping cart
+        const navBarNumberOfItems = document.getElementsByClassName("navbar-cart-total-items");
+        for (const numberDisplay of navBarNumberOfItems) {
+            numberDisplay.innerText = userData.cart.length;
         }
 
     //scroll behavior

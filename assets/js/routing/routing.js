@@ -26,6 +26,7 @@ import { footer } from "../components/footer.js";
 import { displaySingleProductPage } from "../pages/product/MAIN.js";
 import { getSessionData, modifySessionCart, setUserDataFromSessionData } from "../utils/sessionStorage.js";
 import { setModalCart } from "../modals/cart.js";
+import { updateAccountData } from "../utils/localStorage.js";
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
 
@@ -64,11 +65,33 @@ export const updateContent = async() => {
     //■■■■■■■■■■■■■■■■■■■■ Shopping cart updating ■■■■■■■■■■■■■■■■■■■■//
 
     //update shopping cart's content
-    setModalCart(userData.cart, productsList);
+    setModalCart(userData, productsList);
 
     // Listen for itemAddedToCart event to update the cart
-    window.addEventListener('itemAddedToCart', () => {
-        setModalCart(userData.cart, productsList);
+    window.addEventListener('itemAddedToCart', () => {                
+        
+        //update session storage cart to user object's cart
+        modifySessionCart(userData);
+
+        //update shopping cart's content
+        setModalCart(userData, productsList);
+        
+        //update account's data
+        updateAccountData(userData);
+    });
+
+    // Listen for itemDeletedFromCart event to update the cart
+    window.addEventListener('itemDeletedFromCart', () => {
+
+        //update session's shopping cart value
+        modifySessionCart(userData);
+        
+        //update account's data
+        updateAccountData(userData);
+
+        //update shopping cart's content
+        setModalCart(userData, productsList);
+
     });
 
     //■■■■■■■■■■■■■■■■■■■■ Product page dinamic URL rendering ■■■■■■■■■■■■■■■■■■■■//
@@ -98,7 +121,7 @@ export const updateContent = async() => {
             return;
         }else{
             //display page product's content
-            displaySingleProductPage(product, content, modifySessionCart, userData);
+            displaySingleProductPage(product, content, userData);
 
             //if user is logged update user's model data from session storage data
             if (userData.isSessionSet) {
@@ -258,20 +281,29 @@ export const updateContent = async() => {
     }
 }
 
-//Handle popstate event (back/forward navigation)
+//handle popstate event (back/forward navigation)
 window.addEventListener("popstate", updateContent);
 
-// Update content when the page loads or hash changes
+//update content when the page loads or hash changes
 window.addEventListener('load', () => {
 
-    //update content based on the URL
-    updateContent();
     //recover session data if user was connected
     if(getSessionData("oshare_designs_session")){
+        //set user object's data with session's data  
         setUserDataFromSessionData(userData);
     }
 
+    //update content based on the URL
+    updateContent();
+
 });
 
-// Update content when the page loads or hash changes
+//update content when the page loads or hash changes
 window.addEventListener('hashchange', updateContent);
+
+
+// window.onbeforeunload = function () {
+
+//     return "Are you sure";
+// };
+

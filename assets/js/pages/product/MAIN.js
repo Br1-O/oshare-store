@@ -1,4 +1,4 @@
-export const displaySingleProductPage = (product, container, modifySessionCart, userData = {}) => {
+export const displaySingleProductPage = (product, container, userData = {}) => {
 
     //final template storage
     let template = "";
@@ -180,11 +180,6 @@ export const displaySingleProductPage = (product, container, modifySessionCart, 
 
             //add product to cart of user object
             userData.cart.push(product.id);
-
-            if (userData.isSessionSet) {
-                //update session storage cart to user object's cart
-                modifySessionCart(userData);
-            }
 
             //dispatch event to update screen
             window.dispatchEvent(new Event('itemAddedToCart'));

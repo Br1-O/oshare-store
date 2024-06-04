@@ -99,7 +99,7 @@ export const validationLoginRegister = () => {
                   "surname" : user.surname,
                   "email" : user.email,
                   "picture" : user.profileImage,
-                  "cart" : [1, 2, 1, 1, 1, 2],
+                  "cart" : user.cart,
                   "isSessionSet" : true
                 }
   

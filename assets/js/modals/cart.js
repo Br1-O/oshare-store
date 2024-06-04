@@ -26,7 +26,7 @@ export const setEventListenerModalCart = (btnCart) => {
     });
 }
 
-export const setModalCart = (cart, productList) => {
+export const setModalCart = (userData, productList) => {
 
     const cartContainer = document.getElementById("cart-container");
     const cartContent = document.getElementById("cart-items");
@@ -37,7 +37,13 @@ export const setModalCart = (cart, productList) => {
 
     let cartTemplate = "";
     let subtotal = 0;
+    
+    // New map to store products and their quantities
+    let cartWithQuantity = new Map();
 
+    let cart = userData.cart;
+
+    //check if shopping cart has products
     if (cart.length === 0) {
         cartTemplate = 
         `   
@@ -58,9 +64,6 @@ export const setModalCart = (cart, productList) => {
             }, 0);
         }
 
-        // New map to store products and their quantities
-        let cartWithQuantity = new Map();
-
         //iterate through all products in the shopping cart
         cart.forEach((item) => {
 
@@ -73,10 +76,10 @@ export const setModalCart = (cart, productList) => {
         });
 
         // Convert the map to an array of tuples
-        cartWithQuantity = Array.from(cartWithQuantity.entries());
+        let arrayCartWithQuantity = Array.from(cartWithQuantity.entries());
 
         //iterate through all products in the shopping cart
-        cartWithQuantity.forEach((item) => {
+        arrayCartWithQuantity.forEach((item) => {
 
             //check that productList is valid
             if (productList != null && productList != undefined) {
@@ -105,7 +108,7 @@ export const setModalCart = (cart, productList) => {
                                 <p> ${item[1]} x $ ${product.price} </p>
                                 <p> ${isInStock} </p>
                                 
-                                <p id="btn-cart-delete-product"> 
+                                <p class="btn-cart-delete-product"> 
                                     <i class='bx bxs-trash'></i>
                                     <span> Eliminar </span>
                                 </p>
@@ -122,9 +125,10 @@ export const setModalCart = (cart, productList) => {
 
         });
     }
+    
 
     //change number of items in the shopping cart
-    cartNumberOfItems.innerText = "(" + cart.length+ ")" ;
+    cartNumberOfItems.innerText = "(" + cart.length + ")" ;
     
     for (const numberDisplay of navBarNumberOfItems) {
         numberDisplay.innerText = cart.length;
@@ -133,4 +137,47 @@ export const setModalCart = (cart, productList) => {
     //change content and subtotal of the shopping cart
     cartContent.innerHTML = cartTemplate;
     cartsubtotal.innerText = subtotal;
+
+    //set event listener for delete product from cart button
+    if (!(cart.length === 0) && document.getElementsByClassName("btn-cart-delete-product")) {
+
+        const btnDeleteProductFromCart = document.getElementsByClassName("btn-cart-delete-product");
+
+        for (const btn of btnDeleteProductFromCart) {
+
+            btn.addEventListener("click", () => {
+            
+                //get productId from parent element dataset
+                let parentElement = btn.closest("[data-product]");
+                let productId = parseInt((parentElement).dataset.product);
+
+                //check if product is in map object with form: (productId, quantity)
+                if (cartWithQuantity.has(productId)) {
+
+                    //get quantity of the product
+                    let currentValue = cartWithQuantity.get(productId);
+
+                    //check if quantity is positive
+                    if (currentValue > 0) {
+
+                        //get first index of product
+                        let index = cart.indexOf(productId);
+
+                        if (index != -1) {
+                            //delete product from user object's shopping cart array and set it to the new array without that instance of the product
+                            userData.cart = cart.toSpliced(index, 1);
+
+                            //dispatch event to update screen and value of session cart
+                            window.dispatchEvent(new Event('itemDeletedFromCart'));
+                        }
+
+                    }
+
+                }
+    
+            });
+
+        }
+
+    }
 }
