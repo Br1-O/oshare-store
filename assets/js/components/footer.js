@@ -10,103 +10,104 @@ const footerContent = `
 <!-- Footer -->
     <footer id="contact">
         <div class="footer-container">
+
             <img id="footer-logo" src="assets/resources/img/Logo_Oshare.jpg" alt="Oshare Designs logo">
 
             <div class="footer-container-info" id="contact-info">
-            <a href="">
-                Almte. Brown 3466 
-            </a>
-            <a href="">
-                Mar del Plata, Provincia de Buenos Aires B7600
-            </a>
-            <a href="">
-                +5492235012345
-            </a>
-            <a href="">
-                bruno.ortuno2@gmail.com
-            </a>
+                <a href="">
+                    Almte. Brown 3466 
+                </a>
+                <a href="">
+                    Mar del Plata, Provincia de Buenos Aires B7600
+                </a>
+                <a href="">
+                    +5492235012345
+                </a>
+                <a href="">
+                    bruno.ortuno2@gmail.com
+                </a>
 
-            <div class="footer-container-social-media">
-                <a href="">
-                    <i class='bx bxl-facebook'></i>
-                </a>
-                <a href="">
-                    <i class='bx bxl-twitter'></i>
-                </a>
-                <a href="">
-                    <i class='bx bxl-instagram' ></i>
-                </a>
-                <a href="">
-                    <i class='bx bxl-youtube' ></i>
-                </a>
-                <a href="">
-                    <i class='bx bxl-linkedin' ></i>
-                </a>
-            </div>
+                <div class="footer-container-social-media">
+                    <a href="">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+                    <a href="">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+                    <a href="">
+                        <i class='bx bxl-instagram' ></i>
+                    </a>
+                    <a href="">
+                        <i class='bx bxl-youtube' ></i>
+                    </a>
+                    <a href="">
+                        <i class='bx bxl-linkedin' ></i>
+                    </a>
+                </div>
 
             </div>
 
             <div class="footer-container-info">
 
-            <h4> Atención al cliente </h4>
+                <h4> Atención al cliente </h4>
 
-            <a href="" class="footer-social-media">
-                Contactanos
-            </a>
-            <a href="" class="footer-social-media">
-                Sobre nosotros
-            </a>
-            <a href="" class="footer-social-media">
-                Reclamos y Devoluciones
-            </a>
-            <a href="" class="footer-social-media">
-                Privacidad
-            </a>
-            <a href="" class="footer-social-media">
-                Guía de talles
-            </a>
+                <a href="" class="footer-social-media">
+                    Contactanos
+                </a>
+                <a href="" class="footer-social-media">
+                    Sobre nosotros
+                </a>
+                <a href="" class="footer-social-media">
+                    Reclamos y Devoluciones
+                </a>
+                <a href="" class="footer-social-media">
+                    Privacidad
+                </a>
+                <a href="" class="footer-social-media">
+                    Guía de talles
+                </a>
 
             </div>
 
             
             <div class="footer-container-info">
 
-            <h4> Productos </h4>
+                <h4> Productos </h4>
 
-            <a href="" class="footer-social-media">
-                Indumentaria femenina
-            </a>
-            <a href="" class="footer-social-media">
-                Indumentaria masculina
-            </a>
-            <a href="" class="footer-social-media">
-                Indumentaria infantil
-            </a>
-            <a href="" class="footer-social-media">
-                Indumentaria para Mascotas
-            </a>
-            <a href="" class="footer-social-media">
-                Accesorios
-            </a>
+                <a href="" class="footer-social-media">
+                    Indumentaria femenina
+                </a>
+                <a href="" class="footer-social-media">
+                    Indumentaria masculina
+                </a>
+                <a href="" class="footer-social-media">
+                    Indumentaria infantil
+                </a>
+                <a href="" class="footer-social-media">
+                    Indumentaria para Mascotas
+                </a>
+                <a href="" class="footer-social-media">
+                    Accesorios
+                </a>
 
             </div>
 
             <div class="footer-container-info">
 
-            <h4> Nuestras ideas </h4>
+                <h4> Nuestras ideas </h4>
 
-            <a href="" class="footer-social-media">
-                Blog
-            </a>
-            <a href="" class="footer-social-media">
-                Newsletter
-            </a>
-            <a href="" class="footer-social-media">
-                Afiliados
-            </a>
-            <a href="" class="footer-social-media">
-                Campañas
-            </a>
+                <a href="" class="footer-social-media">
+                    Blog
+                </a>
+                <a href="" class="footer-social-media">
+                    Newsletter
+                </a>
+                <a href="" class="footer-social-media">
+                    Afiliados
+                </a>
+                <a href="" class="footer-social-media">
+                    Campañas
+                </a>
 
             </div>
 

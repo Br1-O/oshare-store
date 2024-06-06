@@ -1490,7 +1490,7 @@ footer{
 }
 
 #footer-logo{
-    max-width: 250px;
+    max-width: max(13.5vmax, 13rem);
     height: auto;
 
     margin: auto 0px;
@@ -2345,6 +2345,8 @@ footer{
 #cart-card-product-info :nth-child(5){
     color: red;
     cursor: pointer;
+
+    user-select: none;
 }
 
 #cart-card-product-info :nth-child(5):hover{
@@ -2357,6 +2359,287 @@ footer{
     animation: RotateY 1s ease-in-out forwards;
     animation-iteration-count: 1;
 }
+
+/*■■■■■■■■■■■■■■■■■■ Product page ■■■■■■■■■■■■■■■■■■*/
+
+#product-page-container{
+    height: 80%;
+    width: 78%;
+    margin: 0px auto;
+
+    border-radius: 15px;
+
+    /* glass like effect */
+    background: rgba(255, 255, 255, 0.427);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    transition: all .4s ease;
+}
+
+#product-page-info{
+    width: 100%;
+    height: 100%;
+    gap: 1.2rem;
+
+    margin-top: max(8vmax, 3rem);
+}
+
+#product-images{
+    width: 50%;
+    height: 100%;
+    max-width: 50%;
+    min-width: 25rem;
+    min-height: 25rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:first-baseline;
+}
+
+#product-images-column{
+    width: 15%;
+    max-height: 100%;
+
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: max(1vmax, 1rem);
+
+    padding: max(1vmax, 0.5rem);
+}
+
+#product-images-column div{
+    background-color: #000;
+    cursor: pointer;
+}
+
+#product-images-selected{
+    width: 70%;
+    height: 100%;
+    min-height: 25rem;
+}
+
+#product-page-image{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#product-details{
+    width: max(30%, 20rem);
+    height: 100%;
+    
+    justify-self: center;
+    align-self: flex-start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: max(1vmax, 1rem);
+    
+    font-family: var(--font-main);
+
+    padding: 0px max(0.5vmax, 0.5rem);
+}
+
+.inline-navigation-bar{
+    font-size: max(0.8vmax, 0.8rem);
+    font-weight: 400;
+    color: var(--font-color);
+}
+
+.inline-navigation-bar p span{
+    cursor: pointer;
+}
+
+.inline-navigation-bar p :last-child{
+    color: gray;
+    cursor: pointer;
+}
+
+#product-details h2{
+    color: var(--font-color);
+    font-family: var(--font-main, "sans-serif");
+    font-size: max(2vmax, 2rem);
+    font-weight: 500;
+
+    margin: 1rem 0rem 0.2rem 0rem;
+
+    transition: all .4s ease;
+}
+
+#product-details h4{
+    color: var(--font-color);
+    font-family: var(--font-main, "sans-serif");
+    font-size: max(1.35vmax, 1.35rem);
+    font-weight: 400;
+
+    transition: all .4s ease;
+}
+
+#product-page-description{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    height: 4rem;
+    overflow: hidden;
+
+    background-color: rgb(224, 187, 228);
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    color: var(--font-color);
+    font-family: var(--font-main, "sans-serif");
+    font-size: 1rem;
+    font-weight: 400;
+
+    margin: max(0.7vmax, 0.7rem) 0rem;
+
+    transition: all .4s ease;
+
+    box-shadow: -2px -2px 10px rgb(182, 181, 181);
+}
+
+#product-stock-info{
+    font-weight: 400;
+    font-size: max(1vmax, 1rem);
+    color: var(--font-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: max(1.25vmax, 1rem);
+}
+
+#product-stock-info div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: max(0.8vmax, 0.8rem);
+}
+
+#product-stock-info div div{
+    width: 100%;
+    height: max(2vmax, 2rem);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: max(0.7vmax, 1rem);
+}
+
+#product-stock-info div div div{
+    background-color: #fff;
+
+    cursor: pointer;
+}
+
+#product-add-to-cart-container{
+    width: 100%;
+    height: max(3vmax, 2.5rem);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: first-baseline;
+    gap: max(0.5vmax, 0.5rem);
+
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+#product-add-to-cart-quantity{
+    width: 20%;
+    height: 100%;
+
+    font-weight: 500;
+    font-size: 100%;
+    text-align: center;
+
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+/* Change border color when the input is focused */
+input[type="number"]:focus {
+    box-shadow: 0 0 5px var(--border-color);
+}
+
+/* Optional: Remove any default focus outline for better aesthetics */
+input[type="number"]::-moz-focus-inner {
+    border: 0;
+}
+
+/* Gonna be changed to custom buttons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    /* -webkit-appearance: none; */
+    height: max(3vmax, 2.5rem);
+}
+
+#btn-cart-add{
+    font-size: max(1.25vmax, 1.25rem);
+    width: 80%;
+    margin: 0px;
+}
+
+/* favorite & rating*/
+
+#product-details .product-container-favs-rating{
+    gap: max(1.25vmax, 1.25rem);
+    font-size: max(1.5vmax, 1.5rem);
+    color: var(--font-color);
+
+    margin-top: max(1.5vmax, 1rem);
+}
+
+/* icons */
+
+.product-favorite .bx-heart {
+    vertical-align: bottom;
+
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.product-favorite .bxs-heart {
+    color: rgba(255, 0, 0, 0.717);
+    vertical-align: bottom;
+
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.product-favorite .bxs-heart:hover, .product-favorite .bx-heart:hover {
+    color: rgba(255, 0, 0, 0.717);
+    transform: scale(1.25);
+}
+
+.product-rating .bxs-star,.bx-star,.bxs-star-half {
+    color: rgb(205, 209, 4);
+    vertical-align:bottom;
+
+    font-size: max(1.5vmax, 1.5rem);
+
+    transition: all .4s ease;
+    cursor: pointer;
+}
+
+.product-rating .bxs-star:hover,.bx-star:hover,.bxs-star-half:hover {
+    transform: scale(1.5);
+}
+
+
+
 
 
 /* ■■■■■■■■■■■■■■■■■■ 3d carousel ■■■■■■■■■■■■■■■■■■■■■ */
@@ -2512,14 +2795,7 @@ footer{
     --current-color1: #eceaed;
     --current-color2: #404457;
 }
- 
- 
 
-
- 
-
-
- 
 
 /* ■■■■■■■■■■■■■■■■■■■■■■■ MEDIA QUERIES ■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 
@@ -2944,6 +3220,13 @@ footer{
     #cart-card-product{
         width: 100%;
         height: 18rem;
+    }
+
+    /*■■■■■■■■■■■■■■■■■■ Product page ■■■■■■■■■■■■■■■■■■*/
+
+    #product-page-container{
+        height: 80%;
+        width: 98%;
     }
 
 }
@@ -3680,13 +3963,167 @@ footer{
         height: 11.8rem;
     }
 
+    
+    /*■■■■■■■■■■■■■■■■■■ Product page ■■■■■■■■■■■■■■■■■■*/
+    
+    #product-page-info{
+        align-items: first baseline;
+        margin-top: 7.5rem;
+    }
+    
+    #product-page-container{
+        height: 80%;
+        width: 98%;
+    }
+
 }
 
 @media screen and (min-width: 993px) and (max-width: 1600px){
+
+    /* ■■■■­■■­■■­■■­■■ Header ■■■■­■■­■■­■■­■■ */
+
+    .nav{
+        padding: 15px 10%;
+    }
+
+    .logo{
+        max-width: 110px;
+        height: auto;
+    }
+
+    .nav-menu{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+
+        margin: 0px 3.8rem;
+    }
+
+    .nav-menu a{
+        color: var(--font-color);
+        font-size: 1.5rem;
+        font-family: 'Jost', 'sans-serif';
+        font-weight: 300;
+        padding: 10px 20px;
+        transition: all .4s ease;
+    }
+
+    .nav-icons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .nav-icon{
+        width: 100%;
+        height: auto;
+
+        color: var(--font-color);
+        font-size: 2rem;
+        font-weight: 400;
+        margin-right: 1.5rem;
+
+        transition: all .4s ease;
+        cursor: pointer;
+    }
+
+    /* ■■■■­■■­■■­■■­■■ BILLBOARD ■■­■■­■■­■■­■■­■■­ ­*/
+
+    #billboard{
+        width: 100%;
+        height: 100vh;
+        position: relative;
+
+        transition: all .4s ease;
+    }
+
+    /* Articles of billboard */
+
+    .ad-content{
+        max-width: max(55vmax, 28rem);
+        max-height: 80%;
+
+        border-radius: 0px 10px 10px 0px;
+
+        padding: 1% 2% 1% 10%;
+
+        position: absolute;
+        top:18%;
+        z-index: 1;
+    }
+
+    .ad-title{
+        font-family: var(--font-main, "sans-serif");
+        font-weight: 700;
+        font-size: 3.5rem;
+
+        margin: 1rem 0rem;
+    }
+
+    .ad-tag{
+        font-family: var(--font-main, "sans-serif");
+        font-weight: 500;
+        font-size: 1.25rem;
+        color: red;
+
+        margin: 0rem 0.5rem;
+    }
+
+    .ad-description{
+        font-family: var(--font-main, "sans-serif");
+        font-weight: 300;
+        font-size: 1.25rem;
+        color: var(--font-color);
+
+        margin-bottom: 1.25rem;
+    }
+
+    .ad-btn{
+        font-weight: 500;
+        font-size: 1.25rem;
+
+        border: 2px solid var(--border-color);
+        border-radius: 5px;
+        padding: 0.75rem 1.25rem;
+    }
+
+    .ad-btn i{
+        vertical-align: middle;
+        transition: all .4s ease;
+    }
+
+    /* Downwards arrow to next section */
+
+    .down-arrow{
+        top:80%;
+    }
+
+    .down-arrow a i{
+        font-size: 2.5rem;
+        border-radius: 50px;
+        padding: 0.75rem;
+    }
+
     /* ■■■■■■■■■■■■■■■■■■■■■■■ Cart Side Menu ■■■■■■■■■■■■■■■■■■■■■■■■■■■■ */
 
     #cart-card-product{
         width: 100%;
         height: 11.8rem;
+    }
+
+    /*■■■■■■■■■■■■■■■■■■ Product page ■■■■■■■■■■■■■■■■■■*/
+
+    #product-page-info{
+        align-items: first baseline;
+        margin-top: 8.5rem;
+    }
+    
+    #product-page-container{
+        height: 80%;
+        width: 98%;
     }
 }

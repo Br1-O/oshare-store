@@ -16,9 +16,9 @@ export const homeContent = `
             </ul>
 
             <div class="down-arrow">
-            <a href="#trending-now">
-                <i class='bx bx-down-arrow-alt' title="¡Último en Tendencia!"></i>
-            </a>
+                <a href="#trending-now">
+                    <i class='bx bx-down-arrow-alt' title="¡Último en Tendencia!"></i>
+                </a>
             </div>
         </article>
     </section>

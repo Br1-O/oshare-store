@@ -16,7 +16,9 @@ export const changeModal = (template) => {
 };
 
 export const openModal = (template = "") => {
-    template && changeModal(template);
+    //potential issue
+    template && changeModal(template); 
+    
     modal.setAttribute("open", "");
     pageContent.classList.add("overlay");
 };
