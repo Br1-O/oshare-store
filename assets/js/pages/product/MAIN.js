@@ -234,38 +234,7 @@ export const displaySingleProductPage = (product, container, userData = {}) => {
                             </div>
                         </div>
 
-
-                        <div class="product-container-additional-data">
-
-                            <div> 
-                                <h4></h4>
-
-                                <div></div>
-                            </div>
-
-                            <div> 
-                                <h4></h4>
-
-                                <div></div>
-                            </div>
-
-                            <div> 
-                                <h4></h4>
-
-                                <div></div>
-                            </div>
-
-                        </div>
-
                     </article>
-
-                </section>
-        
-                <section id="product-recomendations" class="flex rowToCol">
-
-                </section>
-        
-                <section id="product-reviews">
 
                 </section>
         

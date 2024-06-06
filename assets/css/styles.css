@@ -1466,8 +1466,6 @@ body{
     top:0;
 }
 
-/* ■■■■­■■­■■­■■­■■ REVIEWS SECTION ■■■■­■■­■■­■■­■■ */
-
 /* ■■■■­■■­■■­■■­■■ FOOTER ■■■■­■■­■■­■■­■■ */
 
 footer{
@@ -1507,6 +1505,7 @@ footer{
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    overflow: hidden;
 
     padding: 1rem;
 }
@@ -1523,6 +1522,8 @@ footer{
     font-weight: 500;
     color: rgb(219, 219, 219);
     margin-bottom: 0.2rem;
+
+    overflow-wrap:break-word;
 
     transition: all .4s ease;
     cursor: pointer;
@@ -1547,8 +1548,10 @@ footer{
 .footer-container-social-media{
     margin-top: 1rem;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .footer-container-social-media a{
@@ -2417,6 +2420,7 @@ footer{
 #product-images-selected{
     width: 70%;
     height: 100%;
+    max-width: 70%;
     min-height: 25rem;
 }
 
@@ -3222,11 +3226,37 @@ input[type="number"]::-webkit-outer-spin-button {
         height: 18rem;
     }
 
+    #product-images{
+        width: 5rem;
+        height: 100%;
+    }
+
     /*■■■■■■■■■■■■■■■■■■ Product page ■■■■■■■■■■■■■■■■■■*/
 
     #product-page-container{
         height: 80%;
         width: 98%;
+    }
+
+    
+    #product-images{
+        width: 50%;
+        height: 100%;
+        max-width: 50%;
+        min-width: 20rem;
+        min-height: 20rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items:first-baseline;
+    }
+
+    #product-images-selected{
+        width: 70%;
+        height: 100%;
+        max-width: 70%;
+        min-height: 20rem;
     }
 
 }
