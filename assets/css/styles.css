@@ -840,9 +840,7 @@ textarea {
     width: 30vh;
     height: 15vh;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    margin: 45vh auto;
     transform: translate(-50%, -50%);
 
     animation: spin 2s infinite ease;

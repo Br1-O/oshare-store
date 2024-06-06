@@ -145,6 +145,10 @@ export const updateContent = async() => {
 
         //render the product 
         renderProductPage(product);
+
+        
+        //update title attribute of loading page
+        document.title =  `${product.name} · Oshare Designs`;
         
         //scroll to the top of the new page
         window.scrollTo({ top: 0});
@@ -168,6 +172,9 @@ export const updateContent = async() => {
         switch(hash) {
             //home page
             case '':
+
+                //update title attribute of page
+                document.title =  `Oshare Designs · Fashionable Store`;
 
                 //include proper navbar
                 navBar(userData.isSessionSet);
@@ -207,6 +214,9 @@ export const updateContent = async() => {
             //store page
             case 'tienda':
 
+                //update title attribute of page
+                document.title =  `Oshare Designs · Shop Online`;
+
                 //include proper navbar
                 navBar(userData.isSessionSet);
 
@@ -232,6 +242,10 @@ export const updateContent = async() => {
             break;
             //contact page
             case 'contacto':
+
+                //update title attribute of page
+                document.title =  `Oshare Designs · Contacto`;
+
                 //include proper navbar
                 navBar(userData.isSessionSet);
 
@@ -247,6 +261,10 @@ export const updateContent = async() => {
             break;
             //products page
             case 'productos':
+
+                //update title attribute of page
+                document.title =  `Oshare Designs · Catalogo`;
+
                 //include proper navbar
                 navBar(userData.isSessionSet);
 
@@ -257,6 +275,10 @@ export const updateContent = async() => {
             break;
             //not found page
             default:
+
+                //update title attribute of page
+                document.title =  `Oshare Designs · 404 Not Found`;
+
                 //include proper navbar
                 navBar(userData.isSessionSet);
 
@@ -285,25 +307,44 @@ export const updateContent = async() => {
 window.addEventListener("popstate", updateContent);
 
 //update content when the page loads or hash changes
-window.addEventListener('load', () => {
-
-    //recover session data if user was connected
-    if(getSessionData("oshare_designs_session")){
-        //set user object's data with session's data  
-        setUserDataFromSessionData(userData);
-    }
-
-    //update content based on the URL
-    updateContent();
-
-});
+window.addEventListener('hashchange', updateContent);
 
 //update content when the page loads or hash changes
-window.addEventListener('hashchange', updateContent);
+document.addEventListener("DOMContentLoaded", () => {
+
+    //update title attribute of loading page
+    document.title =  `Oshare Designs · Loading...`;
+
+    const loadingScreen = document.getElementById("loading-overlay");
+    const body = document.querySelector("body");
+
+    //display loading screen on DOM loading start
+    loadingScreen.classList.add("flex");
+    body.style.overflowY = "hidden";
+
+    window.onload = () => {
+
+        //display content when the window if fully loaded
+        loadingScreen.classList.remove("flex");
+        loadingScreen.classList.add("d-none");
+        body.style.overflowY = "scroll";
+
+
+        //recover session data if user was connected
+        if(getSessionData("oshare_designs_session")){
+            //set user object's data with session's data  
+            setUserDataFromSessionData(userData);
+        }
+
+        //update content based on the URL
+        updateContent();
+
+    }
+});
+
 
 
 // window.onbeforeunload = function () {
 
 //     return "Are you sure";
 // };
-
