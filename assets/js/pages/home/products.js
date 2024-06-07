@@ -133,7 +133,11 @@ export const displayProductList = (productList, container) => {
                     break;
             }
 
-            tagsTemplate += `<span class="product-tag" style="background-color:var(${tagColor})"><h5> ${tag} </h5></span>`;
+            tagsTemplate += `<a href="#tienda/productos/${(tag).toLowerCase()}">
+                                <span class="product-tag" style="background-color:var(${tagColor})">
+                                    <h5> ${tag} </h5>
+                                </span>
+                            </a>`;
         });
 
         //add filled product's template into variable

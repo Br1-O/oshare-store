@@ -845,7 +845,6 @@ textarea {
 
     animation: spin 2s infinite ease;
 }
-
 /* ■■■■­■■­■■­■■­■■ Elements ■■■■­■■­■■­■■­■■ */
 
 
@@ -2401,17 +2400,26 @@ footer{
 
 #product-images-column{
     width: 15%;
-    max-height: 100%;
+    max-height: 40vmax;
 
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     gap: max(1vmax, 1rem);
+
+    overflow-y: scroll;
 
     padding: max(1vmax, 0.5rem);
 }
 
-#product-images-column div{
-    background-color: #000;
+#product-images-column::-webkit-scrollbar{
+    display: none;
+}
+
+#product-images-column img{
+    width: 100%;
+    max-height: 100%;
     cursor: pointer;
 }
 
@@ -2448,19 +2456,15 @@ footer{
     padding: 0px max(0.5vmax, 0.5rem);
 }
 
-.inline-navigation-bar{
+.inline-navigation-bar p a {
     font-size: max(0.8vmax, 0.8rem);
     font-weight: 400;
     color: var(--font-color);
-}
-
-.inline-navigation-bar p span{
     cursor: pointer;
 }
 
 .inline-navigation-bar p :last-child{
     color: gray;
-    cursor: pointer;
 }
 
 #product-details h2{
@@ -2532,15 +2536,39 @@ footer{
     width: 100%;
     height: max(2vmax, 2rem);
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: max(0.7vmax, 1rem);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: max(0.7vmax, 1rem);
 }
 
 #product-stock-info div div div{
-    background-color: #fff;
+    width: max(2vmax, 2rem);
+    height: 100%;
+
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     cursor: pointer;
+}
+
+.product-stock-info-size{
+    border: none 2px var(--border-color);
+}
+
+.product-stock-info-color{
+    border: none 2px var(--border-color);
+}
+
+.product-stock-info-size[data-selected]{
+    border: solid 2px var(--border-color);
+}
+
+.product-stock-info-color[data-selected]{
+    border: solid 2px var(--border-color);
 }
 
 #product-add-to-cart-container{
@@ -2592,6 +2620,11 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: max(1.25vmax, 1.25rem);
     width: 80%;
     margin: 0px;
+}
+
+#btn-cart-add:hover i{
+    animation: RotateY 1s ease-in-out forwards;
+    animation-iteration-count: infinite;
 }
 
 /* favorite & rating*/

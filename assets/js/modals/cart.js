@@ -30,6 +30,7 @@ export const setModalCart = (userData, productList) => {
 
     const cartContainer = document.getElementById("cart-container");
     const cartContent = document.getElementById("cart-items");
+    const cartQuantityToAdd = document.getElementById("product-add-to-cart-quantity");
 
     const cartsubtotal = document.querySelector("#cart-subtotal span");
     const cartNumberOfItems = document.getElementById("cart-total-items");

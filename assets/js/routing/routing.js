@@ -283,7 +283,7 @@ export const updateContent = async() => {
                 navBar(userData.isSessionSet);
 
                 content.innerHTML = notFoundMessage;
-                redirectToPage("", 5000);
+                redirectToPage("", 3000);
 
                 //include footer
                 footer();
@@ -341,8 +341,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 });
-
-
 
 // window.onbeforeunload = function () {
 

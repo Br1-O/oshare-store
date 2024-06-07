@@ -1,0 +1,306 @@
+{
+  "success": true,
+  "message": "Lista de inventario recibida correctamente.",
+  "data": {
+    "inventory": [
+      {
+        "productId": 1,
+        
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#FF0000", "quantity": 0, "in_stock": false},
+              {"color": "#00FF00", "quantity": 0, "in_stock": false},
+              {"color": "#0000FF", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#FF0000", "quantity": 3, "in_stock": true},
+              {"color": "#00FF00", "quantity": 1, "in_stock": true},
+              {"color": "#0000FF", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#FF0000", "quantity": 4, "in_stock": true},
+              {"color": "#00FF00", "quantity": 0, "in_stock": false},
+              {"color": "#0000FF", "quantity": 3, "in_stock": true}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#FF0000", "quantity": 2, "in_stock": true},
+              {"color": "#00FF00", "quantity": 0, "in_stock": false},
+              {"color": "#0000FF", "quantity": 1, "in_stock": true}
+            ]
+          }
+        ]
+        
+      },
+      {
+        "productId": 2,
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#FFA500", "quantity": 0, "in_stock": false},
+              {"color": "#800080", "quantity": 3, "in_stock": true},
+              {"color": "#808080", "quantity": 2, "in_stock": true}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#FFA500", "quantity": 1, "in_stock": true},
+              {"color": "#800080", "quantity": 0, "in_stock": false},
+              {"color": "#808080", "quantity": 4, "in_stock": true}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#FFA500", "quantity": 5, "in_stock": true},
+              {"color": "#800080", "quantity": 2, "in_stock": true},
+              {"color": "#808080", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#FFA500", "quantity": 3, "in_stock": true},
+              {"color": "#800080", "quantity": 1, "in_stock": true},
+              {"color": "#808080", "quantity": 2, "in_stock": true}
+            ]
+          }
+        ]
+      },
+      {
+        "productId": 3,
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#000000", "quantity": 4, "in_stock": true},
+              {"color": "#FFFFFF", "quantity": 3, "in_stock": true},
+              {"color": "#FF69B4", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#000000", "quantity": 2, "in_stock": true},
+              {"color": "#FFFFFF", "quantity": 5, "in_stock": true},
+              {"color": "#FF69B4", "quantity": 1, "in_stock": true}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#000000", "quantity": 3, "in_stock": true},
+              {"color": "#FFFFFF", "quantity": 4, "in_stock": true},
+              {"color": "#FF69B4", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#000000", "quantity": 1, "in_stock": true},
+              {"color": "#FFFFFF", "quantity": 0, "in_stock": false},
+              {"color": "#FF69B4", "quantity": 5, "in_stock": true}
+            ]
+          }
+        ]
+      },
+      {
+        "productId": 4,
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#FFFF00", "quantity": 5, "in_stock": true},
+              {"color": "#ADFF2F", "quantity": 3, "in_stock": true},
+              {"color": "#00CED1", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#FFFF00", "quantity": 2, "in_stock": true},
+              {"color": "#ADFF2F", "quantity": 4, "in_stock": true},
+              {"color": "#00CED1", "quantity": 1, "in_stock": true}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#FFFF00", "quantity": 3, "in_stock": true},
+              {"color": "#ADFF2F", "quantity": 0, "in_stock": false},
+              {"color": "#00CED1", "quantity": 5, "in_stock": true}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#FFFF00", "quantity": 1, "in_stock": true},
+              {"color": "#ADFF2F", "quantity": 2, "in_stock": true},
+              {"color": "#00CED1", "quantity": 3, "in_stock": true}
+            ]
+          }
+        ]
+      },
+      {
+        "productId": 5,
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#A52A2A", "quantity": 3, "in_stock": true},
+              {"color": "#00008B", "quantity": 2, "in_stock": true},
+              {"color": "#8B0000", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#A52A2A", "quantity": 1, "in_stock": true},
+              {"color": "#00008B", "quantity": 4, "in_stock": true},
+              {"color": "#8B0000", "quantity": 3, "in_stock": true}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#A52A2A", "quantity": 5, "in_stock": true},
+              {"color": "#00008B", "quantity": 0, "in_stock": false},
+              {"color": "#8B0000", "quantity": 2, "in_stock": true}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#A52A2A", "quantity": 0, "in_stock": false},
+              {"color": "#00008B", "quantity": 1, "in_stock": true},
+              {"color": "#8B0000", "quantity": 3, "in_stock": true}
+            ]
+          }
+        ]
+      },
+      {
+        "productId": 6,
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#FF4500", "quantity": 4, "in_stock": true},
+              {"color": "#2E8B57", "quantity": 3, "in_stock": true},
+              {"color": "#DAA520", "quantity": 2, "in_stock": true}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#FF4500", "quantity": 0, "in_stock": false},
+              {"color": "#2E8B57", "quantity": 5, "in_stock": true},
+              {"color": "#DAA520", "quantity": 1, "in_stock": true}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#FF4500", "quantity": 3, "in_stock": true},
+              {"color": "#2E8B57", "quantity": 4, "in_stock": true},
+              {"color": "#DAA520", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#FF4500", "quantity": 2, "in_stock": true},
+              {"color": "#2E8B57", "quantity": 1, "in_stock": true},
+              {"color": "#DAA520", "quantity": 0, "in_stock": false}
+            ]
+          }
+        ]
+      },
+      {
+        "productId": 7,
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#4682B4", "quantity": 1, "in_stock": true},
+              {"color": "#CD5C5C", "quantity": 0, "in_stock": false},
+              {"color": "#FFD700", "quantity": 3, "in_stock": true}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#4682B4", "quantity": 2, "in_stock": true},
+              {"color": "#CD5C5C", "quantity": 5, "in_stock": true},
+              {"color": "#FFD700", "quantity": 1, "in_stock": true}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#4682B4", "quantity": 3, "in_stock": true},
+              {"color": "#CD5C5C", "quantity": 0, "in_stock": false},
+              {"color": "#FFD700", "quantity": 2, "in_stock": true}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#4682B4", "quantity": 4, "in_stock": true},
+              {"color": "#CD5C5C", "quantity": 1, "in_stock": true},
+              {"color": "#FFD700", "quantity": 0, "in_stock": false}
+            ]
+          }
+        ]
+      },
+      {
+        "productId": 8,
+        "sizes": [
+          {
+            "size": 1,
+            "stock": [
+              {"color": "#FF6347", "quantity": 2, "in_stock": true},
+              {"color": "#4682B4", "quantity": 0, "in_stock": false},
+              {"color": "#32CD32", "quantity": 3, "in_stock": true}
+            ]
+          },
+          {
+            "size": 2,
+            "stock": [
+              {"color": "#FF6347", "quantity": 1, "in_stock": true},
+              {"color": "#4682B4", "quantity": 4, "in_stock": true},
+              {"color": "#32CD32", "quantity": 2, "in_stock": true}
+            ]
+          },
+          {
+            "size": 3,
+            "stock": [
+              {"color": "#FF6347", "quantity": 5, "in_stock": true},
+              {"color": "#4682B4", "quantity": 3, "in_stock": true},
+              {"color": "#32CD32", "quantity": 0, "in_stock": false}
+            ]
+          },
+          {
+            "size": 4,
+            "stock": [
+              {"color": "#FF6347", "quantity": 0, "in_stock": false},
+              {"color": "#4682B4", "quantity": 1, "in_stock": true},
+              {"color": "#32CD32", "quantity": 4, "in_stock": true}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

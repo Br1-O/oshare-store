@@ -1,4 +1,6 @@
-export const displaySingleProductPage = (product, container, userData = {}) => {
+import { getStockOfProductOrderedBySize } from "../../utils/products.js";
+
+export const displaySingleProductPage = async(product, container, userData = {}) => {
 
     //final template storage
     let template = "";
@@ -131,7 +133,115 @@ export const displaySingleProductPage = (product, container, userData = {}) => {
                     break;
             }
 
-            tagsTemplate += `<span class="product-tag" style="background-color:var(${tagColor})"><h5> ${tag} </h5></span>`;
+            tagsTemplate += `<a href="#tienda/productos/${(tag).toLowerCase()}">
+                                <span class="product-tag" style="background-color:var(${tagColor})">
+                                    <h5> ${tag} </h5>
+                                </span>
+                            </a>`;
+        });
+
+        //set category with mayus on first letter
+        let category = (((product.categories[0]).charAt(0)).toUpperCase()) + (product.categories[0]).slice(1);
+
+        //set preview images template
+        let previewImagesColumnTemplate = "";
+
+        (product.image).forEach(image => {
+
+            previewImagesColumnTemplate += 
+            `
+                <img src="${image}" class="preview-thumbnail">
+            `;
+        
+        });
+
+        //get stock info for sizes available
+        const stockOfProductOrderedBySize = await getStockOfProductOrderedBySize(product.id);
+
+        //template for sizes options
+        let templateSizesOption = "";
+
+        //template for colors options
+        let templateColorsOption = "";
+        
+        //btns for available colors
+        let btnColors;
+
+        //flag for iteration
+        let i = 0;
+        
+        //set sizes options template
+        stockOfProductOrderedBySize.forEach((size) => {
+
+            // Check if any item of that size is in stock
+            let isInStock = (size.stock).some(product => product.in_stock);
+
+            //change size code into size letter
+            let sizeLetter;
+
+            switch (size.size) {
+                case 1:
+                    sizeLetter = "XS";
+                break;
+
+                case 2:
+                    sizeLetter = "S";
+                break;
+
+                case 3:
+                    sizeLetter = "L";
+                break;
+
+                case 4:
+                    sizeLetter = "XL";
+                break;
+            }
+
+            //assign template for sizes if any product of that size is in stock
+            if (isInStock) {
+
+                //if it is the first iteration, select it
+                if(i === 0){
+
+                    templateSizesOption += 
+                    `
+                        <div class="product-stock-info-size" data-size=${size.size} data-selected> ${sizeLetter} </div>
+                    `;
+
+                    //set template to all available colors
+                    size.stock.forEach(product => {
+
+                        //if product is in stock, show all the color options
+                        if (product.in_stock) {
+
+                            templateColorsOption +=
+                            `
+                                <div class="product-stock-info-color" style="background-color:${product.color}"></div>
+                            `;
+                        }
+
+                    });
+
+                    //btns for available colors
+                    btnColors = document.getElementsByClassName("product-stock-info-color");
+
+                    //increase flag once first iteration is over
+                    i++;
+
+                }else{
+                    templateSizesOption += 
+                    `
+                        <div class="product-stock-info-size" data-size=${size.size}> ${sizeLetter} </div>
+                    `;
+                }
+            } else {
+                //if not in stock, show the size in gray with no interaction available
+                templateSizesOption += 
+                `
+                    <div class="product-stock-info-size" style="cursor:none; pointer-events: none; user-select: none; filter:brightness(50%);" data-size=${size.size}> ${sizeLetter} </div>
+                `;
+            }
+
         });
 
         //add filled product's template into variable
@@ -144,17 +254,13 @@ export const displaySingleProductPage = (product, container, userData = {}) => {
                     <article id="product-images">
 
                         <div id="product-images-column"> 
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                            ${previewImagesColumnTemplate}
                         </div>
 
                         <div id="product-images-selected"> 
                         
-                            <a href=${product.image[0]} target="_blank">
-                                <img id="product-page-image" src= ${product.image[0]} src2= ${product.image[1] ? product.image[1] : "none"} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
+                            <a href="#" target="_blank">
+                                <img id="product-page-image" class="preview-image" src= ${product.image[0]} src2= ${product.image[1] ? product.image[1] : "none"} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
                             </a>
 
                         </div>
@@ -165,9 +271,21 @@ export const displaySingleProductPage = (product, container, userData = {}) => {
 
                         <div class="inline-navigation-bar">
                             <p> 
-                                <span>Path</span> / 
-                                <span>Path</span> / 
-                                <span>Path</span> 
+
+                                <a href="#tienda">
+                                    Tienda / 
+                                </a>
+
+                                <a href="#tienda/productos">
+                                    Productos / 
+                                </a>
+
+                                <a href="#tienda/productos/${category}">
+                                    ${category} / 
+                                </a>
+
+                                <span> ${product.name} </span>
+
                             </p>
                         </div>
 
@@ -188,9 +306,7 @@ export const displaySingleProductPage = (product, container, userData = {}) => {
                                 <h5> Talle </h5>
 
                                 <div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                                    ${templateSizesOption}
                                 </div>
 
                             </div>
@@ -199,10 +315,8 @@ export const displaySingleProductPage = (product, container, userData = {}) => {
                                 
                                 <h5> Color </h5>
 
-                                <div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                                <div id="product-stock-info-colors">
+                                    ${templateColorsOption}
                                 </div>
 
                             </div>
@@ -258,37 +372,100 @@ export const displaySingleProductPage = (product, container, userData = {}) => {
             //dispatch event to update screen
             window.dispatchEvent(new Event('itemAddedToCart'));
         });
-}
 
-{/* <div class="product-card" id="product-${product.id}" data-product="${product.id}" data-aos="fade-up" data-aos-offset="50" data-aos-duration="2000" >
-<a href="${product.link}">
-    <img class="product-image" id="product-img-${product.id}" src= ${product.image[0]} src2= ${product.image[1] ? product.image[1] : "none"} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
-</a>
+        //product image toggle with thumbnail images
+        let previewThumbnails = document.getElementsByClassName("preview-thumbnail");
+        let previewImage = document.querySelector(".preview-image");
 
-<div class="product-info">
+        for (const thumbnail of previewThumbnails) {
 
-    <div class="product-tags">
-        ${tagsTemplate}
-    </div>
+            let thumbnailSrc = thumbnail.src;
 
-    <div class="product-container-favs-rating">
-        <div class="product-favorite">
-            <span> Añadir a favoritos </span> ${product.favorite ? "<i class='bx bxs-heart'></i>" :  "<i class='bx bx-heart'></i>" }
-        </div>
+            //change the source of the preview image to the thumbnail's source
+            thumbnail.addEventListener("click", () => {
+                previewImage.src = thumbnailSrc;
+                //change the href of the a so it opens the new image when clicked
+                (previewImage.parentElement).href = thumbnailSrc;
+            });
+        }
+
+        //product sizes to show available colors
+        const btnSizes = document.getElementsByClassName("product-stock-info-size");
+        const containerColors = document.getElementById("product-stock-info-colors");
+
+        //iterate all sizes buttons
+        for (const btn of btnSizes) {
+            
+            //event listener to set all the colors options for that size
+            btn.addEventListener("click", () => {
+
+                //remove selected dataset from selected size and select current size
+                setBtnAsSelected(btn, btnSizes);
+
+                //clean template color from previous colors
+                templateColorsOption = "";
+
+                //get size id from dataset of btn
+                let sizeId = parseInt(btn.dataset.size);
+
+                //check all sizes of the product for that size data
+                stockOfProductOrderedBySize.forEach(size => {
+
+                    if (size.size === sizeId) {
+                        
+                        //set template to all available colors
+                        size.stock.forEach(product => {
+
+                            //if product is in stock, show the option for that color
+                            if (product.in_stock) {
+                                templateColorsOption +=
+                                `
+                                    <div class="product-stock-info-color" style="background-color:${product.color}"></div>
+                                `
+                            }
+
+                        });
+
+                        //display template of color's options
+                        containerColors.innerHTML = templateColorsOption;
+                    }
+                });
+
+                //btns for available colors
+                btnColors = document.getElementsByClassName("product-stock-info-color");
+
+                if (btnColors.length !== 0) {
+
+                    //iterate all color buttons
+                    for (const btn of btnColors) {
+
+                        //remove previous event listeners to avoid unstable behaviour
+                        btn.removeEventListener("click", setBtnAsSelected);
         
-        <div class="product-rating">
-            <span> Valoración: </span> ${ratingTemplate}
-        </div>
-    </div>
+                        //event listener to remove selected dataset from selected color and select current color
+                        btn.addEventListener("click", () => {setBtnAsSelected(btn, btnColors)} );
+                    }
+                }
 
-    <a href="${product.link}">
-        <h4 class="product-name"> ${product.name} </h4>
-    </a>
-    <p class="product-description-cover"> ${product["description-cover"]} </p>
-    
-    <div class="flex row" style="justify-content: space-between;">
-        <i id="btn-cart-add" class='bx bxs-cart-add' style="margin-right:20vh; font-size:2rem; cursor:pointer;"></i>
-        <p class="product-price"> $${product.price} </p>
-    </div>
-</div>
-</div> */}
+            });
+        }
+
+        //This event listener is outside size btns eventListener for the case where size btn is not clicked
+            //iterate all color buttons
+            for (const btn of btnColors) {
+                //event listener to remove selected dataset from selected color and select current color
+                btn.addEventListener("click", () => {setBtnAsSelected(btn, btnColors)} );
+            }
+
+        //function to set only a targeted btn from a collection with the dataset-selected
+        function setBtnAsSelected(btnSelected, ElementsByClassCollection) {
+        
+            //remove selected dataset from selected color
+            for (const btn of ElementsByClassCollection){
+                btn.hasAttribute("data-selected") && btn.removeAttribute("data-selected");
+            }
+            
+            //add dataset selected to this btn size
+            btnSelected.dataset.selected = "";
+        }
+}
