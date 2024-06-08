@@ -216,7 +216,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
                             templateColorsOption +=
                             `
-                                <div class="product-stock-info-color" style="background-color:${product.color}"></div>
+                                <div class="product-stock-info-color" style="background-color:${product.code}" data-stock="${product.quantity}"></div>
                             `;
                         }
 
@@ -260,7 +260,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
                         <div id="product-images-selected"> 
                         
                             <a href="#" target="_blank">
-                                <img id="product-page-image" class="preview-image" src= ${product.image[0]} src2= ${product.image[1] ? product.image[1] : "none"} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
+                                <img id="product-page-image" class="preview-image" src= ${product.image[0]} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
                             </a>
 
                         </div>
@@ -323,8 +323,9 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
                         </div>
 
-                        <div class="flex row">
+                        <div class="flex col">
 
+                            <p id="product-add-to-cart-display-quantity"></p>
 
                             <div id="product-add-to-cart-container">
                                     
@@ -334,6 +335,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
                                     <i class='bx bxs-cart-add'></i>
                                     Añadir al carrito
                                 </button>
+
                             </div>
                         
                         </div>
@@ -392,11 +394,12 @@ export const displaySingleProductPage = async(product, container, userData = {})
         //product sizes to show available colors
         const btnSizes = document.getElementsByClassName("product-stock-info-size");
         const containerColors = document.getElementById("product-stock-info-colors");
+        const containerQuantity = document.getElementById("product-add-to-cart-display-quantity");
 
         //iterate all sizes buttons
         for (const btn of btnSizes) {
             
-            //event listener to set all the colors options for that size
+            //event listener to set all the colors options for that size on click
             btn.addEventListener("click", () => {
 
                 //remove selected dataset from selected size and select current size
@@ -404,6 +407,9 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
                 //clean template color from previous colors
                 templateColorsOption = "";
+
+                //erase the quantity available for the last product
+                containerQuantity.innerText = "";
 
                 //get size id from dataset of btn
                 let sizeId = parseInt(btn.dataset.size);
@@ -420,7 +426,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
                             if (product.in_stock) {
                                 templateColorsOption +=
                                 `
-                                    <div class="product-stock-info-color" style="background-color:${product.color}"></div>
+                                    <div class="product-stock-info-color" style="background-color:${product.code}" data-stock="${product.quantity}"></div>
                                 `
                             }
 
@@ -442,8 +448,16 @@ export const displaySingleProductPage = async(product, container, userData = {})
                         //remove previous event listeners to avoid unstable behaviour
                         btn.removeEventListener("click", setBtnAsSelected);
         
-                        //event listener to remove selected dataset from selected color and select current color
-                        btn.addEventListener("click", () => {setBtnAsSelected(btn, btnColors)} );
+                        //event listener for all color buttons 
+                        btn.addEventListener("click", () => {
+                            //remove selected dataset from selected color and select current color
+                            setBtnAsSelected(btn, btnColors);
+                            //display the quantity available for that product
+                            containerQuantity.innerText = 
+                            `
+                                ${btn.dataset.stock > 1 ? btn.dataset.stock + " disponibles" : "¡" + btn.dataset.stock + " disponible!"} 
+                            `
+                        });
                     }
                 }
 
@@ -453,8 +467,16 @@ export const displaySingleProductPage = async(product, container, userData = {})
         //This event listener is outside size btns eventListener for the case where size btn is not clicked
             //iterate all color buttons
             for (const btn of btnColors) {
-                //event listener to remove selected dataset from selected color and select current color
-                btn.addEventListener("click", () => {setBtnAsSelected(btn, btnColors)} );
+                //event listener for all color buttons 
+                btn.addEventListener("click", () => {
+                    //remove selected dataset from selected color and select current color
+                    setBtnAsSelected(btn, btnColors);
+                    //display the quantity available for that product
+                    containerQuantity.innerText = 
+                    `
+                        ${btn.dataset.stock > 1 ? btn.dataset.stock + " disponibles" : "¡" + btn.dataset.stock + " disponible!"}
+                    `
+                });
             }
 
         //function to set only a targeted btn from a collection with the dataset-selected

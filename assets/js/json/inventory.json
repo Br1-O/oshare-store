@@ -5,42 +5,40 @@
     "inventory": [
       {
         "productId": 1,
-        
         "sizes": [
           {
             "size": 1,
             "stock": [
-              {"color": "#FF0000", "quantity": 0, "in_stock": false},
-              {"color": "#00FF00", "quantity": 0, "in_stock": false},
-              {"color": "#0000FF", "quantity": 0, "in_stock": false}
+              {"color": "Verde Militar", "code": "#4B5320", "quantity": 0, "in_stock": false},
+              {"color": "Naranja Atardecer", "code": "#FF4500", "quantity": 0, "in_stock": false},
+              {"color": "Azul Océano", "code": "#4682B4", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#FF0000", "quantity": 3, "in_stock": true},
-              {"color": "#00FF00", "quantity": 1, "in_stock": true},
-              {"color": "#0000FF", "quantity": 0, "in_stock": false}
+              {"color": "Verde Militar", "code": "#4B5320", "quantity": 3, "in_stock": true},
+              {"color": "Naranja Atardecer", "code": "#FF4500", "quantity": 1, "in_stock": true},
+              {"color": "Azul Océano", "code": "#4682B4", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#FF0000", "quantity": 4, "in_stock": true},
-              {"color": "#00FF00", "quantity": 0, "in_stock": false},
-              {"color": "#0000FF", "quantity": 3, "in_stock": true}
+              {"color": "Verde Militar", "code": "#4B5320", "quantity": 4, "in_stock": true},
+              {"color": "Naranja Atardecer", "code": "#FF4500", "quantity": 0, "in_stock": false},
+              {"color": "Azul Océano", "code": "#4682B4", "quantity": 3, "in_stock": true}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#FF0000", "quantity": 2, "in_stock": true},
-              {"color": "#00FF00", "quantity": 0, "in_stock": false},
-              {"color": "#0000FF", "quantity": 1, "in_stock": true}
+              {"color": "Verde Militar", "code": "#4B5320", "quantity": 2, "in_stock": true},
+              {"color": "Naranja Atardecer", "code": "#FF4500", "quantity": 0, "in_stock": false},
+              {"color": "Azul Océano", "code": "#4682B4", "quantity": 1, "in_stock": true}
             ]
           }
         ]
-        
       },
       {
         "productId": 2,
@@ -48,33 +46,33 @@
           {
             "size": 1,
             "stock": [
-              {"color": "#FFA500", "quantity": 0, "in_stock": false},
-              {"color": "#800080", "quantity": 3, "in_stock": true},
-              {"color": "#808080", "quantity": 2, "in_stock": true}
+              {"color": "Amarillo Dorado", "code": "#FFD700", "quantity": 0, "in_stock": false},
+              {"color": "Púrpura Real", "code": "#7851A9", "quantity": 3, "in_stock": true},
+              {"color": "Gris Acero", "code": "#B0C4DE", "quantity": 2, "in_stock": true}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#FFA500", "quantity": 1, "in_stock": true},
-              {"color": "#800080", "quantity": 0, "in_stock": false},
-              {"color": "#808080", "quantity": 4, "in_stock": true}
+              {"color": "Amarillo Dorado", "code": "#FFD700", "quantity": 1, "in_stock": true},
+              {"color": "Púrpura Real", "code": "#7851A9", "quantity": 0, "in_stock": false},
+              {"color": "Gris Acero", "code": "#B0C4DE", "quantity": 4, "in_stock": true}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#FFA500", "quantity": 5, "in_stock": true},
-              {"color": "#800080", "quantity": 2, "in_stock": true},
-              {"color": "#808080", "quantity": 0, "in_stock": false}
+              {"color": "Amarillo Dorado", "code": "#FFD700", "quantity": 5, "in_stock": true},
+              {"color": "Púrpura Real", "code": "#7851A9", "quantity": 2, "in_stock": true},
+              {"color": "Gris Acero", "code": "#B0C4DE", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#FFA500", "quantity": 3, "in_stock": true},
-              {"color": "#800080", "quantity": 1, "in_stock": true},
-              {"color": "#808080", "quantity": 2, "in_stock": true}
+              {"color": "Amarillo Dorado", "code": "#FFD700", "quantity": 3, "in_stock": true},
+              {"color": "Púrpura Real", "code": "#7851A9", "quantity": 1, "in_stock": true},
+              {"color": "Gris Acero", "code": "#B0C4DE", "quantity": 2, "in_stock": true}
             ]
           }
         ]
@@ -85,33 +83,33 @@
           {
             "size": 1,
             "stock": [
-              {"color": "#000000", "quantity": 4, "in_stock": true},
-              {"color": "#FFFFFF", "quantity": 3, "in_stock": true},
-              {"color": "#FF69B4", "quantity": 0, "in_stock": false}
+              {"color": "Negro Azabache", "code": "#343434", "quantity": 4, "in_stock": true},
+              {"color": "Blanco Marfil", "code": "#FFFFF0", "quantity": 3, "in_stock": true},
+              {"color": "Rosa Rubor", "code": "#FFB6C1", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#000000", "quantity": 2, "in_stock": true},
-              {"color": "#FFFFFF", "quantity": 5, "in_stock": true},
-              {"color": "#FF69B4", "quantity": 1, "in_stock": true}
+              {"color": "Negro Azabache", "code": "#343434", "quantity": 2, "in_stock": true},
+              {"color": "Blanco Marfil", "code": "#FFFFF0", "quantity": 5, "in_stock": true},
+              {"color": "Rosa Rubor", "code": "#FFB6C1", "quantity": 1, "in_stock": true}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#000000", "quantity": 3, "in_stock": true},
-              {"color": "#FFFFFF", "quantity": 4, "in_stock": true},
-              {"color": "#FF69B4", "quantity": 0, "in_stock": false}
+              {"color": "Negro Azabache", "code": "#343434", "quantity": 3, "in_stock": true},
+              {"color": "Blanco Marfil", "code": "#FFFFF0", "quantity": 4, "in_stock": true},
+              {"color": "Rosa Rubor", "code": "#FFB6C1", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#000000", "quantity": 1, "in_stock": true},
-              {"color": "#FFFFFF", "quantity": 0, "in_stock": false},
-              {"color": "#FF69B4", "quantity": 5, "in_stock": true}
+              {"color": "Negro Azabache", "code": "#343434", "quantity": 1, "in_stock": true},
+              {"color": "Blanco Marfil", "code": "#FFFFF0", "quantity": 0, "in_stock": false},
+              {"color": "Rosa Rubor", "code": "#FFB6C1", "quantity": 5, "in_stock": true}
             ]
           }
         ]
@@ -122,33 +120,33 @@
           {
             "size": 1,
             "stock": [
-              {"color": "#FFFF00", "quantity": 5, "in_stock": true},
-              {"color": "#ADFF2F", "quantity": 3, "in_stock": true},
-              {"color": "#00CED1", "quantity": 0, "in_stock": false}
+              {"color": "Amarillo Girasol", "code": "#FFDA03", "quantity": 5, "in_stock": true},
+              {"color": "Verde Menta", "code": "#98FF98", "quantity": 3, "in_stock": true},
+              {"color": "Azul Tiffany", "code": "#0ABAB5", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#FFFF00", "quantity": 2, "in_stock": true},
-              {"color": "#ADFF2F", "quantity": 4, "in_stock": true},
-              {"color": "#00CED1", "quantity": 1, "in_stock": true}
+              {"color": "Amarillo Girasol", "code": "#FFDA03", "quantity": 2, "in_stock": true},
+              {"color": "Verde Menta", "code": "#98FF98", "quantity": 4, "in_stock": true},
+              {"color": "Azul Tiffany", "code": "#0ABAB5", "quantity": 1, "in_stock": true}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#FFFF00", "quantity": 3, "in_stock": true},
-              {"color": "#ADFF2F", "quantity": 0, "in_stock": false},
-              {"color": "#00CED1", "quantity": 5, "in_stock": true}
+              {"color": "Amarillo Girasol", "code": "#FFDA03", "quantity": 3, "in_stock": true},
+              {"color": "Verde Menta", "code": "#98FF98", "quantity": 0, "in_stock": false},
+              {"color": "Azul Tiffany", "code": "#0ABAB5", "quantity": 5, "in_stock": true}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#FFFF00", "quantity": 1, "in_stock": true},
-              {"color": "#ADFF2F", "quantity": 2, "in_stock": true},
-              {"color": "#00CED1", "quantity": 3, "in_stock": true}
+              {"color": "Amarillo Girasol", "code": "#FFDA03", "quantity": 1, "in_stock": true},
+              {"color": "Verde Menta", "code": "#98FF98", "quantity": 2, "in_stock": true},
+              {"color": "Azul Tiffany", "code": "#0ABAB5", "quantity": 3, "in_stock": true}
             ]
           }
         ]
@@ -159,33 +157,33 @@
           {
             "size": 1,
             "stock": [
-              {"color": "#A52A2A", "quantity": 3, "in_stock": true},
-              {"color": "#00008B", "quantity": 2, "in_stock": true},
-              {"color": "#8B0000", "quantity": 0, "in_stock": false}
+              {"color": "Burdeos", "code": "#800020", "quantity": 3, "in_stock": true},
+              {"color": "Azul Marino", "code": "#000080", "quantity": 2, "in_stock": true},
+              {"color": "Rojo Escarlata", "code": "#FF2400", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#A52A2A", "quantity": 1, "in_stock": true},
-              {"color": "#00008B", "quantity": 4, "in_stock": true},
-              {"color": "#8B0000", "quantity": 3, "in_stock": true}
+              {"color": "Burdeos", "code": "#800020", "quantity": 5, "in_stock": true},
+              {"color": "Azul Marino", "code": "#000080", "quantity": 0, "in_stock": false},
+              {"color": "Rojo Escarlata", "code": "#FF2400", "quantity": 1, "in_stock": true}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#A52A2A", "quantity": 5, "in_stock": true},
-              {"color": "#00008B", "quantity": 0, "in_stock": false},
-              {"color": "#8B0000", "quantity": 2, "in_stock": true}
+              {"color": "Burdeos", "code": "#800020", "quantity": 5, "in_stock": true},
+              {"color": "Azul Marino", "code": "#000080", "quantity": 0, "in_stock": false},
+              {"color": "Rojo Escarlata", "code": "#FF2400", "quantity": 2, "in_stock": true}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#A52A2A", "quantity": 0, "in_stock": false},
-              {"color": "#00008B", "quantity": 1, "in_stock": true},
-              {"color": "#8B0000", "quantity": 3, "in_stock": true}
+              {"color": "Burdeos", "code": "#800020", "quantity": 0, "in_stock": false},
+              {"color": "Azul Marino", "code": "#000080", "quantity": 1, "in_stock": true},
+              {"color": "Rojo Escarlata", "code": "#FF2400", "quantity": 3, "in_stock": true}
             ]
           }
         ]
@@ -196,33 +194,33 @@
           {
             "size": 1,
             "stock": [
-              {"color": "#FF4500", "quantity": 4, "in_stock": true},
-              {"color": "#2E8B57", "quantity": 3, "in_stock": true},
-              {"color": "#DAA520", "quantity": 2, "in_stock": true}
+              {"color": "Coral", "code": "#FF7F50", "quantity": 4, "in_stock": true},
+              {"color": "Verde Mar", "code": "#2E8B57", "quantity": 3, "in_stock": true},
+              {"color": "Dorado", "code": "#DAA520", "quantity": 2, "in_stock": true}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#FF4500", "quantity": 0, "in_stock": false},
-              {"color": "#2E8B57", "quantity": 5, "in_stock": true},
-              {"color": "#DAA520", "quantity": 1, "in_stock": true}
+              {"color": "Coral", "code": "#FF7F50", "quantity": 0, "in_stock": false},
+              {"color": "Verde Mar", "code": "#2E8B57", "quantity": 5, "in_stock": true},
+              {"color": "Dorado", "code": "#DAA520", "quantity": 1, "in_stock": true}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#FF4500", "quantity": 3, "in_stock": true},
-              {"color": "#2E8B57", "quantity": 4, "in_stock": true},
-              {"color": "#DAA520", "quantity": 0, "in_stock": false}
+              {"color": "Coral", "code": "#FF7F50", "quantity": 3, "in_stock": true},
+              {"color": "Verde Mar", "code": "#2E8B57", "quantity": 4, "in_stock": true},
+              {"color": "Dorado", "code": "#DAA520", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#FF4500", "quantity": 2, "in_stock": true},
-              {"color": "#2E8B57", "quantity": 1, "in_stock": true},
-              {"color": "#DAA520", "quantity": 0, "in_stock": false}
+              {"color": "Coral", "code": "#FF7F50", "quantity": 2, "in_stock": true},
+              {"color": "Verde Mar", "code": "#2E8B57", "quantity": 1, "in_stock": true},
+              {"color": "Dorado", "code": "#DAA520", "quantity": 0, "in_stock": false}
             ]
           }
         ]
@@ -233,33 +231,33 @@
           {
             "size": 1,
             "stock": [
-              {"color": "#4682B4", "quantity": 1, "in_stock": true},
-              {"color": "#CD5C5C", "quantity": 0, "in_stock": false},
-              {"color": "#FFD700", "quantity": 3, "in_stock": true}
+              {"color": "Azul Acero", "code": "#4682B4", "quantity": 1, "in_stock": true},
+              {"color": "Rojo Indio", "code": "#CD5C5C", "quantity": 0, "in_stock": false},
+              {"color": "Oro", "code": "#FFD700", "quantity": 3, "in_stock": true}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#4682B4", "quantity": 2, "in_stock": true},
-              {"color": "#CD5C5C", "quantity": 5, "in_stock": true},
-              {"color": "#FFD700", "quantity": 1, "in_stock": true}
+              {"color": "Azul Acero", "code": "#4682B4", "quantity": 2, "in_stock": true},
+              {"color": "Rojo Indio", "code": "#CD5C5C", "quantity": 5, "in_stock": true},
+              {"color": "Oro", "code": "#FFD700", "quantity": 1, "in_stock": true}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#4682B4", "quantity": 3, "in_stock": true},
-              {"color": "#CD5C5C", "quantity": 0, "in_stock": false},
-              {"color": "#FFD700", "quantity": 2, "in_stock": true}
+              {"color": "Azul Acero", "code": "#4682B4", "quantity": 3, "in_stock": true},
+              {"color": "Rojo Indio", "code": "#CD5C5C", "quantity": 0, "in_stock": false},
+              {"color": "Oro", "code": "#FFD700", "quantity": 2, "in_stock": true}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#4682B4", "quantity": 4, "in_stock": true},
-              {"color": "#CD5C5C", "quantity": 1, "in_stock": true},
-              {"color": "#FFD700", "quantity": 0, "in_stock": false}
+              {"color": "Azul Acero", "code": "#4682B4", "quantity": 4, "in_stock": true},
+              {"color": "Rojo Indio", "code": "#CD5C5C", "quantity": 1, "in_stock": true},
+              {"color": "Oro", "code": "#FFD700", "quantity": 0, "in_stock": false}
             ]
           }
         ]
@@ -270,33 +268,33 @@
           {
             "size": 1,
             "stock": [
-              {"color": "#FF6347", "quantity": 2, "in_stock": true},
-              {"color": "#4682B4", "quantity": 0, "in_stock": false},
-              {"color": "#32CD32", "quantity": 3, "in_stock": true}
+              {"color": "Rojo Tomate", "code": "#FF6347", "quantity": 2, "in_stock": true},
+              {"color": "Azul Dodger", "code": "#1E90FF", "quantity": 0, "in_stock": false},
+              {"color": "Verde Lima", "code": "#32CD32", "quantity": 3, "in_stock": true}
             ]
           },
           {
             "size": 2,
             "stock": [
-              {"color": "#FF6347", "quantity": 1, "in_stock": true},
-              {"color": "#4682B4", "quantity": 4, "in_stock": true},
-              {"color": "#32CD32", "quantity": 2, "in_stock": true}
+              {"color": "Rojo Tomate", "code": "#FF6347", "quantity": 1, "in_stock": true},
+              {"color": "Azul Dodger", "code": "#1E90FF", "quantity": 4, "in_stock": true},
+              {"color": "Verde Lima", "code": "#32CD32", "quantity": 2, "in_stock": true}
             ]
           },
           {
             "size": 3,
             "stock": [
-              {"color": "#FF6347", "quantity": 5, "in_stock": true},
-              {"color": "#4682B4", "quantity": 3, "in_stock": true},
-              {"color": "#32CD32", "quantity": 0, "in_stock": false}
+              {"color": "Rojo Tomate", "code": "#FF6347", "quantity": 5, "in_stock": true},
+              {"color": "Azul Dodger", "code": "#1E90FF", "quantity": 3, "in_stock": true},
+              {"color": "Verde Lima", "code": "#32CD32", "quantity": 0, "in_stock": false}
             ]
           },
           {
             "size": 4,
             "stock": [
-              {"color": "#FF6347", "quantity": 0, "in_stock": false},
-              {"color": "#4682B4", "quantity": 1, "in_stock": true},
-              {"color": "#32CD32", "quantity": 4, "in_stock": true}
+              {"color": "Rojo Tomate", "code": "#FF6347", "quantity": 0, "in_stock": false},
+              {"color": "Azul Dodger", "code": "#1E90FF", "quantity": 1, "in_stock": true},
+              {"color": "Verde Lima", "code": "#32CD32", "quantity": 4, "in_stock": true}
             ]
           }
         ]
