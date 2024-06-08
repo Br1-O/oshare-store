@@ -2338,23 +2338,23 @@ footer{
     margin-bottom: max(0.2vmax, 0.3rem);
 }
 
-#cart-card-product-info :nth-child(4){
+#cart-card-product-info :nth-child(5){
     color: green;
 }
 
-#cart-card-product-info :nth-child(5){
+#cart-card-product-info :nth-child(6){
     color: red;
     cursor: pointer;
 
     user-select: none;
 }
 
-#cart-card-product-info :nth-child(5):hover{
+#cart-card-product-info :nth-child(6):hover{
     text-decoration: underline;
     transform: scale(1.025);
 }
 
-#cart-card-product-info :nth-child(5):hover i{
+#cart-card-product-info :nth-child(6):hover i{
 
     animation: RotateY 1s ease-in-out forwards;
     animation-iteration-count: 1;

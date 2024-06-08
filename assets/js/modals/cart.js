@@ -54,9 +54,18 @@ export const setModalCart = (userData, productList) => {
 
         cartContent.innerHTML = "";
 
-        let size = "S";
-        let color = "Rojo";
-        let isInStock = "En Stock";
+        let selectedSize = document.querySelector(".product-stock-info-size[data-selected]");
+        let selectedColor = document.querySelector(".product-stock-info-color[data-selected]");
+        
+        let size = "S", color = "rojo", isInStock = "En Stock";
+
+        //check if size and color is selected
+        if (selectedSize && selectedColor) {
+
+            size = selectedSize.innerText;
+            color = selectedColor.dataset.color;
+            isInStock = "En Stock";
+        }
         
         //function to count how many copies of the same product are in the shopping cart
         const countQuantity = (array, value) => {
@@ -83,7 +92,7 @@ export const setModalCart = (userData, productList) => {
         arrayCartWithQuantity.forEach((item) => {
 
             //check that productList is valid
-            if (productList != null && productList != undefined) {
+            if (productList) {
 
                 //iterate through productList
                 productList.forEach((product) => {
@@ -105,7 +114,8 @@ export const setModalCart = (userData, productList) => {
                                     <h2> ${product.name} </h2>
                                 </a>
                         
-                                <h4> Talle: ${size} Color: ${color} </h4>
+                                <h4> Talle: ${size} </h4>
+                                <h4> Color: ${color} </h4> 
                                 <p> ${item[1]} x $ ${product.price} </p>
                                 <p> ${isInStock} </p>
                                 
@@ -171,14 +181,9 @@ export const setModalCart = (userData, productList) => {
                             //dispatch event to update screen and value of session cart
                             window.dispatchEvent(new Event('itemDeletedFromCart'));
                         }
-
                     }
-
                 }
-    
             });
-
         }
-
     }
 }

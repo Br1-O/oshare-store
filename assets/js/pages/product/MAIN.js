@@ -216,7 +216,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
                             templateColorsOption +=
                             `
-                                <div class="product-stock-info-color" style="background-color:${product.code}" data-stock="${product.quantity}"></div>
+                                <div class="product-stock-info-color" style="background-color:${product.code}" data-stock="${product.quantity}" data-color="${product.color}"></div>
                             `;
                         }
 
@@ -368,11 +368,36 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
         btnAddToCart.addEventListener("click", () => {
 
-            //add product to cart of user object
-            userData.cart.push(product.id);
+            let selectedSize = document.querySelector(".product-stock-info-size[data-selected]");
+            let selectedColor = document.querySelector(".product-stock-info-color[data-selected]");
+            
+            //check if size and color is selected
+            if (selectedSize && selectedColor) {
 
-            //dispatch event to update screen
-            window.dispatchEvent(new Event('itemAddedToCart'));
+                //add product to cart of user object
+                userData.cart.push(product.id);
+
+                //dispatch event to update screen
+                window.dispatchEvent(new Event('itemAddedToCart'));
+            }else{
+
+                //Toast notification for failure
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "center",
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: false,
+                    didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: `¡Antes debe seleccionar la talla y color deseado!`
+                });
+            }
         });
 
         //product image toggle with thumbnail images
@@ -426,7 +451,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
                             if (product.in_stock) {
                                 templateColorsOption +=
                                 `
-                                    <div class="product-stock-info-color" style="background-color:${product.code}" data-stock="${product.quantity}"></div>
+                                    <div class="product-stock-info-color" style="background-color:${product.code}" data-stock="${product.quantity}" data-color="${product.color}"></div>
                                 `
                             }
 
