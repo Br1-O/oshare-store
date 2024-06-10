@@ -167,8 +167,18 @@ export const navBar = (isConnected = false) => {
 
     //display number of items currently in the shopping cart
         const navBarNumberOfItems = document.getElementsByClassName("navbar-cart-total-items");
+
+        let totalItemsInShoppingCart = 0;
+
+        if ((userData.cart).length != 0) {
+            userData.cart.forEach(item => {
+                totalItemsInShoppingCart += parseInt(item[1]);
+            });
+        }
+
         for (const numberDisplay of navBarNumberOfItems) {
-            numberDisplay.innerText = userData.cart.length;
+            
+            numberDisplay.innerText = totalItemsInShoppingCart;
         }
 
     //scroll behavior

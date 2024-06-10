@@ -370,12 +370,48 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
             let selectedSize = document.querySelector(".product-stock-info-size[data-selected]");
             let selectedColor = document.querySelector(".product-stock-info-color[data-selected]");
-            
+            const cartQuantityToAdd = document.getElementById("product-add-to-cart-quantity");
+
             //check if size and color is selected
             if (selectedSize && selectedColor) {
 
-                //add product to cart of user object
-                userData.cart.push(product.id);
+                // New map cart with their quantities
+                let cart = new Map(userData.cart);
+
+                //set item object with productId, size and color
+                let item = 
+                {
+                    productId: product.id,
+                    size: selectedSize.innerText,
+                    color: selectedColor.dataset.color
+                }
+
+                //set quantity to add of the product selected into the shopping cart
+                let quantityToAdd = cartQuantityToAdd ? parseInt(cartQuantityToAdd.value) : 1;
+
+                //function to add a product into the cart with its proper quantity
+                function addItemMapWithQuantity(map, product, quantity) {
+
+                    //parse object product into string version for comparision with keys
+                    let productAsString = JSON.stringify(product);
+
+                    //if the product matches any key of the map element of the cart with quantity
+                    if (map.has(productAsString)) {
+                        
+                        // If the product is already in the cart, update the quantity
+                        const currentQuantity = parseInt(map.get(productAsString));
+                        map.set(productAsString, currentQuantity + quantity);
+                    } else {
+                        // If the product is not in the cart, add it with the given quantity
+                        map.set(productAsString, quantity);
+                    }
+                }
+                
+                //compare the productId, size and color of each product inside the cart, to group the identical ones
+                addItemMapWithQuantity(cart, item, quantityToAdd);
+
+                //set user's shopping car as the array with quantity
+                userData.cart = Array.from(cart.entries());
 
                 //dispatch event to update screen
                 window.dispatchEvent(new Event('itemAddedToCart'));

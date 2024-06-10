@@ -30,7 +30,6 @@ export const setModalCart = (userData, productList) => {
 
     const cartContainer = document.getElementById("cart-container");
     const cartContent = document.getElementById("cart-items");
-    const cartQuantityToAdd = document.getElementById("product-add-to-cart-quantity");
 
     const cartsubtotal = document.querySelector("#cart-subtotal span");
     const cartNumberOfItems = document.getElementById("cart-total-items");
@@ -38,58 +37,27 @@ export const setModalCart = (userData, productList) => {
 
     let cartTemplate = "";
     let subtotal = 0;
-    
-    // New map to store products and their quantities
-    let cartWithQuantity = new Map();
+    let totalQuantityOfItems = 0;
 
-    let cart = userData.cart;
+    let isInStock = "En Stock";
 
     //check if shopping cart has products
-    if (cart.length === 0) {
+    if (userData.cart.length === 0) {
         cartTemplate = 
         `   
             <p> Tu carrito está vacio </p>
         `
     } else {
 
+        //erase precious cart content
         cartContent.innerHTML = "";
 
-        let selectedSize = document.querySelector(".product-stock-info-size[data-selected]");
-        let selectedColor = document.querySelector(".product-stock-info-color[data-selected]");
-        
-        let size = "S", color = "rojo", isInStock = "En Stock";
-
-        //check if size and color is selected
-        if (selectedSize && selectedColor) {
-
-            size = selectedSize.innerText;
-            color = selectedColor.dataset.color;
-            isInStock = "En Stock";
-        }
-        
-        //function to count how many copies of the same product are in the shopping cart
-        const countQuantity = (array, value) => {
-            return array.reduce((count, current) => {
-                return current === value ? count + 1 : count;
-            }, 0);
-        }
-
         //iterate through all products in the shopping cart
-        cart.forEach((item) => {
+        userData.cart.forEach((item) => {
 
-            // Check if product is already in the cartWithQuantity
-            if (!cartWithQuantity.has(item)) {
-                let quantity = countQuantity(cart, item);
-                cartWithQuantity.set(item, quantity);
-            }
-                            
-        });
-
-        // Convert the map to an array of tuples
-        let arrayCartWithQuantity = Array.from(cartWithQuantity.entries());
-
-        //iterate through all products in the shopping cart
-        arrayCartWithQuantity.forEach((item) => {
+            //proper parse of elements in the array
+            let itemData = JSON.parse(item[0]);
+            let itemQuantity = parseInt(item[1]);
 
             //check that productList is valid
             if (productList) {
@@ -98,11 +66,11 @@ export const setModalCart = (userData, productList) => {
                 productList.forEach((product) => {
 
                     //check if any of the products are present in the array
-                    if (product.id === item[0]) {
+                    if (product.id === itemData.productId) {
 
                         cartTemplate +=
                         `
-                        <article id="cart-card-product" class="rowToCol" data-product=${product.id}>
+                        <article id="cart-card-product" class="rowToCol" data-productid=${product.id} data-size=${itemData.size} data-color=${itemData.color.replaceAll(" ","-")}>
 
                             <a href=${product.link}>
                                 <img src=${product.image[0]} alt="">
@@ -114,9 +82,9 @@ export const setModalCart = (userData, productList) => {
                                     <h2> ${product.name} </h2>
                                 </a>
                         
-                                <h4> Talle: ${size} </h4>
-                                <h4> Color: ${color} </h4> 
-                                <p> ${item[1]} x $ ${product.price} </p>
+                                <h4> Talle: ${itemData.size} </h4>
+                                <h4> Color: ${itemData.color} </h4> 
+                                <p> ${itemQuantity} x $ ${product.price} </p>
                                 <p> ${isInStock} </p>
                                 
                                 <p class="btn-cart-delete-product"> 
@@ -128,21 +96,21 @@ export const setModalCart = (userData, productList) => {
                         </article>
                         `
                         //change subtotal of the shopping cart
-                        subtotal += parseFloat(item[1])*parseFloat(product.price);
-                    }
+                        subtotal += itemQuantity*parseFloat(product.price);
 
+                        //add number of items to the total number of items
+                        totalQuantityOfItems += itemQuantity;
+                    }
                 });
             }
-
         });
     }
-    
 
     //change number of items in the shopping cart
-    cartNumberOfItems.innerText = "(" + cart.length + ")" ;
+    cartNumberOfItems.innerText = "(" + totalQuantityOfItems + ")" ;
     
     for (const numberDisplay of navBarNumberOfItems) {
-        numberDisplay.innerText = cart.length;
+        numberDisplay.innerText = totalQuantityOfItems;
     }
 
     //change content and subtotal of the shopping cart
@@ -150,38 +118,50 @@ export const setModalCart = (userData, productList) => {
     cartsubtotal.innerText = subtotal;
 
     //set event listener for delete product from cart button
-    if (!(cart.length === 0) && document.getElementsByClassName("btn-cart-delete-product")) {
+    if (!(userData.cart.length === 0) && document.getElementsByClassName("btn-cart-delete-product")) {
 
         const btnDeleteProductFromCart = document.getElementsByClassName("btn-cart-delete-product");
+
+        // New map cart with their quantities
+        let cart = new Map(userData.cart);
 
         for (const btn of btnDeleteProductFromCart) {
 
             btn.addEventListener("click", () => {
             
                 //get productId from parent element dataset
-                let parentElement = btn.closest("[data-product]");
-                let productId = parseInt((parentElement).dataset.product);
+                let parentElement = btn.closest("[data-productid]");
 
-                //check if product is in map object with form: (productId, quantity)
-                if (cartWithQuantity.has(productId)) {
+                //set product element to compare to cart map element's keys
+                let productData = {
+                    productId: parseInt((parentElement).dataset.productid),
+                    size: (parentElement).dataset.size,
+                    color: ((parentElement).dataset.color).replaceAll("-"," "),
+                }
+
+                //parse object product into string version for comparision with keys
+                let productString = JSON.stringify(productData);
+
+                //check if product is in map object
+                if (cart.has(productString)) {
 
                     //get quantity of the product
-                    let currentValue = cartWithQuantity.get(productId);
+                    let currentValue = parseInt(cart.get(productString));
 
                     //check if quantity is positive
-                    if (currentValue > 0) {
+                    currentValue > 1 ?
 
-                        //get first index of product
-                        let index = cart.indexOf(productId);
+                        //reduce one the quantity of the product from user object's shopping cart
+                        cart.set(productString, currentValue - 1)
+                    :
+                        //delete product from user object's shopping cart
+                        cart.delete(productString);
 
-                        if (index != -1) {
-                            //delete product from user object's shopping cart array and set it to the new array without that instance of the product
-                            userData.cart = cart.toSpliced(index, 1);
+                    //set user's shopping car as the array with quantity
+                    userData.cart = Array.from(cart.entries());
 
-                            //dispatch event to update screen and value of session cart
-                            window.dispatchEvent(new Event('itemDeletedFromCart'));
-                        }
-                    }
+                    //dispatch event to update screen and value of session cart
+                    window.dispatchEvent(new Event('itemDeletedFromCart'));
                 }
             });
         }

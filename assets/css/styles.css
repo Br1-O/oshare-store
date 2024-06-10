@@ -2294,7 +2294,7 @@ footer{
 
 #cart-card-product{
     width: 100%;
-    height: 9vmax;
+    height: max(9vmax, 12rem);
 
     padding: max(0.25vmax, 0.25rem);
     background-color: var(--font-hover-color);
@@ -3268,7 +3268,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
     #cart-card-product{
         width: 100%;
-        height: 18rem;
+        height: 19.5rem;
     }
 
     #product-images{
@@ -3710,7 +3710,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
     #cart-card-product{
         width: 100%;
-        height: 18rem;
+        height: 20rem;
     }
     
 }
@@ -4035,7 +4035,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
     #cart-card-product{
         width: 100%;
-        height: 11.8rem;
+        height: 14.5rem;
     }
 
     
@@ -4187,7 +4187,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
     #cart-card-product{
         width: 100%;
-        height: 11.8rem;
+        height: 14rem;
     }
 
     /*■■■■■■■■■■■■■■■■■■ Product page ■■■■■■■■■■■■■■■■■■*/
