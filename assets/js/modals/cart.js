@@ -26,7 +26,7 @@ export const setEventListenerModalCart = (btnCart) => {
     });
 }
 
-export const setModalCart = (userData, productList) => {
+export const setModalCart = async(userData, productList, inStock) => {
 
     const cartContainer = document.getElementById("cart-container");
     const cartContent = document.getElementById("cart-items");
@@ -38,8 +38,6 @@ export const setModalCart = (userData, productList) => {
     let cartTemplate = "";
     let subtotal = 0;
     let totalQuantityOfItems = 0;
-
-    let isInStock = "En Stock";
 
     //check if shopping cart has products
     if (userData.cart.length === 0) {
@@ -53,7 +51,7 @@ export const setModalCart = (userData, productList) => {
         cartContent.innerHTML = "";
 
         //iterate through all products in the shopping cart
-        userData.cart.forEach((item) => {
+        for (let item of userData.cart) {
 
             //proper parse of elements in the array
             let itemData = JSON.parse(item[0]);
@@ -63,14 +61,17 @@ export const setModalCart = (userData, productList) => {
             if (productList) {
 
                 //iterate through productList
-                productList.forEach((product) => {
+                for (let product of productList) {
 
                     //check if any of the products are present in the array
                     if (product.id === itemData.productId) {
 
+                        //check if product is currently available in inventory
+                        let stockStatus = await inStock(product.id, itemData);
+  
                         cartTemplate +=
                         `
-                        <article id="cart-card-product" class="rowToCol" data-productid=${product.id} data-size=${itemData.size} data-color=${itemData.color.replaceAll(" ","-")}>
+                        <article id="cart-card-product" class="rowToCol" data-available=${stockStatus}  data-productid=${product.id} data-size=${itemData.size} data-color=${itemData.color.replaceAll(" ","-")}>
 
                             <a href=${product.link}>
                                 <img src=${product.image[0]} alt="">
@@ -85,7 +86,7 @@ export const setModalCart = (userData, productList) => {
                                 <h4> Talle: ${itemData.size} </h4>
                                 <h4> Color: ${itemData.color} </h4> 
                                 <p> ${itemQuantity} x $ ${product.price} </p>
-                                <p> ${isInStock} </p>
+                                <p style=${stockStatus ? "color:green" : "color:red"}> ${stockStatus ? "En Stock" : "Sin Stock"} </p>
                                 
                                 <p class="btn-cart-delete-product"> 
                                     <i class='bx bxs-trash'></i>
@@ -95,15 +96,20 @@ export const setModalCart = (userData, productList) => {
                         
                         </article>
                         `
-                        //change subtotal of the shopping cart
-                        subtotal += itemQuantity*parseFloat(product.price);
 
-                        //add number of items to the total number of items
-                        totalQuantityOfItems += itemQuantity;
+                        //if the product is available add its price and quantity
+                        if (stockStatus) {
+                            
+                            //change subtotal of the shopping cart
+                            subtotal += itemQuantity*parseFloat(product.price);
+
+                            //add number of items to the total number of items
+                            totalQuantityOfItems += itemQuantity;
+                        } 
                     }
-                });
+                }
             }
-        });
+        }
     }
 
     //change number of items in the shopping cart

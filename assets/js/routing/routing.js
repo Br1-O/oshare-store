@@ -27,6 +27,7 @@ import { displaySingleProductPage } from "../pages/product/MAIN.js";
 import { getSessionData, modifySessionCart, setUserDataFromSessionData } from "../utils/sessionStorage.js";
 import { setModalCart } from "../modals/cart.js";
 import { updateAccountData } from "../utils/localStorage.js";
+import { isInStock } from "../utils/products.js";
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
 
@@ -65,7 +66,7 @@ export const updateContent = async() => {
     //■■■■■■■■■■■■■■■■■■■■ Shopping cart updating ■■■■■■■■■■■■■■■■■■■■//
 
     //update shopping cart's content
-    setModalCart(userData, productsList);
+    setModalCart(userData, productsList, isInStock);
 
     // Listen for itemAddedToCart event to update the cart
     window.addEventListener('itemAddedToCart', () => {                
@@ -74,7 +75,7 @@ export const updateContent = async() => {
         modifySessionCart(userData);
 
         //update shopping cart's content
-        setModalCart(userData, productsList);
+        setModalCart(userData, productsList, isInStock);
         
         //update account's data
         updateAccountData(userData);
@@ -90,7 +91,7 @@ export const updateContent = async() => {
         updateAccountData(userData);
 
         //update shopping cart's content
-        setModalCart(userData, productsList);
+        setModalCart(userData, productsList, isInStock);
 
     });
 

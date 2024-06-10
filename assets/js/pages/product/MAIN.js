@@ -370,7 +370,6 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
             let selectedSize = document.querySelector(".product-stock-info-size[data-selected]");
             let selectedColor = document.querySelector(".product-stock-info-color[data-selected]");
-            const cartQuantityToAdd = document.getElementById("product-add-to-cart-quantity");
 
             //check if size and color is selected
             if (selectedSize && selectedColor) {
@@ -389,35 +388,66 @@ export const displaySingleProductPage = async(product, container, userData = {})
                 //set quantity to add of the product selected into the shopping cart
                 let quantityToAdd = cartQuantityToAdd ? parseInt(cartQuantityToAdd.value) : 1;
 
-                //function to add a product into the cart with its proper quantity
-                function addItemMapWithQuantity(map, product, quantity) {
-
-                    //parse object product into string version for comparision with keys
-                    let productAsString = JSON.stringify(product);
-
-                    //if the product matches any key of the map element of the cart with quantity
-                    if (map.has(productAsString)) {
-                        
-                        // If the product is already in the cart, update the quantity
-                        const currentQuantity = parseInt(map.get(productAsString));
-                        map.set(productAsString, currentQuantity + quantity);
-                    } else {
-                        // If the product is not in the cart, add it with the given quantity
-                        map.set(productAsString, quantity);
-                    }
+                //set quantity of the product already inside the cart
+                let quantityInCart = 0;
+                if(cart.get(JSON.stringify(item))){
+                    quantityInCart = parseInt(cart.get(JSON.stringify(item)));
                 }
-                
-                //compare the productId, size and color of each product inside the cart, to group the identical ones
-                addItemMapWithQuantity(cart, item, quantityToAdd);
 
-                //set user's shopping car as the array with quantity
-                userData.cart = Array.from(cart.entries());
+                //maximum amount of units available of that product
+                let maxStock = selectedColor.dataset.stock;
 
-                //dispatch event to update screen
-                window.dispatchEvent(new Event('itemAddedToCart'));
+                //check if the sum is less or equal to the stock available
+                if(quantityToAdd + quantityInCart <= maxStock){
+
+                    //function to add a product into the cart with its proper quantity
+                    function addItemMapWithQuantity(map, product, quantity) {
+
+                        //parse object product into string version for comparision with keys
+                        let productAsString = JSON.stringify(product);
+
+                        //if the product matches any key of the map element of the cart with quantity
+                        if (map.has(productAsString)) {
+                            
+                            // If the product is already in the cart, update the quantity
+                            const currentQuantity = parseInt(map.get(productAsString));
+                            map.set(productAsString, currentQuantity + quantity);
+                        } else {
+                            // If the product is not in the cart, add it with the given quantity
+                            map.set(productAsString, quantity);
+                        }
+                    }
+                    
+                    //compare the productId, size and color of each product inside the cart, to group the identical ones
+                    addItemMapWithQuantity(cart, item, quantityToAdd);
+
+                    //set user's shopping car as the array with quantity
+                    userData.cart = Array.from(cart.entries());
+
+                    //dispatch event to update screen
+                    window.dispatchEvent(new Event('itemAddedToCart'));
+                }else{
+
+                    //toast notification for failure
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "center",
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: false,
+                        didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                        }
+                    });
+                    Toast.fire({
+                        icon: "error",
+                        title: `¡No puede superar el limite disponible!`
+                    });
+                }
             }else{
 
-                //Toast notification for failure
+                //toast notification for failure
                 const Toast = Swal.mixin({
                     toast: true,
                     position: "center",
@@ -454,8 +484,11 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
         //product sizes to show available colors
         const btnSizes = document.getElementsByClassName("product-stock-info-size");
+        //container of color btns
         const containerColors = document.getElementById("product-stock-info-colors");
+        //quantity container and btn
         const containerQuantity = document.getElementById("product-add-to-cart-display-quantity");
+        const cartQuantityToAdd = document.getElementById("product-add-to-cart-quantity");
 
         //iterate all sizes buttons
         for (const btn of btnSizes) {
@@ -518,6 +551,13 @@ export const displaySingleProductPage = async(product, container, userData = {})
                             `
                                 ${btn.dataset.stock > 1 ? btn.dataset.stock + " disponibles" : "¡" + btn.dataset.stock + " disponible!"} 
                             `
+
+                            //set maximum value for number field
+                            if ( cartQuantityToAdd.value > btn.dataset.stock ) {
+                                cartQuantityToAdd.value = btn.dataset.stock;
+                            }
+                            //maximum items available in stock for max value in number field
+                            cartQuantityToAdd.max = btn.dataset.stock;
                         });
                     }
                 }
@@ -530,6 +570,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
             for (const btn of btnColors) {
                 //event listener for all color buttons 
                 btn.addEventListener("click", () => {
+
                     //remove selected dataset from selected color and select current color
                     setBtnAsSelected(btn, btnColors);
                     //display the quantity available for that product
@@ -537,6 +578,13 @@ export const displaySingleProductPage = async(product, container, userData = {})
                     `
                         ${btn.dataset.stock > 1 ? btn.dataset.stock + " disponibles" : "¡" + btn.dataset.stock + " disponible!"}
                     `
+
+                    //set maximum value for number field
+                    if ( cartQuantityToAdd.value > btn.dataset.stock ) {
+                        cartQuantityToAdd.value = btn.dataset.stock;
+                    }
+                    //maximum items available in stock for max value in number field
+                    cartQuantityToAdd.max = btn.dataset.stock;
                 });
             }
 
