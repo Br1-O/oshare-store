@@ -23,11 +23,13 @@ import { notFoundMessage } from "../pages/notFound404.js";
 import { carousel } from "../pages/carousel-experimental.js";
 import { userData } from "../models/user.js";
 import { footer } from "../components/footer.js";
-import { displaySingleProductPage } from "../pages/product/MAIN.js";
 import { getSessionData, modifySessionCart, setUserDataFromSessionData } from "../utils/sessionStorage.js";
 import { setModalCart } from "../modals/cart.js";
 import { updateAccountData } from "../utils/localStorage.js";
-import { isInStock } from "../utils/products.js";
+import { findProductByCategoryAndName, isInStock } from "../utils/products.js";
+import { productRouteHandler } from "../pages/product/utils.js";
+import { dinamicRouteDisplay } from "./dinamicRouting.js";
+import { displaySingleProductPage } from "../pages/product/MAIN.js";
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
 
@@ -94,73 +96,6 @@ export const updateContent = async() => {
         setModalCart(userData, productsList, isInStock);
 
     });
-
-    //■■■■■■■■■■■■■■■■■■■■ Product page dinamic URL rendering ■■■■■■■■■■■■■■■■■■■■//
-
-    //find product by category and name (name separated with "-" instead of blank spaces)
-    const findProductByCategoryAndName = async(category, name) => {
-
-        //fetch product data
-        let products = await fetchData("assets/js/json/products-list.json", "products");
-
-        //check if any of the categories or the name matches 
-        return products.find((product) => {
-            return product.categories.some(productCategory => productCategory === category) 
-                && product.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ /g, '-') === name;
-        });
-        //(normalize first to wipe special characters -> change to lowercase version -> replace the spaces with "-")
-    }
-
-    // Function to render a product page
-    const renderProductPage = (product) => {
-
-        //check if product exists
-        if (!product) {
-            //if not display 404 page and redirect
-            content.innerHTML = notFoundMessage;
-            redirectToPage("", 5000);
-            return;
-        }else{
-            //display page product's content
-            displaySingleProductPage(product, content, userData);
-
-            //if user is logged update user's model data from session storage data
-            if (userData.isSessionSet) {
-                setUserDataFromSessionData(userData);
-            }
-        }
-    }
-
-    // Dynamic URL matching with regular expression
-    const tiendaProductoPattern = /^tienda\/producto\/([^\/]+)\/([^\/]+)$/;
-    //URL has to be in the form: tienda/producto/category/name-of-product
-
-    if (tiendaProductoPattern.test(hash)) {
-        //check and get all the dynamic paths of the URL
-        const match = hash.match(tiendaProductoPattern);
-        const category = match[1];
-        const productName = match[2];
-
-        //find the product
-        const product = await findProductByCategoryAndName(category, productName);
-
-        //render the product 
-        renderProductPage(product);
-
-        
-        //update title attribute of loading page
-        document.title =  `${product.name} · Oshare Designs`;
-        
-        //scroll to the top of the new page
-        window.scrollTo({ top: 0});
-
-        //include proper navbar
-        navBar(userData.isSessionSet);
-        //include footer
-        footer();
-
-        return;
-    }
 
     //■■■■■■■■■■■■■■■■■■■■ hash system routing ■■■■■■■■■■■■■■■■■■■■//
 
@@ -277,15 +212,39 @@ export const updateContent = async() => {
             //not found page
             default:
 
-                //update title attribute of page
-                document.title =  `Oshare Designs · 404 Not Found`;
+                //■■■■■■■■■■■■■■■■■■■■ Product page dinamic URL rendering ■■■■■■■■■■■■■■■■■■■■//
+
+                // Dynamic URL matching with regular expression
+                const tiendaProductoPattern = /^tienda\/producto\/([^\/]+)\/([^\/]+)$/;
+                //URL has to be in the form: tienda/producto/category/name-of-product
+
+                // Check if pattern for dinamic route of product's page is match (w/ injected dependencies into productRouteHandler)
+                const singleProductPageRouteHandler = await dinamicRouteDisplay(hash, tiendaProductoPattern, async (routeParams) => {
+                    await productRouteHandler(
+                        routeParams,
+                        findProductByCategoryAndName,
+                        userData,
+                        redirectToPage,
+                        setUserDataFromSessionData,
+                        notFoundMessage,
+                        displaySingleProductPage
+                    );
+                });
+
+                //if dinamic routes are not matched display not found page
+                if (singleProductPageRouteHandler) {
+
+                }else{
+                    //update title attribute of page
+                    document.title =  `Oshare Designs · 404 Not Found`;
+
+                    //display not found default page
+                    content.innerHTML = notFoundMessage;
+                    redirectToPage("", 3000);
+                }
 
                 //include proper navbar
                 navBar(userData.isSessionSet);
-
-                content.innerHTML = notFoundMessage;
-                redirectToPage("", 3000);
-
                 //include footer
                 footer();
             break;
@@ -339,7 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //update content based on the URL
         updateContent();
-
     }
 });
 

@@ -6,7 +6,6 @@ export const getInventory = async () => {
     return inventory;
 }
 
-
 export const getStockOfProductOrderedBySize = async (productId) => {
 
     let inventory = await getInventory();
@@ -61,4 +60,18 @@ export const isInStock = async (productId, itemData) => {
     }
 
     return false;
+}
+
+//find product by category and name (name separated with "-" instead of blank spaces)
+export const findProductByCategoryAndName = async(category, name) => {
+
+    //fetch product data
+    let products = await fetchData("assets/js/json/products-list.json", "products");
+
+    //check if any of the categories or the name matches 
+    return products.find((product) => {
+        return product.categories.some(productCategory => productCategory === category) 
+            && product.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ /g, '-') === name;
+    });
+    //(normalize first to wipe special characters -> change to lowercase version -> replace the spaces with "-")
 }

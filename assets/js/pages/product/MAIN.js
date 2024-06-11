@@ -259,7 +259,7 @@ export const displaySingleProductPage = async(product, container, userData = {})
 
                         <div id="product-images-selected"> 
                         
-                            <a href="#" target="_blank">
+                            <a href=${product.image[0]} target="_blank">
                                 <img id="product-page-image" class="preview-image" src= ${product.image[0]} data-src=${product.image[0]} loading="lazy" alt="${product.name}">
                             </a>
 
