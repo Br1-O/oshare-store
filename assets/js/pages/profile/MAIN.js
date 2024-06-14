@@ -27,7 +27,7 @@ export const profilePageContent = (userData = {}, editableField, editableFieldsE
 
                         <p id="errorPictureProfilePage" class="error d-none" style="margin:auto;"></p>
                         <div class="container-empty-img">
-                            <img src="${userData.profileImage ? userData.profileImage : "/assets/resources/img/blank-profile-picture.png"}" alt="profile picture">
+                            <img src="${userData.profileImage ? userData.profileImage : "./assets/resources/img/blank-profile-picture.png"}" alt="profile picture">
                             <span class="message-over-image"> ${userData.profileImage ? "Cambia tu foto de perfil" : "Sube una foto de perfil"} </span>
                         </div>
                     </div>
