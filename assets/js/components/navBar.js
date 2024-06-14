@@ -83,7 +83,9 @@ const sessionNavBar = `
             </div>
         </li>
         <li>
-            <i class='bx bxs-user-detail nav-icon' id="profile-icon" alt="Profile options" title="Datos del perfil"></i>
+            <a href="#profile" title="Mira los datos de tu perfil"> 
+                <i class='bx bxs-user-detail nav-icon' id="profile-icon" alt="Profile options"></i>
+            </a>
         </li>
         <li>
             <i class='bx bx-log-in nav-icon' id="log-out-icon" alt="Logout" title="Cerrar sesión"></i>
@@ -128,15 +130,6 @@ export const navBar = (isConnected = false) => {
 
             //event listeners
             setEventListenerModalCart(btnCart);
-            
-            //event listener for profile options icon
-            btnProfile.addEventListener("click", () => {
-                console.log(userData.name);
-                console.log(userData.surname);
-                console.log(userData.email);
-                console.log(userData.cart);
-                console.log(userData);
-            });
 
             //event listener for log out icon
             btnLogOut.addEventListener("click", () => {
@@ -151,17 +144,33 @@ export const navBar = (isConnected = false) => {
                 userData.name = "";
                 userData.surname = "";
                 userData.email = "";
-                userData.picture = "";
+                userData.profileImage = "";
                 userData.cart = [];
+                userData.phone = "";
+                userData.city = "";
+                userData.region = "";
+                userData.country = "";
 
                 //delete session data
                 freeSessionData("oshare_designs_session");
 
-                //redirect to logged page
-                redirectToPage((window.location.hash).slice(1), 0);
+                //get the current hash without the leading '#'
+                const hash = window.location.hash.slice(1);
+
+                //split the hash by '/'
+                const segments = hash.split('/');
+
+                //check if any segment contains 'profile'
+                const containsProfile = segments.includes("profile");
+
+                //redirect to current page if current page is not profile related
+                containsProfile ?
+                redirectToPage("", 0)
+                :
+                redirectToPage((window.location.hash).slice(1), 0)
                 
-                //update content based on change of session state
-                updateContent();
+                //update content based on change of session state (wait 100ms to assure redirect happens first)
+                setTimeout(() => {updateContent()}, 100);
             });
         }
 

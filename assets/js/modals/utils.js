@@ -33,3 +33,16 @@ export const closeModal = () => {
 btnCloseModal.addEventListener("click", () => {
     closeModal();
 });
+
+//key Esc event for closing modals
+document.addEventListener("keydown", function(event) {
+
+    //check if modal is opened
+    if (modal.hasAttribute("open")) {
+
+        //close modal on Esc key pressed
+        if (event.key === "Escape" || event.key === "Esc") {
+            closeModal();
+        }
+    }
+});

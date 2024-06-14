@@ -24,6 +24,20 @@ export const setEventListenerModalCart = (btnCart) => {
     btnCloseCart.addEventListener("click", () => {
         cartContainer.classList.add("d-none");
     });
+
+    //key Esc event for hiding cart
+    document.addEventListener("keydown", function(event) {
+    
+        //check if cart is opened
+        if (!(cartContainer.classList.contains("d-none"))) {
+
+            //close modal on Esc key pressed
+            if (event.key === "Escape" || event.key === "Esc") {
+                //hide cart
+                cartContainer.classList.add("d-none");
+            }
+        }
+    });
 }
 
 export const setModalCart = async(userData, productList, inStock) => {

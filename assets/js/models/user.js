@@ -9,6 +9,10 @@ export let userData = {
     name : "",
     surname : "",
     email : "",
-    picture : "",
-    cart : []
+    profileImage : "",
+    cart : [],
+    phone : "",
+    city : "",
+    region : "",
+    country : ""
 }

@@ -15,21 +15,26 @@ import { shopContent } from "../pages/shop/MAIN.js";
 //contact page content
 import { contactPageContent } from "../pages/contact/MAIN.js";
 import { validationContactForm } from "../validation/contactForm.js";
-import { maxLengthValidation, minLengthValidation, phoneNumberValidation, emailValidation } from "../validation/utils.js";
+import { maxLengthValidation, minLengthValidation, phoneNumberValidation, emailValidation, isAlpha } from "../validation/utils.js";
 
 //page not found content
 import { notFoundMessage } from "../pages/notFound404.js";
+//page not authorized content
+import { notAuthorizedMessage } from "../pages/notAuthorized401.js";
+
 //carousel EXPERIMENTAL
 import { carousel } from "../pages/carousel-experimental.js";
 import { userData } from "../models/user.js";
 import { footer } from "../components/footer.js";
-import { getSessionData, modifySessionCart, setUserDataFromSessionData } from "../utils/sessionStorage.js";
+import { getSessionData, modifySessionCart, setSessionData, setUserDataFromSessionData } from "../utils/sessionStorage.js";
 import { setModalCart } from "../modals/cart.js";
 import { updateAccountData } from "../utils/localStorage.js";
 import { findProductByCategoryAndName, isInStock } from "../utils/products.js";
 import { productRouteHandler } from "../pages/product/utils.js";
 import { dinamicRouteDisplay } from "./dinamicRouting.js";
 import { displaySingleProductPage } from "../pages/product/MAIN.js";
+import { profilePageContent } from "../pages/profile/MAIN.js";
+import { editableField, editableFieldsEventListeners } from "../components/editableField.js";
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
 
@@ -106,6 +111,7 @@ export const updateContent = async() => {
     }else{
         // Change page content based on hash
         switch(hash) {
+
             //home page
             case '':
 
@@ -147,6 +153,7 @@ export const updateContent = async() => {
                 footer();
 
             break;
+            
             //store page
             case 'tienda':
 
@@ -176,6 +183,7 @@ export const updateContent = async() => {
                 footer();
                 
             break;
+            
             //contact page
             case 'contacto':
 
@@ -195,6 +203,7 @@ export const updateContent = async() => {
                 footer(false);
 
             break;
+            
             //products page
             case 'productos':
 
@@ -209,6 +218,68 @@ export const updateContent = async() => {
                 //include footer
                 footer();
             break;
+            
+            //profile page
+            case 'profile':
+
+                //include proper navbar
+                navBar(userData.isSessionSet);
+                
+                //check if user is connected
+                if (userData.isSessionSet) {
+
+                    //check if name attribute is not empty
+                    (userData.name && userData.surname) ?
+                    //update title attribute of page w/ user's name
+                    document.title =  `${userData.name} ${userData.surname} · Oshare Designs` 
+                    :
+                    //update w/ generic title attribute of page
+                    document.title =  `Tu perfil · Oshare Designs`;
+
+                    //update page content w/ dependencies injection
+                    profilePageContent(userData, editableField, editableFieldsEventListeners, 
+                    minLengthValidation, maxLengthValidation, isAlpha, phoneNumberValidation, emailValidation
+                    );
+                    
+                    //event on profile edit
+                    window.addEventListener('profileEdited', (event) => { 
+
+                        //check if the value in the input field is valid
+                        if(event.detail.value){ 
+
+                            //set the event data variables
+                            const { name, value } = event.detail;
+
+                            //set userdata field to the data in the event variable
+                            userData[name]= value;
+
+                            //update the sessionData base on the userData's variable data
+                            setSessionData("oshare_designs_session", JSON.stringify(userData));
+                            //update the localStorage information base on the userData's variable data
+                            updateAccountData(userData);
+
+                            //update page content
+                            profilePageContent(userData, editableField, editableFieldsEventListeners, 
+                            minLengthValidation, maxLengthValidation, isAlpha, phoneNumberValidation, emailValidation);
+                        }
+                    });
+                } else {
+
+                    //update title attribute of page
+                    document.title =  `Oshare Designs · Not authorized 401`;
+                    //display not authorized default page
+                    content.innerHTML = notAuthorizedMessage;
+                    //if user is not connected redirect to main page
+                    redirectToPage("", 3000);
+                    //open account modal so the user can connect
+                    const accIcon = document.getElementById('account-icon');
+                    setTimeout(() => {accIcon.click()}, 3000);
+                } 
+
+                //include footer
+                footer();
+            break;
+
             //not found page
             default:
 
@@ -231,12 +302,13 @@ export const updateContent = async() => {
                     );
                 });
 
-                //if dinamic routes are not matched display not found page
+                //■■■■■■■■■■■■■■■■■■■■ if dinamic routes are not matched display not found page ■■■■■■■■■■■■■■■■■■■■//
+
                 if (singleProductPageRouteHandler) {
 
                 }else{
                     //update title attribute of page
-                    document.title =  `Oshare Designs · 404 Not Found`;
+                    document.title =  `Oshare Designs · Not Found 404`;
 
                     //display not found default page
                     content.innerHTML = notFoundMessage;
@@ -247,6 +319,7 @@ export const updateContent = async() => {
                 navBar(userData.isSessionSet);
                 //include footer
                 footer();
+                
             break;
         }
 

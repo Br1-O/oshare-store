@@ -49,6 +49,23 @@ export const inRangeLengthValidation = (field, errorMessageField, min, max, mess
     }
 }
 
+//alpha numeric validation
+export const isAlpha = (field, errorMessageField) => {
+
+    if (!(/^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(field.value))) {
+
+        //display error message
+        errorMessageField.classList.remove("d-none");
+        errorMessageField.innerText = "El campo sólo puede poseer caracteres alfabeticos.";
+    
+        field.focus();
+
+        return false;
+    } else {
+        return true;
+    }
+}
+
 //email validation
 export const emailValidation = (emailField, errorMessageField) => {
 

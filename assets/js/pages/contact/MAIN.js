@@ -88,7 +88,7 @@ export const contactPageContent = `
             
                     <p id="errorPhoneContactForm" class="error d-none"></p>
                     <div class="row w-100">
-                        <label for="phoneNumber"> Número de telefono </label>
+                        <label for="phoneNumber"> Teléfono </label>
                         <input type="text" name="phoneNumber" class="form-text-input" placeholder="Ingrese su número de telefono (OPCIONAL)">
                     </div>
 

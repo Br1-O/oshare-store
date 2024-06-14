@@ -205,14 +205,14 @@ export function accountModal(template) {
       //toggle type of input to show/hide password
       if (btn.classList.contains("bx-low-vision")) {
         //change icon
-        btn.classList.add("bxs-low-vision");
+        btn.classList.add("bx-show-alt");
         btn.classList.remove("bx-low-vision");
         //change type of input
         btn.previousElementSibling.type= "text";
         btn.previousElementSibling.focus();
       } else {
         //change icon
-        btn.classList.remove("bxs-low-vision");
+        btn.classList.remove("bx-show-alt");
         btn.classList.add("bx-low-vision");
         //change type of input
         btn.previousElementSibling.type= "password";

@@ -21,8 +21,12 @@ export const setUserDataFromSessionData = (userData) => {
         userData.name = sessionData.name;
         userData.surname = sessionData.surname;
         userData.email = sessionData.email;
-        userData.picture = sessionData.picture;
+        userData.profileImage = sessionData.profileImage;
         userData.cart = sessionData.cart;
+        userData.phone = sessionData.phone;
+        userData.city = sessionData.city;
+        userData.region = sessionData.region;
+        userData.country = sessionData.country;
 
         //change session state
         userData.isSessionSet = true;

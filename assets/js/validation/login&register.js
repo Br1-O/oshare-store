@@ -99,8 +99,12 @@ export const validationLoginRegister = () => {
                     "name" : user.name,
                     "surname" : user.surname,
                     "email" : user.email,
-                    "picture" : user.profileImage,
+                    "profileImage" : user.profileImage,
                     "cart" : user.cart,
+                    "phone" : user.phone,
+                    "city" : user.city,
+                    "region" : user.region,
+                    "country" : user.country,
                     "isSessionSet" : true
                   }
     
@@ -277,6 +281,10 @@ export const validationLoginRegister = () => {
               "email" : email,
               "key" : hashedPassword,
               "profileImage" : "",
+              "phone" : "",
+              "city" : "",
+              "region" : "",
+              "country" : "",
               "cart" : []
             }
 
@@ -296,8 +304,12 @@ export const validationLoginRegister = () => {
               "name" : "",
               "surname" : "",
               "email" : email,
-              "picture" : "",
+              "profileImage" : "",
               "cart" : [],
+              "phone" : "",
+              "city" : "",
+              "region" : "",
+              "country" : "",
               "isSessionSet" : true
             }
 

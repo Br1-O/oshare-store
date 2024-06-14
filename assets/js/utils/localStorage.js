@@ -54,7 +54,11 @@ export const updateAccountData = (userData) => {
         userLocalData.name = userData.name;
         userLocalData.surname = userData.surname;
         userLocalData.email = userData.email;
-        userLocalData.picture = userData.picture;
+        userLocalData.profileImage = userData.profileImage;
+        userLocalData.phone = userData.phone;
+        userLocalData.city = userData.city;
+        userLocalData.region = userData.region;
+        userLocalData.country = userData.country;
         userLocalData.cart = userData.cart;
 
         //check if oshare_designs object already exists in localstorage
