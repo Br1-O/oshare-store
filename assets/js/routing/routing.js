@@ -1,6 +1,6 @@
 //utils import
-import { fetchData } from "../utils/fetch.js";
-import { postFetch } from "../utils/postFetch.js";
+import { fetchData, fetchInternalData } from "../utils/fetch.js";
+import { deleteFetch, postFetch } from "../utils/fetchFunctions.js";
 
 import { carouselFunctionality } from "../utils/carousel.js";
 import { redirectToPage } from "../utils/redirectToPage.js";
@@ -74,7 +74,7 @@ export const updateContent = async() => {
     const section = document.getElementById(sectionId);
 
     //fetch product data
-    let productsList = await fetchData("assets/js/json/products-list.json", "products");
+    let productsList = await fetchInternalData("assets/js/json/products-list.json", "products");
 
     //■■■■■■■■■■■■■■■■■■■■ Shopping cart updating ■■■■■■■■■■■■■■■■■■■■//
 
@@ -141,10 +141,10 @@ export const updateContent = async() => {
                 
                 //fetch to home data
                 const homeFetchUtils = async () => {
-                    let products= await fetchData("assets/js/json/products-list.json", "products"); 
-                    let billboardAds= await fetchData("assets/js/json/billboard.json", "billboard");            
-                    let reviews= await fetchData("assets/js/json/reviews.json", "reviews");            
-                    let blogArticles= await fetchData("assets/js/json/blog.json", "articles");            
+                    let products= await fetchInternalData("assets/js/json/products-list.json", "products"); 
+                    let billboardAds= await fetchInternalData("assets/js/json/billboard.json", "billboard");            
+                    let reviews= await fetchInternalData("assets/js/json/reviews.json", "reviews");            
+                    let blogArticles= await fetchInternalData("assets/js/json/blog.json", "articles");            
 
                     displayProductList(products, containerTrendingProducts);
                     displayBillboard(billboardAds, containerBillboard);
@@ -177,7 +177,7 @@ export const updateContent = async() => {
 
                 //fetch to shop data
                 const shopFetchUtils = async () => {
-                    let products= await fetchData("assets/js/json/products-list.json", "products"); 
+                    let products= await fetchInternalData("assets/js/json/products-list.json", "products"); 
 
                     displayProductList(products, shopContainerTrendingProducts);
                 }
@@ -308,7 +308,7 @@ export const updateContent = async() => {
                 //update title attribute of page
                 document.title =  `Oshare Designs · ADMIN Productos`;
 
-                adminProductsPageContent(content, 999, fetchData, postFetch, 
+                adminProductsPageContent(content, 999, fetchData, postFetch, deleteFetch, 
                     redirectToPage, formInput, validationStatus, setOnChangeValidationForInput,
                     minLengthValidation, maxLengthValidation, isAlpha, isNum, phoneNumberValidation, emailValidation, areValuesEqual, passwordValidation
                 );

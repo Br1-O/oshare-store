@@ -2939,6 +2939,10 @@ tfoot span[data-active]:hover{
     filter: brightness(100%);
 }
 
+.table-options{
+    width: max(1.5vmax, 1.5rem);
+}
+
 /* ■■■■■■■■■■■■■■■■■■ Admin new product form ■■■■■■■■■■■■■■■■■■■■■ */
 
 #admin-product-section-form{

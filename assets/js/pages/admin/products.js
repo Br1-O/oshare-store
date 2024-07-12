@@ -1,4 +1,4 @@
-export const adminProductsPageContent = async(container, userRole, fetchData, postFetch,
+export const adminProductsPageContent = async(container, userRole, fetchData, postFetch, deleteFetch,
     redirectToPage, formInput, validationStatus, setOnChangeValidationForInput,  
     minLengthValidation, maxLengthValidation, isAlpha, isNum, phoneNumberValidation, emailValidation, areValuesEqual, passwordValidation
 ) => {
@@ -63,6 +63,9 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
                         <th scope="col"> Etiquetas </th>
                         <th scope="col"> País </th>
                         <th scope="col"> Material </th>
+                        <th scope="col" class="table-options"> 
+                            <i class='bx bx-edit'></i> 
+                        </th>
                     </tr>
                 </thead>
                 <tbody>`;
@@ -85,7 +88,7 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
         for (const product of parsedProducts) {
 
             productsListTemplate+= 
-            `<tr>
+            `<tr data-id="${product.id}" data-productName=" ${product.name}">
                 <td> <img src=${product.image_url[0]} alt=""> </td>
                 <td style="width:max(9vmax, 9rem);"> ${product.name} </td>
                 <td> ${product.price} </td>
@@ -94,6 +97,9 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
                 <td> ${product.tags} </td>
                 <td> ${product.from_country} </td>
                 <td> ${product.material} </td>
+                <td>
+                    <i class='bx bxs-x-square btnNewProductDelete' ></i>
+                </td>
             </tr>`;
         }
 
@@ -102,7 +108,7 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="8"> ${paginationFooter} </td>
+                    <td colspan="9"> ${paginationFooter} </td>
                 </tr>
             </tfoot>
         </table>`;
@@ -129,9 +135,9 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
 
                         <div class="col w-100">
 
-                            <p id="errorPictureProfilePage" class="error d-none" style="margin:auto;"></p>
+                            <p id="errorAdminNewProduct" class="error d-none" style="margin:auto;"></p>
                             <div class="container-empty-img">
-                                <img src="./assets/resources/img/blank-profile-picture.png" alt="profile picture">
+                                <img id="newProductImg" src="./assets/resources/img/blank-image-placeholder.png" alt="product picture">
                                 <span class="message-over-image"> "Sube fotos del producto" </span>
                             </div>
                         </div>
@@ -221,6 +227,88 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
                     displayProductsList(currentPage);
                 });
             });
+        
+        //delete product button
+
+            let btnsDeleteProduct = document.getElementsByClassName("btnNewProductDelete");
+
+            for (const btn of btnsDeleteProduct) {
+
+                btn.addEventListener("click", async() => {
+
+                    let productRow = btn.closest("tr");
+                    let productId = productRow.getAttribute("data-id");
+    
+                    Swal.fire({
+                        title: "¿Borrar producto?",
+                        text: "¡Este cambio será permanente!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Borrar",
+                        cancelButtonText: "Cancelar"
+                      }).then(async(result) => {
+                        if (result.isConfirmed) {
+
+                            try {
+
+                                //delete request
+                                let deletePath = "http://localhost:8080/productos/borrar?id=" + productId;
+                                let res = await deleteFetch(deletePath);
+
+                                if (res.ok) {
+
+                                    displayProductsList();
+
+                                    Swal.fire({
+                                        title: "¡Producto eliminado!",
+                                        text: "El producto fue borrado del catalogo con exito.",
+                                        icon: "success"
+                                    });
+
+                                } else {
+                                    //Toast notification for failure
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: "bottom-end",
+                                        showConfirmButton: false,
+                                        timer: 3800,
+                                        timerProgressBar: false,
+                                        didOpen: (toast) => {
+                                        toast.onmouseenter = Swal.stopTimer;
+                                        toast.onmouseleave = Swal.resumeTimer;
+                                        }
+                                    });
+                                    Toast.fire({
+                                        icon: "error",
+                                        title: `¡No se pudo borrar el producto!`
+                                    });
+                                }
+
+                                
+                            } catch (error) {
+                                //Toast notification for failure
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: "bottom-end",
+                                    showConfirmButton: false,
+                                    timer: 3800,
+                                    timerProgressBar: false,
+                                    didOpen: (toast) => {
+                                    toast.onmouseenter = Swal.stopTimer;
+                                    toast.onmouseleave = Swal.resumeTimer;
+                                    }
+                                });
+                                Toast.fire({
+                                    icon: "error",
+                                    title: `¡No se pudo borrar el producto!`
+                                });
+                            }
+                        }
+                      });
+                })
+            }
 
         //show new product form
         
@@ -230,6 +318,45 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
             btnShowNewProductForm.addEventListener("click", () => {
                 formNewProduct.classList.toggle("d-none");
             });
+
+        // Image upload handling
+            let imageInput = document.createElement('input');
+
+            imageInput.type = 'file';
+            imageInput.accept = 'image/*';
+            imageInput.multiple = true;
+
+            imageInput.addEventListener('change', (event) => {
+
+                let files = event.target.files;
+                let imageUrls = [];
+
+                //push all the images paths into array
+                for (let file of files) {
+                    //use the file name plus current saving images directory as the path
+                    let imagePath = `assets/resources/img/examples/products/${file.name}`;
+                    imageUrls.push(imagePath);
+                }
+
+                //convert array to JSON and replace double quotes with single quotes
+                let imageUrlsJson = JSON.stringify(imageUrls).replace(/"/g, "'");
+
+                //update hidden input with new image URLs
+                document.getElementById("newProductImageUrl").value = imageUrlsJson;
+
+                //update displayed image with the first selected image
+                if (files.length > 0) {
+                    let newProductPreviewImage = document.getElementById('newProductImg');
+                    let firstImagePath = URL.createObjectURL(files[0]);
+                    newProductPreviewImage.src = firstImagePath;
+                }
+            });
+
+            //trigger input event on click
+            document.querySelector('.container-empty-img').addEventListener('click', (event) => {
+                imageInput.click();
+            });
+    
 
         //send POST request for new product
 
@@ -253,6 +380,8 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
                     try {
 
                         let response = await postFetch(createNewProductPath, productData);
+
+                        console.log(response);
 
                         //check if response is valid
                         if (response.name === productData.name) {
@@ -320,5 +449,4 @@ export const adminProductsPageContent = async(container, userRole, fetchData, po
     }
 
     displayProductsList();
-
 }

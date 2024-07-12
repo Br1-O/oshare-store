@@ -1,8 +1,8 @@
-import { fetchData } from "./fetch.js"
+import { fetchInternalData } from "./fetch.js"
 
 export const getInventory = async () => {
 
-    let inventory = fetchData("assets/js/json/inventory.json", "inventory");
+    let inventory = fetchInternalData("assets/js/json/inventory.json", "inventory");
     return inventory;
 }
 
@@ -66,7 +66,7 @@ export const isInStock = async (productId, itemData) => {
 export const findProductByCategoryAndName = async(category, name) => {
 
     //fetch product data
-    let products = await fetchData("assets/js/json/products-list.json", "products");
+    let products = await fetchInternalData("assets/js/json/products-list.json", "products");
 
     //check if any of the categories or the name matches 
     return products.find((product) => {
