@@ -49,7 +49,7 @@ export const inRangeLengthValidation = (field, errorMessageField, min, max, mess
     }
 }
 
-//alpha numeric validation
+//alpha validation
 export const isAlpha = (field, errorMessageField) => {
 
     if (!(/^[A-Za-záéíóúÁÉÍÓÚñÑüÜ\s]+$/.test(field.value))) {
@@ -61,9 +61,26 @@ export const isAlpha = (field, errorMessageField) => {
         field.focus();
 
         return false;
-    } else {
-        return true;
     }
+    
+    return true;
+}
+
+//numeric validation
+export const isNum = (field, errorMessageField) => {
+
+    if (!(/^[0123456789.]+$/.test(field.value))) {
+
+        //display error message
+        errorMessageField.classList.remove("d-none");
+        errorMessageField.innerText = "El campo sólo puede poseer caracteres númericos y .";
+    
+        field.focus();
+
+        return false;
+    }
+    
+    return true;
 }
 
 //email validation

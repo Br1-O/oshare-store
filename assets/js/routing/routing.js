@@ -1,5 +1,7 @@
 //utils import
 import { fetchData } from "../utils/fetch.js";
+import { postFetch } from "../utils/postFetch.js";
+
 import { carouselFunctionality } from "../utils/carousel.js";
 import { redirectToPage } from "../utils/redirectToPage.js";
 //navBar content
@@ -15,7 +17,7 @@ import { shopContent } from "../pages/shop/MAIN.js";
 //contact page content
 import { contactPageContent } from "../pages/contact/MAIN.js";
 import { validationContactForm } from "../validation/contactForm.js";
-import { maxLengthValidation, minLengthValidation, phoneNumberValidation, emailValidation, isAlpha } from "../validation/utils.js";
+import { maxLengthValidation, minLengthValidation, phoneNumberValidation, emailValidation, isAlpha, isNum, areValuesEqual, passwordValidation } from "../validation/utils.js";
 
 //page not found content
 import { notFoundMessage } from "../pages/notFound404.js";
@@ -35,6 +37,10 @@ import { dinamicRouteDisplay } from "./dinamicRouting.js";
 import { displaySingleProductPage } from "../pages/product/MAIN.js";
 import { profilePageContent } from "../pages/profile/MAIN.js";
 import { editableField, editableFieldsEventListeners } from "../components/editableField.js";
+import { dashboardPageContent } from "../pages/admin/MAIN.js";
+import { adminNavBar } from "../components/adminNavBar.js";
+import { adminProductsPageContent } from "../pages/admin/products.js";
+import { formInput, setOnChangeValidationForInput, validationStatus } from "../components/formInput.js";
 
 //I'm not implementing this until finishing the project, since local server is unable to redirect all petitions to my index.html without using backend server utilities
 
@@ -238,7 +244,7 @@ export const updateContent = async() => {
 
                     //update page content w/ dependencies injection
                     profilePageContent(userData, editableField, editableFieldsEventListeners, 
-                    minLengthValidation, maxLengthValidation, isAlpha, phoneNumberValidation, emailValidation
+                    minLengthValidation, maxLengthValidation, isAlpha, isNum, phoneNumberValidation, emailValidation
                     );
                     
                     //event on profile edit
@@ -280,7 +286,39 @@ export const updateContent = async() => {
                 footer();
             break;
 
-            //not found page
+            //administration dashboard
+            case 'dashboard':
+
+                adminNavBar(999);
+
+                //update title attribute of page
+                document.title =  `Oshare Designs · ADMIN Dashboard`;
+
+                dashboardPageContent(content, 999, userData, redirectToPage);
+
+                //don't include footer
+                footer(false);
+
+            break;
+
+            case 'dashboard/productos':
+
+                adminNavBar(999);
+
+                //update title attribute of page
+                document.title =  `Oshare Designs · ADMIN Productos`;
+
+                adminProductsPageContent(content, 999, fetchData, postFetch, 
+                    redirectToPage, formInput, validationStatus, setOnChangeValidationForInput,
+                    minLengthValidation, maxLengthValidation, isAlpha, isNum, phoneNumberValidation, emailValidation, areValuesEqual, passwordValidation
+                );
+
+                //don't include footer
+                footer(false);
+
+            break;
+
+            //dinamic routes and not found page
             default:
 
                 //■■■■■■■■■■■■■■■■■■■■ Product page dinamic URL rendering ■■■■■■■■■■■■■■■■■■■■//
@@ -373,8 +411,3 @@ document.addEventListener("DOMContentLoaded", () => {
         updateContent();
     }
 });
-
-// window.onbeforeunload = function () {
-
-//     return "Are you sure";
-// };

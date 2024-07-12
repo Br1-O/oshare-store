@@ -1,24 +1,47 @@
 export const fetchData = async (route, elementsName) => {
-     try {
-            const response = await fetch(route, { 
-                method:'GET',
-                headers: {
-                    'content-type': 'application/json'    
-                }
-            });
+    try {
+           const response = await fetch(route, { 
+               method:'GET',
+               headers: {
+                   'content-type': 'application/json'    
+               }
+           });
 
-            if (!response.ok) {
-                throw new Error("Couldn't retrieve list of" + elementsName);
-            }
-        
-            const res = await response.json();
+           if (!response.ok) {
+               throw new Error("Couldn't retrieve list of " + elementsName);
+           }
+       
+           const res = await response.json();
 
-            const dataList = res.data[elementsName]; 
+           return res;
 
-            return dataList;
-
-        } catch (error) {
-            console.log("An error happened fetching the list of " + elementsName, error);
-        }
+       } catch (error) {
+           console.log("An error happened fetching the list of " + elementsName, error);
+       }
 }
+
+// export const fetchData = async (route, elementsName) => {
+//      try {
+//             const response = await fetch(route, { 
+//                 method:'GET',
+//                 headers: {
+//                     'content-type': 'application/json'    
+//                 }
+//             });
+
+//             if (!response.ok) {
+//                 throw new Error("Couldn't retrieve list of" + elementsName);
+//             }
+        
+//             const res = await response.json();
+
+//             const dataList = res.data[elementsName]; 
+
+//             return dataList;
+
+//         } catch (error) {
+//             console.log("An error happened fetching the list of " + elementsName, error);
+//         }
+// }
+
 

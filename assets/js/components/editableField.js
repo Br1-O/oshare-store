@@ -1,3 +1,4 @@
+
 export const editableField = (fieldData = false, errorFieldId, nameForField, labelForField, 
     placeholder = "Ingresa tus datos", noDataMessage = "Aún no ingresado") => {
 
@@ -32,7 +33,7 @@ export const editableField = (fieldData = false, errorFieldId, nameForField, lab
 }
 
 export const editableFieldsEventListeners = (btnsEdit, btnsConfirm, btnsCancel,
-    minLengthValidation, maxLengthValidation, isAlpha, phoneNumberValidation, emailValidation) => {
+    minLengthValidation, maxLengthValidation, isAlpha, isNum, phoneNumberValidation, emailValidation) => {
     
     //event listener for edit btn
     for (const btn of btnsEdit) {
@@ -117,6 +118,51 @@ export const editableFieldsEventListeners = (btnsEdit, btnsConfirm, btnsCancel,
                                 let validPhone = phoneNumberValidation(closestInput, errorField);
 
                                 if (validPhone){
+                                    errorField.innerText = "";
+                                    errorField.classList.add("d-none");
+                                    
+                                    //pass the field's data with the event
+                                    const editEventData = {
+                                        name: closestInput.name,
+                                        value: closestInput.value
+                                    };
+            
+                                    //dispatch edit event with field data
+                                    window.dispatchEvent(new CustomEvent('profileEdited', { detail: editEventData }));
+                                }
+                            break;
+
+                            case "age":
+                            case "price":
+                            case "discount":
+            
+                                let isValidMinLen = minLengthValidation(closestInput, errorField, 1, "El campo debe tener al menos 1 caracter");
+                                let isValidMaxLeng = maxLengthValidation(closestInput, errorField, 20, "El campo no puede exceder los 20 caracteres");
+                                let isValidNum = isNum(closestInput, errorField);
+        
+                                if (isValidMinLen && isValidMaxLeng && isValidNum){
+            
+                                    errorField.innerText = "";
+                                    errorField.classList.add("d-none");
+                                        
+                                    //pass the field's data with the event
+                                    const editEventData = {
+                                        name: closestInput.name,
+                                        value: closestInput.value
+                                    };
+        
+                                    //dispatch edit event with field data
+                                    window.dispatchEvent(new CustomEvent('profileEdited', { detail: editEventData }));
+                                }
+                            break;
+
+                            default:
+                                        
+                                let isValidMinLength = minLengthValidation(closestInput, errorField, 3, "El campo debe tener al menos 3 caracteres");
+                                let isValidMaxLength = maxLengthValidation(closestInput, errorField, 20, "El campo no puede exceder los 20 caracteres");
+
+                                if (isValidMinLength && isValidMaxLength) {
+
                                     errorField.innerText = "";
                                     errorField.classList.add("d-none");
                                     
@@ -235,6 +281,51 @@ export const editableFieldsEventListeners = (btnsEdit, btnsConfirm, btnsCancel,
                                 value: closestInput.value
                             };
     
+                            //dispatch edit event with field data
+                            window.dispatchEvent(new CustomEvent('profileEdited', { detail: editEventData }));
+                        }
+                    break;
+
+                    case "age":
+                    case "price":
+                    case "discount":
+
+                        let isValidMinLen = minLengthValidation(closestInput, errorField, 1, "El campo debe tener al menos 1 caracter");
+                        let isValidMaxLeng = maxLengthValidation(closestInput, errorField, 20, "El campo no puede exceder los 20 caracteres");
+                        let isValidNum = isNum(closestInput, errorField);
+
+                        if (isValidMinLen && isValidMaxLeng && isValidNum){
+
+                            errorField.innerText = "";
+                            errorField.classList.add("d-none");
+                                
+                            //pass the field's data with the event
+                            const editEventData = {
+                                name: closestInput.name,
+                                value: closestInput.value
+                            };
+
+                            //dispatch edit event with field data
+                            window.dispatchEvent(new CustomEvent('profileEdited', { detail: editEventData }));
+                        }
+                    break;
+
+                    default:
+                                        
+                        let isValidMinLength = minLengthValidation(closestInput, errorField, 3, "El campo debe tener al menos 3 caracteres");
+                        let isValidMaxLength = maxLengthValidation(closestInput, errorField, 20, "El campo no puede exceder los 20 caracteres");
+
+                        if (isValidMinLength && isValidMaxLength) {
+
+                            errorField.innerText = "";
+                            errorField.classList.add("d-none");
+                            
+                            //pass the field's data with the event
+                            const editEventData = {
+                                name: closestInput.name,
+                                value: closestInput.value
+                            };
+
                             //dispatch edit event with field data
                             window.dispatchEvent(new CustomEvent('profileEdited', { detail: editEventData }));
                         }
